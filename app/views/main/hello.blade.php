@@ -1,11 +1,10 @@
 @extends('layouts.default')
 @section('content')
 
-		<h1>Welcome to
-			<br><br>
-			Precise Maintenance<br>
-			<img src="http://www.precisemaintenance.com/stockimages/DigitalToolbox.png"/>
-			Digital Toolbox</h1><br>
+		<h1>
+			C D Services Inc<br><br>
+			<img src="http://www.cdsrecords.net/images/CDS.png"/><br>
+			</h1><br>
 
 {{ Form::open(array('url' => '/worker', 'method' => 'GET')) }}
   Username:{{ Form::text('username') }}<br>
