@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+
+class CourtList extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('court_list', function($table){
+			$table->increments('id');
+			$table->string('name');
+			$table->string('type');
+			$table->string('court_number');
+			$table->string('street1');
+			$table->string('street2');
+			$table->string('county');
+			$table->string('city');
+			$table->string('state');
+			$table->string('zip');
+			$table->string('phone');
+			$table->string('fax');
+			$table->longtext('info');
+			$table->timestamps();
+
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('court_list');
+	}
+
+}
