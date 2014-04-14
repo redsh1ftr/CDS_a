@@ -20,6 +20,8 @@ class JobList extends Migration {
 			$table->string('user_entered_id');
 			$table->string('status');
 			$table->longtext('info');
+			$table->string('created_user');
+			$table->string('updated_user');
 			$table->timestamps();
 
 		});

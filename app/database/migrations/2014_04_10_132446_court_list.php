@@ -25,6 +25,8 @@ class CourtList extends Migration {
 			$table->string('phone');
 			$table->string('fax');
 			$table->longtext('info');
+			$table->string('created_user');
+			$table->string('updated_user');
 			$table->timestamps();
 
 		});

@@ -17,13 +17,16 @@ class CourtController extends BaseController {
 	public $restful = true;
 
 
+
+
 public function court_list(){
 
-return View::make('main.hello',  array('pagetitle', 'Create'));
+return View::make('courts.court_list',  array('pagetitle', 'Create'))
+->with('court_list1', CourtMain::orderBy('created_at')->get());
 }
 
 public function create_new_court(){
-	CaseMain::create(array(
+	CourtMain::create(array(
 		'type' => Input::get('type'),
 		'court_number' => Input::get('court_number'),
 		'street1' => Input::get('street1'),
@@ -40,25 +43,20 @@ public function create_new_court(){
 return Redirect::route('court_list');
 
 
+}
+
+public function new_court(){
+
+return View::make('courts.create_new_court',  array('pagetitle', 'Create'));
 
 }
 
+public function court_profile($id){
+
+return View::make('courts.profile',  array('pagetitle', 'Create'))
+->with('court_list1', CourtMain::where('id', '=', $id)->get());
+
+
 }
 
-
-
-public function addcall(){
-	CallLog::create(array(
-		'business_name' => Input::get('business_name'),
-		'street' => Input::get('street'),
-		'city' => Input::get('city'),
-		'zip' => Input::get('zip'),
-		'phone' => Input::get('phone'),
-		'answered' => Input::get('answered'),
-		'office_manager' => Input::get('office_manager'),
-		'email' => Input::get('email'),
-		'hours' => Input::get('hours'),
-		'call_notes' => Input::get('call_notes'),
-		));
-	return Redirect::route('callhome');
 }

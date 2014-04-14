@@ -27,6 +27,8 @@ class CaseList extends Migration {
 			$table->string('caption');
 			$table->string('status');
 			$table->longtext('info');
+			$table->string('created_user');
+			$table->string('updated_user');
 			$table->timestamps();
 
 		});

@@ -17,9 +17,14 @@ Route::get('/logout', function() { return View::make('main.hello'); });
 
 //court routes
 
+Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));
+
 Route::get('/court/new', array('as' => 'new_court', 'uses' => 'CourtController@new_court'));
 
-Route::get('/court/new/create', array('as' => 'create_new_court', 'uses' => 'CourtController@create_new_court'));
+Route::post('/court/new/make', array('as' => 'create_new_court', 'uses' => 'CourtController@create_new_court'));
+
+Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtController@court_profile'));
+
 //case routes
 
 Route::get('/case/new/create', array('as' => 'create_new_case', 'uses' => 'CaseController@create_new_case'));
