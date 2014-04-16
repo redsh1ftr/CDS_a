@@ -50,6 +50,8 @@
 	</style>
 </head>
 <body>
+	{{link_to_route('case_list', 'Case List')}}
+	{{link_to_route('court_list', 'Court List')}}
 		@yield('content')
 	</div>
 </body>
