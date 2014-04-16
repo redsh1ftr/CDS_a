@@ -23,7 +23,7 @@ class FirmList extends Migration {
 			$table->string('fax');
 			$table->string('office_manager');
 			$table->string('manager_phone');
-			$table->string('manager_fax');
+			$table->string('manager_email');
 			$table->longtext('info');
 			$table->string('created_user');
 			$table->string('updated_user');

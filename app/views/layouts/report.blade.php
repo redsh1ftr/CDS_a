@@ -52,6 +52,7 @@
 <body>
 	{{link_to_route('case_list', 'Case List')}}
 	{{link_to_route('court_list', 'Court List')}}
+	{{link_to_route('firm_list', 'Firms')}}
 		@yield('content')
 	</div>
 </body>

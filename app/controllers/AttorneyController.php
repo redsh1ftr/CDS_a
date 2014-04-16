@@ -1,6 +1,6 @@
 <?php
 
-class CaseController extends BaseController {
+class AttorneyController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -17,38 +17,38 @@ class CaseController extends BaseController {
 	public $restful = true;
 
 
-public function case_list(){
+public function firm_list(){
 
-return View::make('cases.case_list',  array('pagetitle', 'Create'))
-->with('case_list1', CaseMain::orderBy('created_at')->get());
+return View::make('attorneys.firm_list',  array('pagetitle', 'Create'))
+->with('firm_list1', FirmMain::orderBy('created_at')->get());
 }
 
-public function create_new_case(){
-	CaseMain::create(array(
-		'case_number' => Input::get('case_number'),
-		'date_received' => Input::get('date_received'),
-		'user_entered_id' => Input::get('user_entered_id'),
-		'discovery_date' => Input::get('discovery_date'),
-		'court_id' => Input::get('court_id'),
-		'judge' => Input::get('judge'),
-		'file_number' => Input::get('file_number'),
-		'claim_number' => Input::get('claim_number'),
-		'plaintiff' => Input::get('plaintiff'),
-		'defendant' => Input::get('defendant'),
-		'caption' => Input::get('caption'),
-		'status' => Input::get('status'),
+
+
+public function create_new_firm(){
+	FirmMain::create(array(
+		'name' => Input::get('name'),
+		'street1' => Input::get('street1'),
+		'street2' => Input::get('street2'),
+		'city' => Input::get('city'),
+		'state' => Input::get('state'),
+		'zip' => Input::get('zip'),
+		'phone' => Input::get('phone'),
+		'fax' => Input::get('fax'),
+		'office_manager' => Input::get('office_manager'),
+		'manager_phone' => Input::get('manager_phone'),
+		'manager_email' => Input::get('manager_email'),
 		'info' => Input::get('info'),
+		'created_user' => Input::get('created_user'),
+		'updated_user' => Input::get('updated_user'),
 		));
 
-return Redirect::route('case_home');
+return Redirect::route('firm_list');
 
 }
 
-public function court_selection(){
-
-return View::make('cases.select_court',  array('pagetitle', 'Case Hub'))
-->with('court_list1', CourtMain::orderBy('created_at')->get());
-
+public function new_firm(){
+return View::make('attorneys.create_new_firm',  array('pagetitle', 'New Firm'));
 }
 
 public function selected_court($id){
@@ -59,13 +59,9 @@ return View::make('cases.create_new_case',  array('pagetitle', 'Create'))
 
 }
 
-public function case_profile($id){
-$court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
-
-return View::make('cases.profile',  array('pagetitle', 'Create'))
-->with('case_list1', CaseMain::Where('id', '=', $id)->get())
-->with('court_info1', CourtMain::Where('id', '=', $court_id)->get());
-
+public function firm_profile($id){
+return View::make('attorneys.firm_profile',  array('pagetitle', 'AttnyName'))
+->with('firm_list1', FirmMain::Where('id', '=', $id)->get());
 }
 
 
