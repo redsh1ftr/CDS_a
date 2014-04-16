@@ -11,7 +11,25 @@ class FirmList extends Migration {
 	 */
 	public function up()
 	{
-		//
+			Schema::create('firm_list', function($table){
+			$table->increments('id');
+			$table->string('name');
+			$table->string('street1');
+			$table->string('street2');
+			$table->string('city');
+			$table->string('state');
+			$table->string('zip');
+			$table->string('phone');
+			$table->string('fax');
+			$table->string('office_manager');
+			$table->string('manager_phone');
+			$table->string('manager_fax');
+			$table->longtext('info');
+			$table->string('created_user');
+			$table->string('updated_user');
+			$table->timestamps();
+
+		});
 	}
 
 	/**
@@ -21,7 +39,7 @@ class FirmList extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('firm_list');
 	}
 
 }
