@@ -4,6 +4,8 @@
 <TABLE  BORDER="0"> <TH COLSPAN="4">
 
 @foreach($case_list1 as $case_list)
+
+
 </tr>
 
 

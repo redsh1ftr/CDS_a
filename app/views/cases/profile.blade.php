@@ -32,16 +32,16 @@ Status:
 
 
 </h1>
-<h3>Created at: {{ $case_list->created_at}} </h3><br>
+
 <br>
 
 <h3>
-Plaintiff:<br>
+Plaintiff:
 </h3>
 <h2>
 {{ $case_list->plaintiff }}<br><br></h2>
 <h3>
-Defendant:<br>
+Defendant:
 </h3>
 <h2>
 {{ $case_list->defendant }}<br><br>
@@ -57,6 +57,8 @@ Defendant:<br>
 </table>
 <br>
 </h3>
+
+<h3>Created at: {{ $case_list->created_at}} </h3><br>
 @endforeach
 
 
