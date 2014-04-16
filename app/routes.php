@@ -27,7 +27,7 @@ Route::post('/court/new/make', array('as' => 'create_new_court', 'uses' => 'Cour
 
 Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtController@court_profile'));
 
-
+Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' => 'CaseController@change_status'));
 
 //case routes
 

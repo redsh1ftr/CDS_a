@@ -20,7 +20,13 @@ class CaseController extends BaseController {
 public function case_list(){
 
 return View::make('cases.case_list',  array('pagetitle', 'Create'))
-->with('case_list1', CaseMain::orderBy('created_at')->get());
+->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+}
+
+public function case_list_updated(){
+
+return View::make('cases.case_list',  array('pagetitle', 'Create'))
+->with('case_list1', CaseMain::orderBy('updated_at')->get());
 }
 
 public function create_new_case(){
@@ -42,6 +48,17 @@ public function create_new_case(){
 
 return Redirect::route('case_list');
 
+}
+
+public function change_status(){
+$case_status_id = Input::get('case_status_id');
+$date = new \DateTime;
+if(Input::get('status') != 'Error') {
+DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date));
+return View::make('cases.case_list',  array('pagetitle', 'Create'))
+->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+}
+return Redirect::route('case_list');
 }
 
 public function court_selection(){

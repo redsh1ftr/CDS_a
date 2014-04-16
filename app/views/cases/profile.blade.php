@@ -3,9 +3,37 @@
 
 @foreach($case_list1 as $case_list)
 <h1>
-{{ $case_list->caption }} ( {{ $case_list->case_number }} )<br>
+{{ $case_list->caption }} ( {{ $case_list->case_number }} ) <br>
+@foreach ($court_info1 as $court_info)
+
+<?php $court_link_number = $court_info->court_number; ?>
+<?php $court_link_type = $court_info->type; ?>
+<?php $court_link_county = $court_info->county; ?>
+
+{{ link_to_route('court_profile', "$court_link_number $court_link_type court of $court_link_county county", $court_info->id, array('id' => $court_info->id)); }}
+
+
+
+@endforeach<br>
+
+{{ Form::open(array('route' => 'change_case_status', 'POST')) }}
+Status: 
+{{Form::select(
+	'status', array('Error' => $case_list->status,
+	'Open' => 'Open',
+	'Closed' => 'Closed',
+	'Waiting' => 'Waiting',
+	'Hold Records' => 'Hold',
+	'Case Settled' => 'Settled')) }}
+{{Form::hidden('case_status_id', $case_list->id)}}
+
+  {{ Form::submit ('Change Status') }}
+    {{ Form::close() }}
+
+
 </h1>
-<h3>Created at: {{ $case_list->created_at}} </h3><br><br>
+<h3>Created at: {{ $case_list->created_at}} </h3><br>
+<br>
 
 <h3>
 Plaintiff:<br>
@@ -31,16 +59,6 @@ Defendant:<br>
 </h3>
 @endforeach
 
-@foreach ($court_info1 as $court_info)
 
-<?php $court_link_number = $court_info->court_number; ?>
-<?php $court_link_type = $court_info->type; ?>
-<?php $court_link_county = $court_info->county; ?>
-
-{{ link_to_route('court_profile', "$court_link_number $court_link_type court of $court_link_county county", $court_info->id, array('id' => $court_info->id)); }}
-
-
-
-@endforeach
 
 @stop

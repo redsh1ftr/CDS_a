@@ -7,7 +7,7 @@
 </tr>
 
 
-<th>{{ link_to_route('case_profile', ($case_list->caption), $case_list->id, array('id' => $case_list->id)); }}</th><th>{{ $case_list->case_number }}</th>
+<th>{{ link_to_route('case_profile', ($case_list->caption), $case_list->id, array('id' => $case_list->id)); }}</th><th>{{ $case_list->case_number }}</th><th>{{ $case_list->status }}</th></tr>
 @endforeach
 </table>
 
