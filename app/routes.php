@@ -19,21 +19,29 @@ Route::get('/logout', function() { return View::make('main.hello'); });
 
 Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));
 
+Route::get('/court/hub', array('as' => 'court_hub', 'uses' => 'CourtController@court_hub'));
+
 Route::get('/court/new', array('as' => 'new_court', 'uses' => 'CourtController@new_court'));
 
 Route::post('/court/new/make', array('as' => 'create_new_court', 'uses' => 'CourtController@create_new_court'));
 
 Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtController@court_profile'));
 
+
+
 //case routes
 
-Route::get('/case/new/create', array('as' => 'create_new_case', 'uses' => 'CaseController@create_new_case'));
+Route::get('/case/list/all', array('as' => 'case_list', 'uses' => 'CaseController@case_list'));
 
-Route::get('case/new/court/{$id}', array('as' => 'new_case_court', 'uses' => 'CaseController@new_case_court'));
+Route::post('/case/new/create', array('as' => 'create_new_case', 'uses' => 'CaseController@create_new_case'));
+
+Route::get('/case/new/court/{id}', array('as' => 'selected_court', 'uses' => 'CaseController@selected_court'));
+
+Route::get('/case/new/select', array('as' => 'court_selection', 'uses' => 'CaseController@court_selection'));
 
 Route::get('/case/new', array('as' => 'new_case', 'uses' => 'CaseController@new_case'));
 
-Route::get('/case', array('as' => 'case_home', 'uses' => 'CaseController@case_home'));
+Route::get('/case/{id}', array('as' => 'case_profile', 'uses' => 'CaseController@case_profile'));
 
 Route::get('/marketing/call', array('as' => 'callhome', 'uses' => 'MarketingController@callprofile'));
 

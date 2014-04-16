@@ -59,4 +59,11 @@ return View::make('courts.profile',  array('pagetitle', 'Create'))
 
 }
 
+public function court_hub(){
+
+return View::make('courts.court_hub',  array('pagetitle', 'Court Hub'));
+
+}
+
+
 }
