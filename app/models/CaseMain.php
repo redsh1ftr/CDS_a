@@ -20,5 +20,6 @@ class CaseMain extends Eloquent {
 		'status',
 		'info',
 		 );
+	
 	protected $table = 'case_list';
 }

@@ -15,7 +15,6 @@ class CaseList extends Migration {
 			$table->increments('id');
 			$table->string('case_number');
 			$table->string('date_received');
-			$table->string('date_entered');
 			$table->string('user_entered_id');
 			$table->string('discovery_date');
 			$table->string('court_id');

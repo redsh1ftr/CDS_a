@@ -19,14 +19,14 @@ class CaseController extends BaseController {
 
 public function case_list(){
 
-return View::make('main.hello',  array('pagetitle', 'Client Hub'));
+return View::make('cases.case_list',  array('pagetitle', 'Create'))
+->with('case_list1', CaseMain::orderBy('created_at')->get());
 }
 
 public function create_new_case(){
 	CaseMain::create(array(
 		'case_number' => Input::get('case_number'),
 		'date_received' => Input::get('date_received'),
-		'date_entered' => Input::get('date_entered'),
 		'user_entered_id' => Input::get('user_entered_id'),
 		'discovery_date' => Input::get('discovery_date'),
 		'court_id' => Input::get('court_id'),
@@ -40,31 +40,34 @@ public function create_new_case(){
 		'info' => Input::get('info'),
 		));
 
-return Redirect::route('case_home');
-
-
-return View::make('case.new_case',  array('pagetitle', 'Create Case'));
-
-
+return Redirect::route('case_list');
 
 }
 
+public function court_selection(){
+
+return View::make('cases.select_court',  array('pagetitle', 'Case Hub'))
+->with('court_list1', CourtMain::orderBy('created_at')->get());
+
+}
+
+public function selected_court($id){
+
+return View::make('cases.create_new_case',  array('pagetitle', 'Create'))
+->with('court_list1', CourtMain::where('id', '=', $id)->get())
+->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
+
+}
+
+public function case_profile($id){
+$court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
+
+return View::make('cases.profile',  array('pagetitle', 'Create'))
+->with('case_list1', CaseMain::Where('id', '=', $id)->get())
+->with('court_info1', CourtMain::Where('id', '=', $court_id)->get());
+
 }
 
 
 
-public function addcall(){
-	CallLog::create(array(
-		'business_name' => Input::get('business_name'),
-		'street' => Input::get('street'),
-		'city' => Input::get('city'),
-		'zip' => Input::get('zip'),
-		'phone' => Input::get('phone'),
-		'answered' => Input::get('answered'),
-		'office_manager' => Input::get('office_manager'),
-		'email' => Input::get('email'),
-		'hours' => Input::get('hours'),
-		'call_notes' => Input::get('call_notes'),
-		));
-	return Redirect::route('callhome');
 }
