@@ -14,7 +14,7 @@
 
 
 
-<TABLE  BORDER="0"> <TABLE WIDTH="600"> <TH COLSPAN="4">
+<TABLE  BORDER="0"> <TABLE WIDTH="600">
 
 @foreach($case_list1 as $case_list)
 
@@ -28,5 +28,10 @@
 </ul>
 @endforeach
 </table>
+</div>
+@stop
 
+@section('test')
+
+Testing Datas
 @stop

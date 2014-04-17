@@ -7,6 +7,7 @@
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
 		body {
+			width: 600px;
 			background-color: #9EC8D6;
 			margin:0;
 			margin-left: 15px;
@@ -24,6 +25,15 @@
 			top: 20%;
 			margin-left: 15px;
 			margin-top: -100px;
+		}
+
+		.tester {
+			width: 300px;
+			position: absolute;
+			left: 50%;
+			top: 8%;
+			margin-left: 400px;
+			margin-top: 50px;
 		}
 
 		a, a:visited {
@@ -70,4 +80,9 @@
 		@yield('content')
 	</div>
 </body>
+
+<div class="tester">
+	@yield('right')
+</div>
+
 </html>
