@@ -26,6 +26,31 @@ return View::make('attorneys.firm_list',  array())
 
 
 
+public function create_new_attorney(){
+	AttorneyMain::create(array(
+		'firm_id' => Input::get('firm_id'),
+		'p_number' => Input::get('p_number'),
+		'title' => Input::get('title'),
+		'first_name' => Input::get('first_name'),
+		'middle_name' => Input::get('middle_name'),
+		'last_name' => Input::get('last_name'),
+		'atty_email' => Input::get('atty_email'),
+		'atty_phone' => Input::get('atty_phone'),
+		'atty_fax' => Input::get('atty_fax'),
+		'sec_first' => Input::get('sec_first'),
+		'sec_middle' => Input::get('sec_middle'),
+		'sec_last' => Input::get('sec_last'),
+		'sec_email' => Input::get('sec_email'),
+		'sec_phone' => Input::get('sec_phone'),
+		'sec_fax' => Input::get('sec_fax'),
+		'info' => Input::get('info'),
+		'created_user' => Input::get('created_user'),
+		'updated_user' => Input::get('updated_user'),
+		));
+return Redirect::route('firm_list');
+
+}
+
 public function create_new_firm(){
 	FirmMain::create(array(
 		'name' => Input::get('name'),
@@ -53,23 +78,30 @@ return View::make('attorneys.create_new_firm',  array())
 ->with('pagetitle', 'New Firm');
 }
 
-public function selected_court($id){
+public function selected_firm($id){
 
-return View::make('cases.create_new_case',  array())
-->with('pagetitle', 'New Case')
-->with('court_list1', CourtMain::where('id', '=', $id)->get())
-->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
+return View::make('attorneys.create_new_attorney',  array())
+->with('pagetitle', 'New Attorney')
+->with('firm_list1', FirmMain::where('id', '=', $id)->get())
+->with('firm_id', FirmMain::where('id', '=', $id)->pluck('id'));
 
 }
 
 public function firm_profile($id){
 return View::make('attorneys.firm_profile',  array())
-
 ->with('firm_list1', FirmMain::Where('id', '=', $id)->get())
-->with('pagetitle', FirmMain::Find($id)->pluck('name'));
+->with('pagetitle', FirmMain::Find($id)->pluck('name'))
+->with('attorney_list1', AttorneyMain::where('firm_id', '=', $id)->get());
 
 }
 
+public function firm_selection(){
+
+return View::make('attorneys.select_firm',  array())
+->with('pagetitle', 'New Attorney')
+->with('firm_list1', FirmMain::orderBy('created_at')->get());
+
+}
 
 
 }

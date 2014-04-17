@@ -49,6 +49,17 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 
 //attorney routes
+Route::get('attorney/list/all', array('as' => 'attorney_list', 'uses' => 'AttorneyController@attorney_list'));
+
+Route::get('attorney/new/select_firm/{id}', array('as' => 'firm_selection', 'uses' => 'AttorneyController@selected_firm'));
+
+
+
+Route::get('attorney/{id}', array('as' => 'attorney_profile', 'uses' => 'AttorneyController@attorney_profile'));
+
+Route::post('/attorney/new/create', array('as' => 'create_new_attorney', 'uses' => 'AttorneyController@create_new_attorney'));
+
+//firm routes
 
 Route::get('attorney/firm/list', array('as' => 'firm_list', 'uses' => 'AttorneyController@firm_list'));
 

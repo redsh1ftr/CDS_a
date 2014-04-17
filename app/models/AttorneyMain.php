@@ -2,23 +2,25 @@
 
 class AttorneyMain extends Eloquent {
 
-
 	protected $fillable = array(
-		'case_number',
-		'date_received', 
-		'date_entered', 
-		'request_entered',
-		'user_entered_id',
-		'discovery_date',
-		'court_id',
-		'judge',
-		'file_number',
-		'claim_number',
-		'plaintiff',
-		'defendant',
-		'caption',
-		'status',
+		'firm_id',
+		'p_number', 
+		'title', 
+		'first_name',
+		'middle_name',
+		'last_name',
+		'atty_email',
+		'atty_phone',
+		'atty_fax',
+		'sec_first',
+		'sec_middle',
+		'sec_last',
+		'sec_email',
+		'sec_phone',
+		'sec_fax',
 		'info',
+		'created_user',
+		'updated_user',
 		 );
 	
 	protected $table = 'attorney_list';
