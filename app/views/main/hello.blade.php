@@ -6,7 +6,7 @@
 			<img src="http://www.cdsrecords.net/images/CDS.png"/><br>
 			</h1><br>
 
-{{ Form::open(array('url' => '/court/hub', 'method' => 'GET')) }}
+{{ Form::open(array('url' => '/case/list/all', 'method' => 'GET')) }}
   Username:{{ Form::text('username') }}<br>
   Password: {{ Form::text('password') }}<br>
    {{ Form::submit ('Log In') }}

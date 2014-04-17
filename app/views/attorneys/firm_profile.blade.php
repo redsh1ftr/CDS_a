@@ -49,7 +49,7 @@ Notes:<br>
 <?php $pnumb = $attorney_list->p_number?>
 <?php $atty_name = $atty_first.$atty_middle.$atty_last;?>
 
-{{ link_to_route('attorney_profile', "P# $pnumb $atty_first $atty_middle $atty_last", $attorney_list->id, array('id' => $attorney_list->id)); }}<br>
+{{ link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P# $pnumb)", $attorney_list->id, array('id' => $attorney_list->id)); }}<br>
 @endforeach
 
 @stop
