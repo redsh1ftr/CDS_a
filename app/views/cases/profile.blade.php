@@ -16,6 +16,8 @@ Status:
 {{Form::hidden('case_status_id', $case_list->id)}}
 
   {{ Form::submit ('Change Status') }}
+  @if($case_list->status != "Open") Status Changed: {{$case_list->updated_at}}
+  @endif
     {{ Form::close() }}
 </h1>
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
