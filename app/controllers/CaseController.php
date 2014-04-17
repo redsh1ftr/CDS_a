@@ -19,13 +19,15 @@ class CaseController extends BaseController {
 
 public function case_list(){
 
-return View::make('cases.case_list',  array('pagetitle', 'Create'))
+return View::make('cases.case_list',  array())
+->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
 }
 
 public function case_list_updated(){
 
-return View::make('cases.case_list',  array('pagetitle', 'Create'))
+return View::make('cases.case_list',  array())
+->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at')->get());
 }
 
@@ -55,7 +57,8 @@ $case_status_id = Input::get('case_status_id');
 $date = new \DateTime;
 if(Input::get('status') != 'Error') {
 DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date));
-return View::make('cases.case_list',  array('pagetitle', 'Create'))
+return View::make('cases.case_list',  array())
+->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
 }
 return Redirect::route('case_list');
@@ -63,26 +66,28 @@ return Redirect::route('case_list');
 
 public function court_selection(){
 
-return View::make('cases.select_court',  array('pagetitle', 'Case Hub'))
+return View::make('cases.select_court',  array())
+->with('pagetitle', 'New Case')
 ->with('court_list1', CourtMain::orderBy('created_at')->get());
 
 }
 
 public function selected_court($id){
+return View::make('cases.create_new_case',  array())
 
-return View::make('cases.create_new_case',  array('pagetitle', 'Create'))
 ->with('court_list1', CourtMain::where('id', '=', $id)->get())
+->with('pagetitle', 'New Case')
 ->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
 
 }
 
 public function case_profile($id){
 $court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
-
-return View::make('cases.profile',  array('pagetitle', 'Create'))
-->with('case_list1', CaseMain::Where('id', '=', $id)->get())
+$case_info = CaseMain::Where('id', '=', $id);
+return View::make('cases.profile',  array())
+->with('case_list1', $case_info->get())
+->with('pagetitle', $case_info->pluck('caption'))
 ->with('court_info1', CourtMain::Where('id', '=', $court_id)->get());
-
 }
 
 

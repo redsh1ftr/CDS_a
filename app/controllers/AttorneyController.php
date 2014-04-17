@@ -19,7 +19,8 @@ class AttorneyController extends BaseController {
 
 public function firm_list(){
 
-return View::make('attorneys.firm_list',  array('pagetitle', 'Create'))
+return View::make('attorneys.firm_list',  array())
+->with('pagetitle', 'Firm List')
 ->with('firm_list1', FirmMain::orderBy('created_at')->get());
 }
 
@@ -48,20 +49,25 @@ return Redirect::route('firm_list');
 }
 
 public function new_firm(){
-return View::make('attorneys.create_new_firm',  array('pagetitle', 'New Firm'));
+return View::make('attorneys.create_new_firm',  array())
+->with('pagetitle', 'New Firm');
 }
 
 public function selected_court($id){
 
-return View::make('cases.create_new_case',  array('pagetitle', 'Create'))
+return View::make('cases.create_new_case',  array())
+->with('pagetitle', 'New Case')
 ->with('court_list1', CourtMain::where('id', '=', $id)->get())
 ->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
 
 }
 
 public function firm_profile($id){
-return View::make('attorneys.firm_profile',  array('pagetitle', 'AttnyName'))
-->with('firm_list1', FirmMain::Where('id', '=', $id)->get());
+return View::make('attorneys.firm_profile',  array())
+
+->with('firm_list1', FirmMain::Where('id', '=', $id)->get())
+->with('pagetitle', FirmMain::Find($id)->pluck('name'));
+
 }
 
 

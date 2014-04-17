@@ -21,7 +21,8 @@ class CourtController extends BaseController {
 
 public function court_list(){
 
-return View::make('courts.court_list',  array('pagetitle', 'Create'))
+return View::make('courts.court_list',  array())
+->with('pagetitle', 'Court List')
 ->with('court_list1', CourtMain::orderBy('created_at')->get());
 }
 
@@ -47,13 +48,14 @@ return Redirect::route('court_list');
 
 public function new_court(){
 
-return View::make('courts.create_new_court',  array('pagetitle', 'Create'));
-
+return View::make('courts.create_new_court',  array())
+->with('pagetitle', 'New Court');
 }
 
 public function court_profile($id){
 
-return View::make('courts.profile',  array('pagetitle', 'Create'))
+return View::make('courts.profile',  array())
+->with('pagetitle', 'Court Profile')
 ->with('court_list1', CourtMain::where('id', '=', $id)->get());
 
 
@@ -61,7 +63,8 @@ return View::make('courts.profile',  array('pagetitle', 'Create'))
 
 public function court_hub(){
 
-return View::make('courts.court_hub',  array('pagetitle', 'Court Hub'));
+return View::make('courts.court_hub',  array())
+->with('pagetitle', 'Court Hub');
 
 }
 
