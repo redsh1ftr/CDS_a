@@ -222,7 +222,10 @@ pip-log.txt
 
 bootstrap/compiled.php
 vendor
-app/storage/*
+app/storage/sessions
+app/storage/cache
+app/storage/logs
+app/storage/views
 public/logs/
 composer.phar
 composer.lock
