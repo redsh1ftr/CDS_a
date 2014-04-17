@@ -1,16 +1,30 @@
 @extends('layouts.report')
 @section('content')
-<TABLE  BORDER="0"> <TH COLSPAN="4">
-<tr><th>County</th><th>Court Number</th><th>Court Type</th>
-@foreach($court_list1 as $court_list)
-</tr>
 
 
-<th>{{ link_to_route('court_profile', ($court_list->county), $court_list->id, array('id' => $court_list->id)); }}</th><th>{{$court_list->court_number }}</th><th>{{ $court_list->type }}</th>
+
+
+@foreach ($court_list1 as $court_info)
+
+<?php $court_link_number = $court_info->court_number; ?>
+<?php $court_link_type = $court_info->type; ?>
+<?php $court_link_county = $court_info->county; ?>
+
+@if($court_link_type === 'Federal')
+<ul>
+{{ link_to_route('court_profile', "$court_link_number United States $court_link_type Court", $court_info->id, array('id' => $court_info->id)); }}
+</ul>
+@else
+<ul>
+{{ link_to_route('court_profile', "$court_link_number $court_link_type Court of $court_link_county County", $court_info->id, array('id' => $court_info->id)); }}
+</ul>
+@endif
+
 @endforeach
-</table>
 
 <h2>
 	{{link_to_route('new_court', 'New Court') }}
 </h2>
+
+
 @stop

@@ -2,7 +2,20 @@
 @section('content')
 @foreach($court_list1 as $court_list)
 <h1>
-{{ $court_list->court_number }} {{$court_list->type }} Court of  {{$court_list->county}} County
+
+<?php $court_link_number = $court_list->court_number; ?>
+<?php $court_link_type = $court_list->type; ?>
+<?php $court_link_county = $court_list->county; ?>
+
+@if($court_link_type === 'Federal')
+<ul>
+{{ "$court_link_number United States $court_link_type Court" }}
+</ul>
+@else
+<ul>
+{{ "$court_link_number $court_link_type Court of $court_link_county County" }}
+</ul>
+@endif
 </h1><br><br>
 
 <h3>
