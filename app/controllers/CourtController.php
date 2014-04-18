@@ -39,6 +39,8 @@ public function create_new_court(){
 		'phone' => Input::get('phone'),
 		'fax' => Input::get('fax'),
 		'info' => Input::get('info'),
+		'created_user' => Cache::get('user_id'),
+		'updated_user' => Cache::get('user_id'),
 		));
 
 return Redirect::route('court_list');
