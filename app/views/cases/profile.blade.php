@@ -3,7 +3,7 @@
 @foreach($case_list1 as $case_list)
 <h3>
 	<table width="600">
-	<th>{{ HTML::link("//localhost/records/$case_list->case_number/Documents", 'View Documents') }}</th><th>{{ HTML::link("//localhost/records/$case_list->case_number/Records", 'View Records') }}</th></table>
+	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Documents", 'View Documents') }}</th><th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Records", 'View Records') }}</th></table>
 </h3>
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
 

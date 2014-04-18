@@ -44,7 +44,7 @@ Notes:<br>
 <HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 @foreach($attorney_list1 as $attorney_list)
 
-<?php $atty_middle = str_limit($attorney_list->middle_name, $limit=1,'')?>
+<?php $atty_middle = Str::limit($attorney_list->middle_name, $limit=1, $end='.')?>
 <?php $atty_last = $attorney_list->last_name?>
 <?php $pnumb = $attorney_list->p_number?>
 <?php $atty_name = "$attorney_list->first_name $atty_middle $attorney_list->last_name";?>
