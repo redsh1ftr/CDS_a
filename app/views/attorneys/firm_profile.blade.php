@@ -6,7 +6,7 @@
 </h2>
 
 
-<HR WIDTH="100%" COLOR="#000000" SIZE="3">
+<HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 
 
 <h1>
@@ -39,9 +39,9 @@ Notes:<br>
 @section('right')
 
 <h1>
-	Attorneys:
+	Attorneys
 </h1>
-<HR WIDTH="100%" COLOR="#000000" SIZE="3">
+<HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 @foreach($attorney_list1 as $attorney_list)
 
 <?php $atty_middle = str_limit($attorney_list->middle_name, $limit=1,'')?>
@@ -51,5 +51,15 @@ Notes:<br>
 
 {{ link_to_route('attorney_profile', "$atty_name (P# $attorney_list->p_number)", $attorney_list->id, array('id' => $attorney_list->id)); }}<br>
 @endforeach
+@stop
 
+
+@section('timestamper')
+@foreach($attorney_list1 as $attorney_list)
+Created by {{ $attorney_list->created_user}} {{ $attorney_list->created_at}}
+
+<br>
+This will be the employeee number<br> for printing and quality control. there will be logs.
+
+@endforeach
 @stop

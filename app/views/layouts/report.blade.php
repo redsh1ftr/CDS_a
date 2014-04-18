@@ -7,7 +7,7 @@
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
 		body {
-			width: 50%;
+			width: 35%;
 			background-color: #9EC8D6;
 			margin:0;
 			margin-left: 15px;

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function() { return View::make('main.hello'); });
 
 Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@login_home'));

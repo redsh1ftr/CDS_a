@@ -93,7 +93,5 @@
 <div class="tester">
 	@yield('right')
 </div>
-<div class="timestamper">
-	@yield('timestamper')
-</div>
+
 </html>

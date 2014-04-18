@@ -2,6 +2,14 @@
 @section('content')
 @foreach ($court_list1 as $court_info)
 
+
+<h2>
+	{{link_to_route('new_court', 'New Court') }}
+</h2>
+
+
+<HR WIDTH="100%" COLOR="#000000" SIZE="3">
+	
 <?php $court_link_number = $court_info->court_number; ?>
 <?php $court_link_type = $court_info->type; ?>
 <?php $court_link_county = $court_info->county; ?>

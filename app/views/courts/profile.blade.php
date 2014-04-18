@@ -28,5 +28,14 @@ Notes:<br>
 {{$court_list->info}}<br>
 </h3>
 @endforeach
+
   
+@stop
+@section('timestamper')
+@foreach($court_list1 as $court_list)
+Created by
+{{$court_list->created_user}} at {{$court_list->created_at}}
+
+@endforeach
+
 @stop

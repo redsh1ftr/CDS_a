@@ -98,12 +98,14 @@ return View::make('attorneys.firm_profile',  array())
 }
 
 public function attorney_profile($id){
-$firm_id = AttorneyMain::Find($id)->pluck('firm_id');
+$firm_id = AttorneyMain::where('id', '=', $id)->pluck('firm_id');
 return View::make('attorneys.attorney_profile',  array())
-->with('firm_lists', FirmMain::find($firm_id)->get())
+->with('firm_lists', FirmMain::where('id', '=', $firm_id)->get())
 ->with('attorney_list1', AttorneyMain::Where('id', '=', $id)->get())
 ->with('pagetitle', AttorneyMain::Find($id)->pluck('p_number'))
-->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+->with('case_list_open', CaseMain::where('status', '=', 'Open')->orderBy('updated_at', 'desc')->get())
+->with('case_list_closed', CaseMain::where('status', '!=', 'Open')->orderBy('updated_at', 'desc')->get())
+;
 
 
 }
