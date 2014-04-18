@@ -1,15 +1,62 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+
+
+
+
+
+@section('topbar')
+
 @foreach($case_list1 as $case_list)
 <h3>
-	<table width="600">
-	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Documents", 'View Documents') }}</th><th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Records", 'View Records') }}</th></table>
+	<table width=30%> <th colspan="2">
+	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Documents", 'View Documents') }}</th><th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Records", 'View Records') }}</th>
+</table>
 </h3>
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
 
+@stop
+
+
+
+
+
+@section('content_left')
 @foreach($case_list1 as $case_list)
-<h1>
-{{ $case_list->caption }} ( {{ $case_list->case_number }} ) <h3>
+
+
+
+<TABLE ALIGN="center"> <TH COLSPAN="2"></tr>
+@foreach ($court_info1 as $court_info)
+
+
+
+<?php $court_link_number = $court_info->court_number; ?>
+<?php $court_link_type = $court_info->type; ?>
+<?php $court_link_county = $court_info->county; ?>
+
+
+@if($court_link_type === 'Federal')
+{{link_to_route('court_profile', "$court_link_number United States $court_link_type Court", $court_info->id, array('id' => $court_info->id)); }}
+@else
+{{link_to_route('court_profile', "$court_link_number $court_link_type Court of $court_link_county County", $court_info->id, array('id' => $court_info->id)); }}
+@endif
+@endforeach
+<th>Case Number:</th><th>{{ $case_list->case_number }}</th></tr>
+<th>Caption:</th><th>{{ $case_list->caption }}</th></tr>
+
+<th>Judge:</th> <th> {{ $case_list->judge }}</th></tr>
+<th>File Number:</th><th>	{{ $case_list->file_number }}</th></tr>
+<th>Claim Number:</th><th>	{{ $case_list->claim_number }}</th></tr>
+@if($case_list->discovery_date)
+<th>Discovery Date:</th><th> {{ $case_list->discovery_date }}</th><tr>
+@endif
+</table>
+
+@stop
+
+
+@section('content_right')
+
 {{ Form::open(array('route' => 'change_case_status', 'POST')) }}
 Status: 
 {{Form::select(
@@ -22,82 +69,77 @@ Status:
 {{Form::hidden('case_status_id', $case_list->id)}}
 
   {{ Form::submit ('Change Status') }}
-  @if($case_list->created_at != $case_list->updated_at) Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}</h3>
+  @if($case_list->created_at != $case_list->updated_at) <br>Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}<br></h3>
   @endif
+@endforeach
+
     {{ Form::close() }}
-</h3>
-</h1>
-<HR WIDTH="100%" COLOR="#000000" SIZE="2">
 
-
-<h3>
-@foreach ($court_info1 as $court_info)
-
-<?php $court_link_number = $court_info->court_number; ?>
-<?php $court_link_type = $court_info->type; ?>
-<?php $court_link_county = $court_info->county; ?>
-
-
-@if($court_link_type === 'Federal')
-{{link_to_route('court_profile', "$court_link_number United States $court_link_type Court", $court_info->id, array('id' => $court_info->id)); }}
-@else
-{{link_to_route('court_profile', "$court_link_number $court_link_type Court of $court_link_county County", $court_info->id, array('id' => $court_info->id)); }}
-@endif
-
-
-@endforeach<br>
-<TABLE  BORDER="0"> <TH COLSPAN="2"></tr>
-<th>Judge:</th> <th> {{ $case_list->judge }}</th><tr>
-<th>File Number:</th><th>	{{ $case_list->file_number }}</th></tr>
-<th>Claim Number:</th><th>	{{ $case_list->claim_number }}</th><tr>
-@if($case_list->discovery_date)
-<th>Discovery Date:</th><th> {{ $case_list->discovery_date }}</th><tr>
-@endif
-</table>
-
-</h3>
-<HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+@stop
 
 
 
 
-<br>
-
-<h3>
-Plaintiff:
-</h3>
-
-<h2>
-{{ $case_list->plaintiff }}
-</h2>
-<h3>
-
-	Plaintiff Attorney
-</h3>
-<HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
-<h3>
-Defendant:
-</h3>
-<h2>
-{{ $case_list->defendant }}<br><br>
-</h2>
-<h3>
-	{{HTML::link('attorney/1', 'Christopher Smith')}}<br>
-	Co-Defense Attorney 2<br>
-	Co-Defense Attorney 3<br>
 
 
+@section('plaintiff')
 <br><br>
-Notes:
-<HR WIDTH="80%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
-{{$case_list->info }}
+Plaintiff:<h2>{{ $case_list->plaintiff }} {{HTML::link('attorney/1', 'Christopher Smith')}}<br>
+<HR WIDTH="70%" ALIGN="right" COLOR="#000000" SIZE="2">
+@stop
+
+@section('left')
+<h2>
+
+</h2><h3>
+
+@stop
+<br><br>
+
+@stop
 
 
+@section('defendant')
+<br><br>
+Defendant: <h2>{{ $case_list->defendant }}</h2>
+<HR WIDTH="70%" ALIGN="left" COLOR="#000000" SIZE="2">
 
 @stop
 
 @section('right')
-<table width = "700">
+
+<h2>
+
+</h2><h3>
+{{HTML::link('attorney/2', 'Attorney Name')}}<br>
+
+
+
+	Co-Defense Attorney 2<br>
+	Co-Defense Attorney 3<br></h3>
+
+@stop
+
+@section('timestamper')
+
+<h3>Created at: {{ $case_list->created_at}} by {{$case_list->created_user}} </h3><br>
+
+
+@endforeach
+
+@stop
+
+
+@section('last')
+<br><br><br>
+Notes:
+<HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+{{$case_list->info }}<br><br><br><br>
+
+
+Jobs:
+<HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+<table>
 <th>13-16551</th><th>{{Str::limit('Ashwin Judagagabajabarbadara MMRD.D.O.', $limit=50, $end='')}}</th><th>(DOC)</th><th>NEED INFO</th><tr>
 <th>13-16552</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(BIL)<th>WAIT-AUTH</th><tr>
 <th>13-16553</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(EMP)</th><th>BAD FAX</th><tr>
@@ -110,15 +152,5 @@ Notes:
 <th>13-16560</th><th>{{Str::limit('Internal Revenue Service', $limit=50, $end='')}}</th><th>(TAX)<th>WAIT-PROB</th><tr>
 
 </table>
-
-
-@stop
-
-@section('timestamper')
-
-<h3>Created at: {{ $case_list->created_at}} by {{$case_list->created_user}} </h3><br>
-@endforeach
-
-@endforeach
 
 @stop
