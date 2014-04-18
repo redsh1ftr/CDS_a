@@ -13,7 +13,9 @@
 
 Route::get('/', function() { return View::make('main.hello'); });
 
-Route::get('/logout', function() { return View::make('main.hello'); });
+Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@login_home'));
+
+Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout'));
 
 //court routes
 

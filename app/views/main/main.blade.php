@@ -1,4 +1,4 @@
-@extends('layouts.profile1')
+@extends('layouts.report')
 @section('content')
 	
 
