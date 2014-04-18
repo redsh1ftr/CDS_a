@@ -55,8 +55,8 @@ Notes:<br>
 
 
 @section('timestamper')
-@foreach($attorney_list1 as $attorney_list)
-Created by {{ $attorney_list->created_user}} {{ $attorney_list->created_at}}
+@foreach($firm_list1 as $firm_list)
+Created by {{ $firm_list->created_user}} {{ $firm_list->created_at}}
 
 <br>
 This will be the employeee number<br> for printing and quality control. there will be logs.
