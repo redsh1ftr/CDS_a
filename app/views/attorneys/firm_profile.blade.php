@@ -43,13 +43,13 @@ Notes:<br>
 </h1>
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
 @foreach($attorney_list1 as $attorney_list)
-<?php $atty_first = $attorney_list->first_name?>
-<?php $atty_middle = $attorney_list->middle_name?>
+
+<?php $atty_middle = str_limit($attorney_list->middle_name, $limit=1,'')?>
 <?php $atty_last = $attorney_list->last_name?>
 <?php $pnumb = $attorney_list->p_number?>
-<?php $atty_name = $atty_first.$atty_middle.$atty_last;?>
+<?php $atty_name = "$attorney_list->first_name $atty_middle $attorney_list->last_name";?>
 
-{{ link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P# $pnumb)", $attorney_list->id, array('id' => $attorney_list->id)); }}<br>
+{{ link_to_route('attorney_profile', "$atty_name (P# $attorney_list->p_number)", $attorney_list->id, array('id' => $attorney_list->id)); }}<br>
 @endforeach
 
 @stop

@@ -3,7 +3,7 @@
 
 @foreach($case_list1 as $case_list)
 <h1>
-{{ $case_list->caption }} ( {{ $case_list->case_number }} ) <br>
+{{ $case_list->caption }} ( {{ $case_list->case_number }} ) <h3>
 {{ Form::open(array('route' => 'change_case_status', 'POST')) }}
 Status: 
 {{Form::select(
@@ -16,9 +16,10 @@ Status:
 {{Form::hidden('case_status_id', $case_list->id)}}
 
   {{ Form::submit ('Change Status') }}
-  @if($case_list->status != "Open") Status Changed: {{$case_list->updated_at}}
+  @if($case_list->created_at != $case_list->updated_at) Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}</h3>
   @endif
     {{ Form::close() }}
+</h3>
 </h1>
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
 
@@ -72,7 +73,7 @@ Defendant:
 </h2>
 
 
-<h3>Created at: {{ $case_list->created_at}} </h3><br>
+<h3>Created at: {{ $case_list->created_at}} by {{$case_list->created_user}} </h3><br>
 @endforeach
 
 

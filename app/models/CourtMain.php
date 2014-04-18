@@ -15,6 +15,8 @@ class CourtMain extends Eloquent {
 		'phone',
 		'fax',
 		'info',
+		'created_user',
+		'updated_user',
 		 );
 	protected $table = 'court_list';
 }

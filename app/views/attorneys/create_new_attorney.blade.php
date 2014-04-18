@@ -55,8 +55,6 @@ Secretary Info:</th><tr>
 
 
 {{ Form::hidden('firm_id', $firm_id) }}
-{{ Form::hidden('created_user', 'Test ID') }}
-{{ Form::hidden('updated_user', 'Test ID') }}
 
   {{ Form::submit ('Create Attorney') }}
 

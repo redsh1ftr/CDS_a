@@ -37,6 +37,14 @@
 			margin-top: 100px;
 		}
 
+		.timestamper {
+			width: 300px;
+			text-align:left;
+			position: bottom;
+			margin-top: 10%;
+
+		}
+
 		a, a:visited {
 			text-decoration:none;
 		}
@@ -84,5 +92,8 @@
 
 <div class="tester">
 	@yield('right')
+</div>
+<div class="timestamper">
+	@yield('timestamper')
 </div>
 </html>

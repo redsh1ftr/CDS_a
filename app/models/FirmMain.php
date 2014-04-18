@@ -16,6 +16,8 @@ class FirmMain extends Eloquent {
 		'manager_phone',
 		'manager_email',
 		'info',
+		'created_user',
+		'updated_user',
 		 );
 	
 	protected $table = 'firm_list';

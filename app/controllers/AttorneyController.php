@@ -27,6 +27,7 @@ return View::make('attorneys.firm_list',  array())
 
 
 public function create_new_attorney(){
+$user_id = Cache::get('username');	
 	AttorneyMain::create(array(
 		'firm_id' => Input::get('firm_id'),
 		'p_number' => Input::get('p_number'),
@@ -44,8 +45,8 @@ public function create_new_attorney(){
 		'sec_phone' => Input::get('sec_phone'),
 		'sec_fax' => Input::get('sec_fax'),
 		'info' => Input::get('info'),
-		'created_user' => Input::get('created_user'),
-		'updated_user' => Input::get('updated_user'),
+		'created_user' => Cache::get('user_id'),
+		'updated_user' => Cache::get('user_id'),
 		));
 return Redirect::route('firm_list');
 
@@ -65,8 +66,8 @@ public function create_new_firm(){
 		'manager_phone' => Input::get('manager_phone'),
 		'manager_email' => Input::get('manager_email'),
 		'info' => Input::get('info'),
-		'created_user' => Input::get('created_user'),
-		'updated_user' => Input::get('updated_user'),
+		'created_user' => Cache::get('user_id'),
+		'updated_user' => Cache::get('user_id'),
 		));
 
 return Redirect::route('firm_list');
@@ -83,7 +84,8 @@ public function selected_firm($id){
 return View::make('attorneys.create_new_attorney',  array())
 ->with('pagetitle', 'New Attorney')
 ->with('firm_list1', FirmMain::where('id', '=', $id)->get())
-->with('firm_id', FirmMain::where('id', '=', $id)->pluck('id'));
+->with('firm_id', FirmMain::where('id', '=', $id)->pluck('id'))
+->with('user_id', Cache::get('user_id'));
 
 }
 
@@ -94,6 +96,19 @@ return View::make('attorneys.firm_profile',  array())
 ->with('attorney_list1', AttorneyMain::where('firm_id', '=', $id)->get());
 
 }
+
+public function attorney_profile($id){
+$firm_id = AttorneyMain::Find($id)->pluck('firm_id');
+return View::make('attorneys.attorney_profile',  array())
+->with('firm_lists', FirmMain::find($firm_id)->get())
+->with('attorney_list1', AttorneyMain::Where('id', '=', $id)->get())
+->with('pagetitle', AttorneyMain::Find($id)->pluck('p_number'))
+->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+
+
+}
+
+
 
 public function firm_selection(){
 
