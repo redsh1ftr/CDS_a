@@ -36,11 +36,21 @@ Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtControl
 
 Route::get('/case/list/all', array('as' => 'case_list', 'uses' => 'CaseController@case_list'));
 
+Route::get('case/update/{id}', array('as' => 'case_update', 'uses' => 'CaseController@case_update'));
+
+Route::post('/case/list/{sort}', array('as' => 'case_list_sort', 'uses' => 'CaseController@case_list_sort'));
+
 Route::get('/case/new/court/{id}', array('as' => 'selected_court', 'uses' => 'CaseController@selected_court'));
+
+Route::post('/case/list/sorting', array('as' => 'sort_case_list', 'uses' => 'CaseController@sort_case_list'));
 
 Route::get('/case/new/select', array('as' => 'court_selection', 'uses' => 'CaseController@court_selection'));
 
 Route::get('/case/new', array('as' => 'new_case', 'uses' => 'CaseController@new_case'));
+
+Route::get('/case/attorney/{id}', array('as' => 'new_case_attorney', 'uses' => 'CaseController@new_case_attorney'));
+
+Route::post('/case/attorney/add', array('as' => 'add_case_attorney', 'uses' => 'CaseController@add_case_attorney'));
 
 Route::get('/case/{id}', array('as' => 'case_profile', 'uses' => 'CaseController@case_profile'));
 
@@ -49,7 +59,9 @@ Route::post('/case/new/create', array('as' => 'create_new_case', 'uses' => 'Case
 Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' => 'CaseController@change_status'));
 
 
+//Job Routes
 
+Route::get('/job/new/{id}', array('as' => 'new_job', 'uses' => 'JobController@new_job'));
 
 //attorney routes
 Route::get('attorney/list/all', array('as' => 'attorney_list', 'uses' => 'AttorneyController@attorney_list'));

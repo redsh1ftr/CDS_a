@@ -11,7 +11,18 @@
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
 
 
+{{ Form::open(array('route' => 'case_list_sort', 'POST')) }} 
+{{Form::select(
+	'sort', array(
+	'Open' => 'Open',
+	'Closed' => 'Closed',
+	'Waiting' => 'Waiting',
+	'Hold Records' => 'Hold',
+	'Case Settled' => 'Settled')) }}
 
+  {{ Form::submit ('Sort by Status') }}
+
+    {{ Form::close() }}
 
 
 <TABLE  BORDER="0"> <TABLE WIDTH="600">

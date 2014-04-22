@@ -12,10 +12,10 @@ class CaseList extends Migration {
 	public function up()
 	{
 		Schema::create('case_list', function($table){
+			$table->engine = 'MyISAM';
 			$table->increments('id');
 			$table->string('case_number');
 			$table->string('date_received');
-			$table->string('user_entered_id');
 			$table->string('discovery_date');
 			$table->string('court_id');
 			$table->string('judge');
@@ -31,6 +31,8 @@ class CaseList extends Migration {
 			$table->timestamps();
 
 		});
+
+		DB::statement('ALTER TABLE case_list ADD FULLTEXT search(case_number, date_received, discovery_date, court_id, judge, file_number, claim_number, plaintiff, defendant, status, info, created_user, updated_user)');
 	}
 
 	/**

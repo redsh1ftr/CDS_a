@@ -68,16 +68,32 @@
 			position: relative;
 			text-align:center;
 			float:left;
-			width: 50%;
+			width: 25%;
 
 		}
+
+		.left_middle {
+			position: relative;
+			text-align:center;
+			float:left;
+			width: 25%;
+
+		}
+
+		.right_middle {
+			position: relative;
+			text-align:center;
+			float:right;
+			width: 25%;
+
+		}
+
 
 		.right {
 			position: relative;
 			text-align:center;
 			float:right;
-			width: 50%;
-
+			width: 25%;
 
 		}
 
@@ -175,12 +191,15 @@
 		
 	<div class="left">
 		<div class="centertext">@yield('plaintiff')</div>
-		@yield('left')
 	</div>
-		
+		<div class="left_middle">
+		<div class="centertext">@yield('plaintiff_attorney')</div>
+	</div>
+		<div class="right_middle">
+		<div class="centertext">@yield('defendant_attorney')</div>
+	</div>
 	<div class="right">
 		<div class="centertext">@yield('defendant')</div>
-	@yield('right')
 	</div>
 </div>
 

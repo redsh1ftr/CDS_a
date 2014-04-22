@@ -9,7 +9,9 @@
 @foreach($case_list1 as $case_list)
 <h3>
 	<table width=30%> <th colspan="2">
-	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Documents", 'View Documents') }}</th><th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Records", 'View Records') }}</th>
+	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Documents", 'View Documents') }}</th>
+	<th>{{ HTML::link("//10.0.1.125/Records/$case_list->case_number/Records", 'View Records') }}</th>
+	<th>{{link_to_route('new_job', 'New Job', $case_list->id, array('id' => $case_list->id)); }}
 </table>
 </h3>
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
@@ -26,10 +28,17 @@
 
 
 <TABLE ALIGN="center"> <TH COLSPAN="2"></tr>
+<th>
+</th><tr>
+<th>Case Number:</th><th>{{ $case_list->case_number }}</th></tr>
+<th>Caption:</th><th>{{ $case_list->caption }}</th></tr>
+
+<th>Judge:</th> <th> {{ $case_list->judge }}</th></tr>
+</table>
 @foreach ($court_info1 as $court_info)
 
-
-
+<TABLE ALIGN="center"> <TH COLSPAN="2"></tr>
+	<th>
 <?php $court_link_number = $court_info->court_number; ?>
 <?php $court_link_type = $court_info->type; ?>
 <?php $court_link_county = $court_info->county; ?>
@@ -41,22 +50,14 @@
 {{link_to_route('court_profile', "$court_link_number $court_link_type Court of $court_link_county County", $court_info->id, array('id' => $court_info->id)); }}
 @endif
 @endforeach
-<th>Case Number:</th><th>{{ $case_list->case_number }}</th></tr>
-<th>Caption:</th><th>{{ $case_list->caption }}</th></tr>
-
-<th>Judge:</th> <th> {{ $case_list->judge }}</th></tr>
-<th>File Number:</th><th>	{{ $case_list->file_number }}</th></tr>
-<th>Claim Number:</th><th>	{{ $case_list->claim_number }}</th></tr>
-@if($case_list->discovery_date)
-<th>Discovery Date:</th><th> {{ $case_list->discovery_date }}</th><tr>
-@endif
+</th>
 </table>
-
 @stop
 
 
 @section('content_right')
-
+<TABLE ALIGN="center"> <TH COLSPAN="2"></tr>
+<th>	
 {{ Form::open(array('route' => 'change_case_status', 'POST')) }}
 Status: 
 {{Form::select(
@@ -66,15 +67,21 @@ Status:
 	'Waiting' => 'Waiting',
 	'Hold Records' => 'Hold',
 	'Case Settled' => 'Settled')) }}
-{{Form::hidden('case_status_id', $case_list->id)}}
+{{Form::hidden('case_status_id', $case_list->id)}}</th><th>
 
-  {{ Form::submit ('Change Status') }}
-  @if($case_list->created_at != $case_list->updated_at) <br>Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}<br></h3>
+  {{ Form::submit ('Change Status') }}</th></tr>
+  <th>File Number:</th><th>	{{ $case_list->file_number }}</th></tr>
+<th>Claim Number:</th><th>	{{ $case_list->claim_number }}</th></tr>
+@if($case_list->discovery_date)
+<th>Discovery Date:</th><th> {{ $case_list->discovery_date }}</th><tr>
+@endif
+</table>
+  @if($case_list->created_at != $case_list->updated_at) <br>Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}<br>
   @endif
 @endforeach
 
     {{ Form::close() }}
-
+<br><br><br>
 @stop
 
 
@@ -84,33 +91,40 @@ Status:
 
 @section('plaintiff')
 <br><br>
-Plaintiff:<h2>{{ $case_list->plaintiff }} {{HTML::link('attorney/1', 'Christopher Smith')}}<br>
-<HR WIDTH="70%" ALIGN="right" COLOR="#000000" SIZE="2">
+Plaintiff
+<HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
+@foreach($plaintiff1 as $plaintiffs)
+{{ $plaintiffs->person }}<br>
+@endforeach
+
+{{ $case_list->plaintiff }}<br>
+
 @stop
 
-@section('left')
-<h2>
 
-</h2><h3>
-
-@stop
+@section('plaintiff_attorney')
 <br><br>
-
+Plaintiff's Attorney
+<HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
+{{HTML::link('attorney/1', 'Christopher Smith')}}
 @stop
 
 
 @section('defendant')
 <br><br>
-Defendant: <h2>{{ $case_list->defendant }}</h2>
-<HR WIDTH="70%" ALIGN="left" COLOR="#000000" SIZE="2">
+Defendant
+<HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
+@foreach($defendant1 as $defendants)
+{{ $defendants->person }}<br>
+@endforeach
+
 
 @stop
 
-@section('right')
-
-<h2>
-
-</h2><h3>
+@section('defendant_attorney')
+<br><br>
+Defendant's Attorney
+<HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 {{HTML::link('attorney/2', 'Attorney Name')}}<br>
 
 
@@ -131,8 +145,9 @@ Defendant: <h2>{{ $case_list->defendant }}</h2>
 
 
 @section('last')
+{{link_to_route('new_case_attorney', 'Add More Plaintiffs, Defendants, or Attorneys', $case_list->id, array('id' => $case_list->id)); }}
 <br><br><br>
-Notes:
+Case Notes:
 <HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 {{$case_list->info }}<br><br><br><br>
 

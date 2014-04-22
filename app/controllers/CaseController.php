@@ -24,18 +24,18 @@ return View::make('cases.case_list',  array())
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
 }
 
-public function case_list_updated(){
-
+public function case_list_sort(){
+$sort = Input::get('sort');
 return View::make('cases.case_list',  array())
 ->with('pagetitle', 'Case List')
-->with('case_list1', CaseMain::orderBy('updated_at')->get());
+->with('case_list1', CaseMain::where('status', '=', $sort)->get());
+
 }
 
 public function create_new_case(){
 	CaseMain::create(array(
 		'case_number' => Input::get('case_number'),
 		'date_received' => Input::get('date_received'),
-		'user_entered_id' => Input::get('user_entered_id'),
 		'discovery_date' => Input::get('discovery_date'),
 		'court_id' => Input::get('court_id'),
 		'judge' => Input::get('judge'),
@@ -67,7 +67,6 @@ return Redirect::route('case_list');
 }
 
 public function court_selection(){
-
 return View::make('cases.select_court',  array())
 ->with('pagetitle', 'New Case')
 ->with('court_list1', CourtMain::orderBy('created_at')->get());
@@ -76,7 +75,6 @@ return View::make('cases.select_court',  array())
 
 public function selected_court($id){
 return View::make('cases.create_new_case',  array())
-
 ->with('court_list1', CourtMain::where('id', '=', $id)->get())
 ->with('pagetitle', 'New Case')
 ->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
@@ -86,12 +84,45 @@ return View::make('cases.create_new_case',  array())
 public function case_profile($id){
 $court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
 $case_info = CaseMain::Where('id', '=', $id);
+$plaintiff = Case1Attorney::where('case_id', '=', $id)->where('side', '=', 'Plaintiff')->get();
+$defendant = Case1Attorney::where('case_id', '=', $id)->where('side', '=', 'Defendant')->get();
 return View::make('cases.profile',  array())
+->with('case_list1', $case_info->get())
+->with('pagetitle', $case_info->pluck('caption'))
+->with('court_info1', CourtMain::Where('id', '=', $court_id)->get())
+->with('plaintiff1', $plaintiff)
+->with('defendant1', $defendant);
+}
+
+public function case_update($id){
+$court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
+$case_info = CaseMain::Where('id', '=', $id);
+return View::make('cases.update_case',  array())
 ->with('case_list1', $case_info->get())
 ->with('pagetitle', $case_info->pluck('caption'))
 ->with('court_info1', CourtMain::Where('id', '=', $court_id)->get());
 }
 
 
+public function add_case_attorney(){
+	Case1Attorney::create(array(
+		'case_id' => Input::get('case_id'),
+		'side' => Input::get('side'),
+		'person' => Input::get('person'),
+		'p_number' => Input::get('p_number'),
+		'created_user' => Cache::get('user_id'),
+		'updated_user' => Cache::get('user_id'),
+		));
+
+return Redirect::route('case_list');
+
+}
+
+
+public function new_case_attorney($id){
+return View::make('cases.add_attorney',  array())
+->with('pagetitle', 'Add Attorney')
+->with('case_list1', CaseMain::find($id)->get());
+}
 
 }

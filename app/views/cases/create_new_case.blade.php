@@ -2,31 +2,69 @@
 @section('content')
 
 {{ Form::open(array('url' => '/case/new/create', 'POST')) }}
-<TABLE  BORDER="0"> <TH COLSPAN="2">
-
-<tr><th>Case Number:</th><th>{{ Form::text('case_number') }}</th></tr>
-
-<tr><th>Date Received:</th><th>{{ Form::text('date_received') }}</th></tr>
-
-<tr><th>Discovery Date:</th><th>{{ Form::text('discovery_date') }}</th></tr>
-
-<tr><th>Judge:</th><th>{{ Form::text('judge') }}</th></tr>
-
-<tr><th>File Number:</th><th>{{ Form::text('file_number') }}</th></tr>
-
-<tr><th>Claim Number:</th><th>{{ Form::text('claim_number') }}</th></tr>
-
-<tr><th>Plaintiff:</th><th>{{ Form::text('plaintiff') }}</th></tr>
-
-<tr><th>Defendant:</th><th>{{ Form::text('defendant') }}</th></tr>
-
-<tr><th>Case Caption:</th><th>{{ Form::text('caption') }}</th></tr>
-
-<tr><th>Additional Notes:</th><th>{{ Form::textarea('info') }}</th></tr>
+<TABLE  BORDER="0">
+<td>
+	{{ Form::label('case_number', 'Case Number') }}
+<td>
+	{{ Form::text('case_number') }}
+<tr>
 
 
-  </table>
+<td>
+	{{ Form::label('date_received', 'Date Received') }}
+<td>
+	{{ Form::text('date_received') }}
+<tr>
 
+
+<td>
+	{{ Form::label('discovery_date', 'Discovery Date') }}
+<td>
+	{{ Form::text('discovery_date') }}
+<tr>
+
+<td>	
+	{{ Form::label('judge', 'Judge') }}
+<td>
+	{{ Form::text('judge') }}
+<td>
+
+<tr>
+<td>
+	{{ Form::label('file_number', 'File Number') }}
+<td>
+	{{ Form::text('file_number') }}
+<tr>
+
+
+<td>
+	{{ Form::label('claim_number', 'Claim Number') }}
+<td>
+	{{ Form::text('claim_number') }}
+<tr>
+
+<td>
+	{{ Form::label('plaintiff', 'Plaintiff') }}
+<td>
+	{{ Form::text('plaintiff') }}
+<tr>
+
+<td>
+	{{ Form::label('defendant', 'Defendant') }}
+<td>
+	{{ Form::text('defendant') }}
+<tr>
+
+<td>
+	{{ Form::label('caption', 'Caption') }}
+<td>
+	{{ Form::text('caption') }}
+<tr>
+
+</table>
+{{ Form::label('notes', 'Case Notes') }}
+<br>
+{{ Form::textarea('info') }}
 
 {{ Form::hidden('status', 'Open') }}
 {{ Form::hidden('court_id', $court_id) }}
