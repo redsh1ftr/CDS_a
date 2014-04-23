@@ -9,7 +9,9 @@
 
 
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
-	
+
+<h2>Please select a court below:</h2>
+<HR WIDTH="50%" ALIGN ="LEFT" COLOR="#000000" SIZE="2">
 <?php $court_link_number = $court_info->court_number; ?>
 <?php $court_link_type = $court_info->type; ?>
 <?php $court_link_county = $court_info->county; ?>

@@ -14,8 +14,6 @@ class CaseMain extends Eloquent {
 		'judge',
 		'file_number',
 		'claim_number',
-		'plaintiff',
-		'defendant',
 		'caption',
 		'status',
 		'info',

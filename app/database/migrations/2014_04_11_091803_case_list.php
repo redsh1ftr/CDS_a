@@ -21,8 +21,6 @@ class CaseList extends Migration {
 			$table->string('judge');
 			$table->string('file_number');
 			$table->string('claim_number');
-			$table->string('plaintiff');
-			$table->string('defendant');
 			$table->string('caption');
 			$table->string('status');
 			$table->longtext('info');
@@ -32,7 +30,7 @@ class CaseList extends Migration {
 
 		});
 
-		DB::statement('ALTER TABLE case_list ADD FULLTEXT search(case_number, date_received, discovery_date, court_id, judge, file_number, claim_number, plaintiff, defendant, status, info, created_user, updated_user)');
+		DB::statement('ALTER TABLE case_list ADD FULLTEXT search(case_number, date_received, discovery_date, court_id, judge, file_number, claim_number, status, info, created_user, updated_user)');
 	}
 
 	/**

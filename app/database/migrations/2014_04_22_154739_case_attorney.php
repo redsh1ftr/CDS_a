@@ -17,6 +17,8 @@ class CaseAttorney extends Migration {
 			$table->string('side');
 			$table->string('person');
 			$table->string('p_number');
+			$table->integer('nor')->nullable();
+			$table->integer('active')->nullable();
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();

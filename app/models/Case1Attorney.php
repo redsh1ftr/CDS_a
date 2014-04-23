@@ -9,6 +9,7 @@ class Case1Attorney extends Eloquent {
 		'p_number',
 		'created_user',
 		'updated_user',
+		'nor',
 		 );
 	
 	protected $table = 'case_attorney';

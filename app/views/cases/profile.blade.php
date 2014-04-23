@@ -94,10 +94,13 @@ Status:
 Plaintiff
 <HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
 @foreach($plaintiff1 as $plaintiffs)
+@if($plaintiffs->nor)
+{{ link_to_route('nor_profile', $plaintiffs->person, $plaintiffs->id, array('id' => $plaintiffs->id)); }}<br>
+@else
 {{ $plaintiffs->person }}<br>
+@endif
 @endforeach
 
-{{ $case_list->plaintiff }}<br>
 
 @stop
 
@@ -106,8 +109,24 @@ Plaintiff
 <br><br>
 Plaintiff's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
-{{HTML::link('attorney/1', 'Christopher Smith')}}
+@foreach($plaintiff1 as $plaintiffs)
+<?php $platty = AttorneyMain::where('p_number', '=', $plaintiffs->p_number)->get();?>
+
+@foreach($platty as $plattys)
+<?php $atty_middle = Str::limit($plattys->middle_name, $limit=1, $end='.')?>
+<?php $atty_last = $plattys->last_name?>
+<?php $pnumb = $plattys->p_number?>
+<?php $atty_name = "$plattys->first_name $atty_middle $plattys->last_name";?>
+{{ link_to_route('attorney_profile', "$atty_name (P# $plattys->p_number)", $plattys->id, array('id' => $plattys->id)); }}<br>
+@endforeach
+@endforeach
 @stop
+
+
+
+
+
+
 
 
 @section('defendant')
@@ -115,7 +134,11 @@ Plaintiff's Attorney
 Defendant
 <HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
 @foreach($defendant1 as $defendants)
+@if($defendants->nor)
+{{ link_to_route('nor_profile', $defendants->person, $defendants->id, array('id' => $defendants->id)); }}<br>
+@else
 {{ $defendants->person }}<br>
+@endif
 @endforeach
 
 
@@ -125,12 +148,17 @@ Defendant
 <br><br>
 Defendant's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
-{{HTML::link('attorney/2', 'Attorney Name')}}<br>
+@foreach($defendant1 as $defendants)
+<?php $defs = AttorneyMain::where('p_number', '=', $defendants->p_number)->get();?>
+@foreach($defs as $defs)
+<?php $atty_middle = Str::limit($defs->middle_name, $limit=1, $end='.')?>
+<?php $atty_last = $defs->last_name?>
+<?php $pnumb = $defs->p_number?>
+<?php $atty_name = "$defs->first_name $atty_middle $defs->last_name";?>
+{{ link_to_route('attorney_profile', "$atty_name (P# $defs->p_number)", $defs->id, array('id' => $defs->id)); }}<br>
+@endforeach
+@endforeach
 
-
-
-	Co-Defense Attorney 2<br>
-	Co-Defense Attorney 3<br></h3>
 
 @stop
 

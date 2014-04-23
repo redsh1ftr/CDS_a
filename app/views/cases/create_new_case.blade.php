@@ -44,18 +44,6 @@
 <tr>
 
 <td>
-	{{ Form::label('plaintiff', 'Plaintiff') }}
-<td>
-	{{ Form::text('plaintiff') }}
-<tr>
-
-<td>
-	{{ Form::label('defendant', 'Defendant') }}
-<td>
-	{{ Form::text('defendant') }}
-<tr>
-
-<td>
 	{{ Form::label('caption', 'Caption') }}
 <td>
 	{{ Form::text('caption') }}
@@ -68,8 +56,6 @@
 
 {{ Form::hidden('status', 'Open') }}
 {{ Form::hidden('court_id', $court_id) }}
-{{ Form::hidden('user_entered_id', 'Test ID') }}
-
   {{ Form::submit ('Create Case') }}
 
     {{ Form::close() }}

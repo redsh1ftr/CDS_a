@@ -7,7 +7,7 @@
 <td>
 	{{ Form::label('person', 'Plaintiff or Defendant') }}
 <td>
-	{{ Form::text('person') }}
+	{{ Form::text('person') }} NOR?{{Form::checkbox('nor', '1');}}
 <tr>
 
 <td>

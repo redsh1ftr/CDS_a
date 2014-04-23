@@ -32,6 +32,17 @@ Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtControl
 
 
 
+
+//Nor routes
+
+Route::get('/case/nor/{id}', array('as' => 'nor_profile', 'uses' => 'NorController@nor_profile'));
+
+Route::post('/case/nor/new/', array('as' => 'create_new_nor', 'uses' => 'NorController@create_new_nor'));
+
+Route::get('/case/nor/former_address', array('as' => 'create_former_address', 'uses' => 'NorController@create_former_address'));
+
+
+
 //case routes
 
 Route::get('/case/list/all', array('as' => 'case_list', 'uses' => 'CaseController@case_list'));

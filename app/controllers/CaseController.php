@@ -41,10 +41,8 @@ public function create_new_case(){
 		'judge' => Input::get('judge'),
 		'file_number' => Input::get('file_number'),
 		'claim_number' => Input::get('claim_number'),
-		'plaintiff' => Input::get('plaintiff'),
-		'defendant' => Input::get('defendant'),
 		'caption' => Input::get('caption'),
-		'status' => Input::get('status'),
+		'status' => 'Open',
 		'info' => Input::get('info'),
 		'created_user' => Cache::get('user_id'),
 		'updated_user' => Cache::get('user_id'),
@@ -110,6 +108,7 @@ public function add_case_attorney(){
 		'side' => Input::get('side'),
 		'person' => Input::get('person'),
 		'p_number' => Input::get('p_number'),
+		'nor' => Input::get('nor'),
 		'created_user' => Cache::get('user_id'),
 		'updated_user' => Cache::get('user_id'),
 		));
@@ -124,5 +123,12 @@ return View::make('cases.add_attorney',  array())
 ->with('pagetitle', 'Add Attorney')
 ->with('case_list1', CaseMain::find($id)->get());
 }
+
+public function new_nor_profile($id){
+return View::make('cases.add_attorney',  array())
+->with('pagetitle', 'Add NOR')
+->with('case_list1', CaseMain::find($id));
+}
+
 
 }

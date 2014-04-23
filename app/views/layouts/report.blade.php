@@ -44,6 +44,13 @@
 
 		}
 
+
+		.toolbar{
+			position: relative;
+			width: 100%;
+			margin-top:0%;
+		}
+
 		a, a:visited {
 			text-decoration:none;
 		}
@@ -83,6 +90,10 @@
 </table>
 
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
+
+<div class="toolbar">
+	@yield('toolbar')
+</div>
 
 
 <body>
