@@ -13,8 +13,13 @@
 {{ $firm_list->name }} 
 </h1><br><br>
 <h2>
-{{$firm_list->street1 }} {{$firm_list->street2 }}<br>
-{{$firm_list->city }}{{$firm_list->state }}, {{$firm_list->zip }}<br><br>
+@if($firm_list->street2)	
+{{$firm_list->street1 }}, {{$firm_list->street2 }}<br>
+@else
+{{$firm_list->street1 }}
+@endif
+
+{{$firm_list->city }} {{$firm_list->state }}, {{$firm_list->zip }}<br><br>
 Phone: {{ $firm_list->phone }} <br>
 Fax: {{$firm_list->fax }} <br><br><br></h2>
 
