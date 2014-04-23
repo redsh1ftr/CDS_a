@@ -18,6 +18,9 @@ Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@log
 
 Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout'));
 
+
+
+
 //court routes
 
 Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));
@@ -31,6 +34,17 @@ Route::post('/court/new/make', array('as' => 'create_new_court', 'uses' => 'Cour
 Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtController@court_profile'));
 
 
+
+
+//deponent routes
+
+Route::get('/deponent/list/all', array('as' => 'deponent_list_all', 'uses' => 'DeponentController@deponent_list_all'));
+
+Route::get('/deponent/new', array('as' => 'new_deponent', 'uses' => 'DeponentController@new_deponent'));
+
+Route::get('/deponent/{id}', array('as' => 'deponent_profile', 'uses' => 'DeponentController@deponent_profile'));
+
+Route::post('/deponent/new/create', array('as' => 'create_new_deponent', 'uses' => 'DeponentController@create_new_deponent'));
 
 
 //Nor routes
