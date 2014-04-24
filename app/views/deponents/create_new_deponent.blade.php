@@ -88,7 +88,8 @@
 	{{ Form::label('copy_service', 'Copy Service') }}
 <td>
 {{Form::select(
-	'copy_service', array('Healthport' => 'Healthport',
+	'copy_service', array('Facility' => 'Facility',
+	'Healthport' => 'Healthport',
 	'MRO' => 'MRO')) }}
 <tr>
 </table>   

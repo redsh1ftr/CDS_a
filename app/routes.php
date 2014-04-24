@@ -47,6 +47,8 @@ Route::get('/deponent/new', array('as' => 'new_deponent', 'uses' => 'DeponentCon
 
 Route::get('/deponent/{id}', array('as' => 'deponent_profile', 'uses' => 'DeponentController@deponent_profile'));
 
+Route::post('/deponent/name/{search_name}', array('as' => 'deponent_search_name', 'uses' => 'DeponentController@deponent_search_name'));
+
 Route::post('/deponent/new/create', array('as' => 'create_new_deponent', 'uses' => 'DeponentController@create_new_deponent'));
 
 
