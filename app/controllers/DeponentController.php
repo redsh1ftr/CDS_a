@@ -24,11 +24,11 @@ return View::make('deponents.deponent_list',  array())
 ->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
 }
 
-public function deponent_search_name($search_name){
-$search_name = Input::get('search_name');
-return View::make('deponents.deponent_list',  array())
-->with('pagetitle', 'Deponents')
-->with('dep_list1', DeponentMain::where('name', '=', $search_name)->get());
+public function case_list_sort(){
+$sort = Input::get('sort');
+return View::make('cases.case_list',  array())
+->with('pagetitle', 'Case List')
+->with('case_list1', CaseMain::where('status', '=', $sort)->get());
 
 }
 

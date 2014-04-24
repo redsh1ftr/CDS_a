@@ -110,13 +110,6 @@
 			text-align:center;
 		}
 
-		.lefttext {
-			text-align:left;
-		}
-
-		.righttext {
-			text-align:right;
-		}
 		.last{
 
 			position: relative;	
@@ -166,10 +159,10 @@
 
 
 <div class="topbar">
-	<TABLE WIDTH=100%>
+	<TABLE WIDTH="400">
 	<th>{{link_to_route('case_list', 'Case List')}}</th>
 	<th>{{link_to_route('court_list', 'Court List')}}</th>
-	<th>{{link_to_route('firm_list', 'Firms')}}</th>
+	<th>{{link_to_route('firm_list', 'Firms')}}</th><tr>
 	<th>{{link_to_route('deponent_list_all', 'Deponents')}}</th>
 	<th>{{link_to_route('logout', 'Logout')}}</th><tr>
 </table>
