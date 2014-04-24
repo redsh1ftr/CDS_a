@@ -2,6 +2,8 @@
 @section('content')
 
 
+
+
 @foreach($attorney_list1 as $attorney_list)
 
 <h1>
@@ -59,7 +61,7 @@ Closed Cases:
 @foreach($firm_lists as $firm_list)
 
 <h1>
-{{ link_to_route('make_apdf', ($firm_list->name), $firm_list->id, array('id' => $firm_list->id)); }}
+{{ link_to_route('firm_profile', ($firm_list->name), $firm_list->id, array('id' => $firm_list->id)); }}
 </h1>
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="3">
 <h3>
