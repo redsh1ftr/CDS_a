@@ -18,6 +18,9 @@ Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@log
 
 Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout'));
 
+//pdf stuff
+
+Route::post('/pdf/pdf/{id}', array('as' => 'make_apdf', 'uses' => 'PdfController@make_pdf'));
 
 
 

@@ -1,0 +1,10 @@
+---
+FieldType: Text
+FieldName: firstname
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: lastname
+FieldFlags: 0
+FieldJustification: Left
