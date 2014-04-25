@@ -121,13 +121,13 @@ return Redirect::route('case_list');
 public function new_case_attorney($id){
 return View::make('cases.add_attorney',  array())
 ->with('pagetitle', 'Add Attorney')
-->with('case_list1', CaseMain::find($id)->get());
+->with('case_list1', CaseMain::where('id', '=', $id)->get());
 }
 
 public function new_nor_profile($id){
 return View::make('cases.add_attorney',  array())
 ->with('pagetitle', 'Add NOR')
-->with('case_list1', CaseMain::find($id));
+->with('case_list1', CaseMain::where('id', '=', $id)->get());
 }
 
 

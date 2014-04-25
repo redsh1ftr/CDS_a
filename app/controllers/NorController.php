@@ -20,15 +20,17 @@ class NorController extends BaseController {
 
 public function nor_profile($id){
 
-if (NorMain::find($id)){
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::find($id));}
+->with('nor', NorMain::find($id));
+}
 
+
+public function new_nor($id){
 return View::make('cases.create_new_nor',  array())
 ->with('pagetitle', 'Create NOR')
-->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
+->with('attorney_case', Case1Attorney::where('case_id', '=', $id)->get())
 ->with('nor_id', $id);
 }
 
@@ -36,19 +38,19 @@ return View::make('cases.create_new_nor',  array())
 
 public function create_new_nor(){
 $id = Input::get('nor_id');
-if(NorMain::find($id))
+if(NorMain::where('id', '=', $id))
 {
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::find($id));
+->with('nor1', NorMain::where('id', '=', $id));
 }
 
 
 $user_id = Cache::get('username');	
 	NorMain::create(array(
 		'id' => Input::get('nor_id'),
-		'case_id' => Input::get('case_id'),
+		'case_id' => $id,
 		'first_name' => Input::get('first_name'),
 		'first_name' => Input::get('first_name'),
 		'middle_name' => Input::get('middle_name'),
@@ -70,6 +72,6 @@ $user_id = Cache::get('username');
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::find($id));}
+->with('nor1', NorMain::where('id', '=', $id));}
 
 	}

@@ -18,7 +18,9 @@ Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@log
 
 Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout'));
 
+//pdf routes
 
+Route::post('/pdf/make', array('as' => 'make_pdf', 'uses' => 'PdfController@make_pdf'));
 
 
 //court routes
@@ -43,6 +45,8 @@ Route::get('/deponent/list/all', array('as' => 'deponent_list_all', 'uses' => 'D
 Route::get('/deponent/new', array('as' => 'new_deponent', 'uses' => 'DeponentController@new_deponent'));
 
 Route::get('/deponent/{id}', array('as' => 'deponent_profile', 'uses' => 'DeponentController@deponent_profile'));
+
+Route::post('/deponent/name/{search_name}', array('as' => 'deponent_search_name', 'uses' => 'DeponentController@deponent_search_name'));
 
 Route::post('/deponent/new/create', array('as' => 'create_new_deponent', 'uses' => 'DeponentController@create_new_deponent'));
 
