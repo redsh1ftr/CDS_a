@@ -6,21 +6,21 @@
 
 
 @foreach($attorney_case as $case)
-Enter more information for {{ $case->person}}:
+Enter more information for {{ $case->person }}:
 {{ Form::hidden('case_id', $case->id)}}
 {{ Form::hidden('nor_id', $nor_id)}}
-
+@endforeach
 
 
 <br><br>
 <TABLE  BORDER="0">
 
 <td>
-	{{ Form::label('first_name', $case->person) }}
+	{{ Form::label('first_name', 'First Name') }}
 <td>
 	{{ Form::text('first_name') }} 
 <tr>
-@endforeach
+
 <td>
 	{{ Form::label('middle_name', 'Middle Name') }}
 <td>

@@ -20,16 +20,17 @@ class NorController extends BaseController {
 
 public function nor_profile($id){
 
-if (NorMain::where('id', '=', $id)){
+if (NorMain::find($id)){
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
 ->with('nor1', NorMain::where('id', '=', $id));}
-
+{
 return View::make('cases.create_new_nor',  array())
 ->with('pagetitle', 'Create NOR')
 ->with('attorney_case', Case1Attorney::where('case_id', '=', $id)->get())
 ->with('nor_id', $id);
+}
 }
 
 
@@ -44,10 +45,10 @@ return View::make('cases.nor_profile',  array())
 ->with('nor1', NorMain::where('id', '=', $id));
 }
 
-
+{
 $user_id = Cache::get('username');	
 	NorMain::create(array(
-		'id' => Input::get('nor_id'),
+		'id' => $id,
 		'case_id' => $id,
 		'first_name' => Input::get('first_name'),
 		'first_name' => Input::get('first_name'),
@@ -73,3 +74,4 @@ return View::make('cases.nor_profile',  array())
 ->with('nor1', NorMain::where('id', '=', $id));}
 
 	}
+}
