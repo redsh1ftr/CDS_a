@@ -6,8 +6,13 @@
 
 
 @foreach($attorney_case as $case)
+<<<<<<< HEAD
 Enter more information for {{ $case->person }}:
 {{ Form::hidden('case_id', $case->id)}}
+=======
+Enter more information for {{ $case->person}}:
+{{ Form::hidden('case_id', $case->case_id)}}
+>>>>>>> b9f83cccd42eb256268947212a0bf172d4dc1896
 {{ Form::hidden('nor_id', $nor_id)}}
 @endforeach
 
@@ -29,61 +34,61 @@ Enter more information for {{ $case->person }}:
 
 
 <td>
-	{{ Form::label('last_name', '') }}
+	{{ Form::label('last_name', 'Last Name') }}
 <td>
 	{{ Form::text('last_name') }}
 <tr>
 
 <td>
-	{{ Form::label('dob', '') }}
+	{{ Form::label('dob', 'Date of Birth') }}
 <td>
 	{{ Form::text('dob') }}
 <tr>
 
 <td>
-	{{ Form::label('ssn', '') }}
+	{{ Form::label('ssn', 'SSN') }}
 <td>
 	{{ Form::text('ssn') }}
 <tr>
 
 <td>
-	{{ Form::label('email', '') }}
+	{{ Form::label('email', 'E-mail') }}
 <td>
 	{{ Form::text('email') }}
 <tr>
 
 <td>
-	{{ Form::label('phone', '') }}
+	{{ Form::label('phone', 'Phone') }}
 <td>
 	{{ Form::text('phone') }}
 <tr>
 
 <td>
-	{{ Form::label('street1', '') }}
+	{{ Form::label('street1', 'Address') }}
 <td>
 	{{ Form::text('street1') }}
 <tr>
 
 <td>
-	{{ Form::label('street2', '') }}
+	{{ Form::label('street2', 'Address') }}
 <td>
 	{{ Form::text('street2') }}
 <tr>
 
 <td>
-	{{ Form::label('city', '') }}
+	{{ Form::label('city', 'City') }}
 <td>
 	{{ Form::text('city') }}
 <tr>
 
 <td>
-	{{ Form::label('state', '') }}
+	{{ Form::label('state', 'State') }}
 <td>
 	{{ Form::text('state') }}
 <tr>
 
 <td>
-	{{ Form::label('zip', '') }}
+	{{ Form::label('zip', 'Zip') }}
 <td>
 	{{ Form::text('zip') }}
 <tr>

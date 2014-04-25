@@ -1,0 +1,195 @@
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].TO___Social_Security_Administration[0]
+FieldNameAlt: TO:  Social Security Administration
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].My_Date_of_Birth[0]
+FieldNameAlt: My Date of Birth
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].My_Social_Security_Number[0]
+FieldNameAlt: My Social Security Number
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].NAME_OF_PERSON_OR_ORGANIZATION_1[0]
+FieldNameAlt: NAME OF PERSON OR ORGANIZATION [1]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].NAME_OF_PERSON_OR_ORGANIZATION_2[0]
+FieldNameAlt: NAME OF PERSON OR ORGANIZATION [2]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].NAME_OF_PERSON_OR_ORGANIZATION_3[0]
+FieldNameAlt: NAME OF PERSON OR ORGANIZATION [3]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].ADDRESS_OF_PERSON_OR_ORGANIZATION_1[0]
+FieldNameAlt: ADDRESS OF PERSON OR ORGANIZATION [1]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].ADDRESS_OF_PERSON_OR_ORGANIZATION_2[0]
+FieldNameAlt: ADDRESS OF PERSON OR ORGANIZATION [2]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].ADDRESS_OF_PERSON_OR_ORGANIZATION_3[0]
+FieldNameAlt: ADDRESS OF PERSON OR ORGANIZATION [3]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].I_want_this_information_released_because[0]
+FieldNameAlt: I want this information released because
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].We_may_charge_a_fee_to_release_information_for_non-program_purposes_1[0]
+FieldNameAlt: We may charge a fee to release information for non-program purposes [1]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].We_may_charge_a_fee_to_release_information_for_non-program_purposes_2[0]
+FieldNameAlt: We may charge a fee to release information for non-program purposes [2]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].Current_monthly_Supplemental_Security_Income_payment_amount[0]
+FieldNameAlt: Current monthly Supplemental Security Income payment amount
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].undefined[0]
+FieldNameAlt: undefined
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].My_benefit_or_payment_amounts_from_date[0]
+FieldNameAlt: My benefit or payment amounts from date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].to_date[0]
+FieldNameAlt: to date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].to_date_2[0]
+FieldNameAlt: to date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].to_date_3[0]
+FieldNameAlt: to date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].determination_or_questionnaire_1[0]
+FieldNameAlt: determination or questionnaire [1]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].determination_or_questionnaire_2[0]
+FieldNameAlt: determination or questionnaire [2]
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].applicable_fees_for_requesting_information_for_a_non-program-related_purpose[0]
+FieldNameAlt: applicable fees for requesting information for a non-program-related purpose
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].undefined_2[0]
+FieldNameAlt: undefined
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].Date[0]
+FieldNameAlt: Date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Signature
+FieldName: topmostSubform[0].Page1[0].Witnesses_must_sign_this_form_ONLY_if_the_above_signature_is_by_mark_X_If_signed_by_mark_X__two_witnesses_to_the_signing[0]
+FieldNameAlt: Witnesses must sign this form ONLY if the above signature is by mark (X). If signed by mark (X), two witnesses to the signing
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].Daytime_Phone[0]
+FieldNameAlt: Daytime Phone
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0]._1Signature_of_witness[0]
+FieldNameAlt: 1.Signature of witness
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0]._2Signature_of_witness[0]
+FieldNameAlt: 2.Signature of witness
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].AddressNumber_and_street_City_State__and_Zip_Code[0]
+FieldNameAlt: Address(Number and street,City,State, and Zip Code)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: topmostSubform[0].Page1[0].AddressNumber_and_street_City_State__and_Zip_Code_2[0]
+FieldNameAlt: Address(Number and street,City,State, and Zip Code)
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Button
+FieldName: topmostSubform[0].Page1[0].CheckBox2[0]
+FieldNameAlt: CheckBox2
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: 1
+FieldStateOption: Off
+---
+FieldType: Button
+FieldName: topmostSubform[0].Page1[0].CheckBox3[0]
+FieldNameAlt: CheckBox3
+FieldFlags: 0
+FieldJustification: Left
+FieldStateOption: 1
+FieldStateOption: Off
+---
+FieldType: 
+FieldName: topmostSubform[0]
+FieldFlags: 0
+FieldJustification: Left
