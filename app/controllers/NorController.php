@@ -20,25 +20,16 @@ class NorController extends BaseController {
 
 public function nor_profile($id){
 
-
+if (NorModel::where('nor_id', '=', $id)->first()){
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor', NorMain::find($id));
-}
+->with('ssa_auth', TestingAuths::where('id', '=', '1')->get())
+->with('nor1', NorModel::where('nor_id', '=', $id)->get());}
 
-
-if (NorMain::where('id', '=', $id)){
-return View::make('cases.nor_profile',  array())
-->with('pagetitle', 'NOR')
-->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::where('id', '=', $id));}
-
-
-public function new_nor($id){
 return View::make('cases.create_new_nor',  array())
 ->with('pagetitle', 'Create NOR')
-->with('attorney_case', Case1Attorney::where('case_id', '=', $id)->get())
+->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
 ->with('nor_id', $id);
 }
 
@@ -46,19 +37,19 @@ return View::make('cases.create_new_nor',  array())
 
 public function create_new_nor(){
 $id = Input::get('nor_id');
-if(NorMain::where('id', '=', $id))
+if(NorModel::find($id))
 {
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::where('id', '=', $id));
+->with('nor1', NorModel::where('nor_id', '=', $id));
 }
 
 
 $user_id = Cache::get('username');	
-	NorMain::create(array(
-		'id' => Input::get('nor_id'),
-		'case_id' => $id,
+	NorModel::create(array(
+		'nor_id' => Input::get('nor_id'),
+		'case_id' => Input::get('case_id'),
 		'first_name' => Input::get('first_name'),
 		'first_name' => Input::get('first_name'),
 		'middle_name' => Input::get('middle_name'),
@@ -79,7 +70,9 @@ $user_id = Cache::get('username');
 
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
+->with('ssa_auth', TestingAuths::where('id', '=', '1')->get())
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::where('id', '=', $id));}
+->with('nor1', NorModel::where('nor_id', '=', $id)->get());
 
 	}
+}

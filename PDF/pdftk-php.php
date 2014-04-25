@@ -68,7 +68,7 @@
 				
 				// Actually make the PDF by running pdftk - make sure the path to pdftk is correct
 				// The PDF will be output directly to the browser - apart from the original PDF file, no actual PDF wil be saved on the server.
-				passthru("F:\PHP\htdocs\CDS_b\hom\PDFtk\bin\pdftk.exe $pdf_original fill_form $fdf_fn output - flatten");
+				passthru("D:\PDFtk\bin\pdftk.exe $pdf_original fill_form $fdf_fn output - flatten");
 				
 				// delete temporary fdf file
 				unlink( $fdf_fn ); 
