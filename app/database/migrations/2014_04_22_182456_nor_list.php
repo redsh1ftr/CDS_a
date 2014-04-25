@@ -13,21 +13,22 @@ class NorList extends Migration {
 	public function up()
 	{
 			Schema::create('nor_list', function($table){
-			$table->string('id');
+			$table->increments('id');
+			$table->string('nor_id');
 			$table->string('case_id');
-			$table->string('first_name')->nullable();
-			$table->string('middle_name')->nullable();
-			$table->string('last_name')->nullable();
-			$table->string('dob')->nullable();
-			$table->string('ssn')->nullable();
-			$table->string('email')->nullable();
-			$table->string('phone')->nullable();
-			$table->string('street1')->nullable();
-			$table->string('street2')->nullable();
-			$table->string('city')->nullable();
+			$table->string('first_name');
+			$table->string('middle_name');
+			$table->string('last_name');
+			$table->string('dob');
+			$table->string('ssn');
+			$table->string('email');
+			$table->string('phone');
+			$table->string('street1');
+			$table->string('street2');
+			$table->string('city');
 			$table->string('state');
-			$table->string('zip')->nullable();
-			$table->longtext('info')->nullable();
+			$table->string('zip');
+			$table->longtext('info');
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();
