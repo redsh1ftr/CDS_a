@@ -1,7 +1,6 @@
 @extends('layouts.report')
 @section('toolbar')
-<<<<<<< HEAD
-=======
+
 @foreach($nor1 as $nor)
 {{link_to_route('new_case', 'New Job', $nor1->id, array('id' => $nor1->id)); }} {{ Form::open(array('url' => '//localhost/CDS_a/PDF/pdf/download.php', 'POST')) }}
 
@@ -14,14 +13,13 @@
 {{ Form::close()}}
 <HR WIDTH="100%" COLOR="#000000" SIZE="2">
 @stop
->>>>>>> 29828d06082ca65e26eebfc482396ac5dbe1a9cd
 
 {{ $attorney_case->id }}
 
-<<<<<<< HEAD
+
 @section('content')
 
-=======
+
 <br>
 Notes:
 <br>
@@ -38,5 +36,4 @@ Notes:
 
 {{link_to_route('case_profile', 'Back to Case', $nor1->case_id, array('id' => $nor1->id)); }}
 @endforeach
->>>>>>> 29828d06082ca65e26eebfc482396ac5dbe1a9cd
 @stop
