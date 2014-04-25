@@ -20,7 +20,7 @@
 
 		// Example of field names from a PDF created in LiveCycle:
 		// $fdf_data_strings= array('form1[0].#subform[0].#area[0].LastName[0]' => $pdf_lastname,  'form1[0].#subform[0].#area[0].FirstName[0]' => $pdf_firstname, 'form1[0].#subform[0].#area[0].EMail[0]' => $pdf_email, );
-		$fdf_data_strings= array('firstname' => $pdf_firstname,  'lastname' => $pdf_lastname);
+		$fdf_data_strings= array('topmostSubform[0].Page1[0].Name[0]' => $pdf_firstname,  'topmostSubform[0].Page1[0].SSN[0]' => $pdf_lastname);
 		
 		// See the documentation of pdftk-php.php for more explanation of these other variables.
 		
@@ -46,7 +46,7 @@
 		$pdf_filename = "Test PDF for $pdf_firstname $pdf_lastname.pdf";
 		
 		// Name/location of original, empty PDF form
-		$pdf_original = "example.pdf";
+		$pdf_original = "ssa.pdf";
 		
 		// Finally make the actual PDF file!
 		$pdfmaker->make_pdf($fdf_data_strings, $fdf_data_names, $fields_hidden, $fields_readonly, $pdf_original, $pdf_filename);

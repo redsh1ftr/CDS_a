@@ -63,11 +63,7 @@ Closed Cases:
 <h1>
 {{ link_to_route('make_pdf', ($firm_list->name), $firm_list->id, array('id' => $firm_list->id)); }}
 
-{{ Form::open(array('url' => '//localhost/CDS_a/PDF/pdf/download.php', 'POST')) }}
-{{ Form::hidden('first_name', $attorney_list->first_name) }}
-{{ Form::hidden('last_name', $attorney_list->last_name) }}
-{{ Form::submit('PDFail...') }}
-{{ Form::close()}}
+
 </h1>
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="3">
 <h3>
