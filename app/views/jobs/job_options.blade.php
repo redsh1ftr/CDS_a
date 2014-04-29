@@ -41,15 +41,20 @@ Deponent:<br>
 
 
 
+
+
+
+
 {{ Form::label('type', 'Job Type') }}<br>
-{{ Form::select('type', array(JobTypeMain::lists('type'), JobTypeMain::lists('id'))) }} <br><br>
+<select name="type">
+@foreach($jobtypes as $jobtype)
+<option value="{{  $jobtype   }}"=>{{ $jobtype }}<br>
+@endforeach
+</select>
 
 
 
-
-
-{{ Form::hidden('type', $post_the_jobtype) }}
-
+<br><br>
 {{Form::checkbox('add_info', '1');}} {{ Form::label('add_info', 'Need Additional Info ') }} <br>
 {{Form::checkbox('auths', '1');}} {{ Form::label('auths', 'Need Auths ') }} <br>
 {{Form::checkbox('films', '1');}} {{ Form::label('films', 'Need Films ') }} <br>
@@ -69,3 +74,16 @@ Deponent:<br>
  
 
 @stop
+
+
+
+
+@stop
+
+
+
+
+
+
+
+

@@ -6,8 +6,8 @@
 
 {{ Form::open(array('route' => 'requester_selected', 'POST')) }}
 
-{{ Form::label('recieved', 'Date Recieved:') }}<br>
-{{ Form::text('recieved') }}
+{{ Form::label('recieved', 'Date Recieved:')  }}<br>
+{{ Form::text('recieved')}}
 
 {{ Form::label('rush', 'Rush Request ') }} {{Form::checkbox('rush', '1');}}
 <br><br>
@@ -38,6 +38,7 @@ Select Name on Record:<br>
 
 
 {{form::hidden('case_id', $case_id) }}
+
 
 	
 

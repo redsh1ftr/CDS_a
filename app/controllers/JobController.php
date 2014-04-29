@@ -30,8 +30,8 @@ $nor_id = Cache::get('nor_id');
 $requester_id = Cache::get('requester');
 return View::make('jobs.job_options',  array())
 ->with('pagetitle', 'Job Options')
-->with('jobtype', JobTypeMain::lists('type'))
-->with('jobid', JobTypeMain::get())
+->with('jobtypes', JobTypeMain::lists('type'))
+->with('jobid', JobTypeMain::lists('id'))
 ->with('dep_list1', DeponentMain::where('id', '=', $id)->get())
 ->with('case', CaseMain::where('id', '=', $case_id)->get())
 ->with('nor', NorModel::where('id', '=', $nor_id)->get())
@@ -47,7 +47,7 @@ Cache::forget('nor_id');
 Cache::forget('case_id');
 return View::make('jobs.new_job',  array())
 ->with('pagetitle', 'New Job')
-->with('atty', Case1Attorney::where('case_id', '=', $id)->lists('p_number'))
+->with('atty', Case1Attorney::where('case_id', '=', $id)->where('p_number', '>', '')->lists('p_number'))
 ->with('case1', CaseMain::where('id', '=', $id)->get())
 ->with('nors', NorModel::where('case_id', '=', $id)->get())
 ->with('case_id', $id);
@@ -75,7 +75,7 @@ JobMain::create(array(
 		'hold' => '',
 		'status' => 'Open',
 		'films' => Input::get('films'),
-		'type' => Input::get('type')->pluck('id')),
+		'type' => Input::get('type'),
 		'need_auth' => Input::get('auth'),
 		'need_info' => Input::get('info'),
 		'served' => '',
