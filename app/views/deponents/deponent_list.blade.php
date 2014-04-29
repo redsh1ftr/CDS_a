@@ -1,8 +1,6 @@
 @extends('layouts.report')
 @section('content')
 
-
-{{ $nor_stuff }} {{Cache::get('rush')}} {{Cache::get('requester')}} {{Cache::get('recieved')}}
 <h2>
 	{{link_to_route('new_deponent', 'New Deponent') }}
 </h2>

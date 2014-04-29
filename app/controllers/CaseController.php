@@ -89,7 +89,9 @@ return View::make('cases.profile',  array())
 ->with('pagetitle', $case_info->pluck('caption'))
 ->with('court_info1', CourtMain::Where('id', '=', $court_id)->get())
 ->with('plaintiff1', $plaintiff)
-->with('defendant1', $defendant);
+->with('defendant1', $defendant)
+->with('depname', JobMain::where('case_id', '=', $id)->lists('deponent_id'))
+->with('job', JobMain::where('case_id', '=', $id)->get());
 }
 
 public function case_update($id){

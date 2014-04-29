@@ -25,14 +25,26 @@ return View::make('jobs.deponent_list',  array())
 }
 
 public function deponent_selected($id){
+$case_id = Cache::get('case_id');
+$nor_id = Cache::get('nor_id');
+$requester_id = Cache::get('requester');
 return View::make('jobs.job_options',  array())
 ->with('pagetitle', 'Job Options')
-->with('jobtype', NorModel::all())
-->with('case_list1', CaseMain::where('id', '=', $id)->get());
+->with('jobtype', JobTypeMain::lists('type'))
+->with('jobid', JobTypeMain::get())
+->with('dep_list1', DeponentMain::where('id', '=', $id)->get())
+->with('case', CaseMain::where('id', '=', $case_id)->get())
+->with('nor', NorModel::where('id', '=', $nor_id)->get())
+->with('requester', AttorneyMain::where('id', '=', $requester_id)->get());
 
 }
 
 public function new_job($id){
+Cache::forget('recieved');
+Cache::forget('rush');
+Cache::forget('requester');
+Cache::forget('nor_id');
+Cache::forget('case_id');
 return View::make('jobs.new_job',  array())
 ->with('pagetitle', 'New Job')
 ->with('atty', Case1Attorney::where('case_id', '=', $id)->lists('p_number'))
@@ -42,19 +54,43 @@ return View::make('jobs.new_job',  array())
 }
 
 
-
-
-
 public function requester_selected(){
 Cache::forever('recieved', Input::get('recieved'));
 Cache::forever('rush', Input::get('rush'));
 Cache::forever('requester', Input::get('requester'));
 Cache::forever('nor_id', Input::get('nor'));
 Cache::forever('case_id', Input::get('case_id'));
-
 return Redirect::route('select_deponent');
+}
+
+public function make_job(){
+JobMain::create(array(
+		'case_id' => Cache::get('case_id'),
+		'deponent_id' => Input::get('deponent_id'),
+		'nor_id' => Cache::get('nor_id'),
+		'requester_id' => Cache::get('requester'),
+		'job_number' => '13-15000',
+		'request_received' => Cache::get('recieved'),
+		'rush' => Cache::get('rush'),
+		'hold' => '',
+		'status' => 'Open',
+		'films' => Input::get('films'),
+		'type' => Input::get('type')->pluck('id')),
+		'need_auth' => Input::get('auth'),
+		'need_info' => Input::get('info'),
+		'served' => '',
+		'records_due' => '',	
+		'info' => '',	
+		'created_user' => Cache::get('user_id'),
+		'updated_user' => Cache::get('user_id'),
+		));
+
+return View::make('jobs.deponent_list',  array())
+->with('pagetitle', 'Select Deponent')
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
 
 }
+
 
 public function change_status(){
 $case_status_id = Input::get('case_status_id');
@@ -68,12 +104,6 @@ return View::make('cases.case_list',  array())
 return Redirect::route('case_list');
 }
 
-public function court_selection(){
-return View::make('cases.select_court',  array())
-->with('pagetitle', 'New Case')
-->with('court_list1', CourtMain::orderBy('created_at')->get());
-
-}
 
 public function selected_court($id){
 return View::make('cases.create_new_case',  array())

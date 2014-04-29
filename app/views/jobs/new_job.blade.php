@@ -17,6 +17,7 @@
 Select Requester:<br>
 
 @foreach($atty as $atty1)
+
 <?php $attyname = AttorneyMain::where('p_number', '=', $atty1)->pluck('last_name');?>
 <?php $attyp = AttorneyMain::where('p_number', '=', $atty1)->pluck('p_number');?>
 <?php $attyid = AttorneyMain::where('p_number', '=', $atty1)->pluck('id');?>
