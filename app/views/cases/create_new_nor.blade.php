@@ -6,13 +6,10 @@
 
 
 @foreach($attorney_case as $case)
-<<<<<<< HEAD
+
 Enter more information for {{ $case->person }}:
-{{ Form::hidden('case_id', $case->id)}}
-=======
 Enter more information for {{ $case->person}}:
 {{ Form::hidden('case_id', $case->case_id)}}
->>>>>>> b9f83cccd42eb256268947212a0bf172d4dc1896
 {{ Form::hidden('nor_id', $nor_id)}}
 @endforeach
 

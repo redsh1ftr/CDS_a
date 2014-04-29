@@ -12,36 +12,55 @@
 		// You can also format the MySQL data how you want here. One common example is formatting a date saved in the database. For example:
 		// $pdf_date = date("l, F j, Y, g:i a", strtotime($data['date']));
 	
-
+if($_POST['field1_name']){
 	$field1_name = $_POST['field1_name'];
 	$field1_data = $_POST['field1_data'];
-	
+	}
+
+if($_POST['field2_name']){
 	$field2_name = $_POST['field2_name'];
 	$field2_data = $_POST['field2_data'];
+}
 
+if($_POST['field3_name']){
 	$field3_name = $_POST['field3_name'];
 	$field3_data = $_POST['field3_data'];
+}
 
+if($_POST['field4_name']){
 	$field4_name = $_POST['field4_name'];
 	$field4_data = $_POST['field4_data'];
+}
 
+if($_POST['field5_name']){
 	$field5_name = $_POST['field5_name'];
 	$field5_data = $_POST['field5_data'];
+}
 
+if($_POST['field6_name']){
 	$field6_name = $_POST['field6_name'];
 	$field6_data = $_POST['field6_data'];
+}
 
+if($_POST['field7_name']){
 	$field7_name = $_POST['field7_name'];
 	$field7_data = $_POST['field7_data'];
+}
 
+if($_POST['field8_name']){
 	$field8_name = $_POST['field8_name'];
 	$field8_data = $_POST['field8_data'];
+}
 
+if($_POST['field9_name']){
 	$field9_name = $_POST['field9_name'];
 	$field9_data = $_POST['field9_data'];
+}
 
+if($_POST['field10_name']){
 	$field10_name = $_POST['field10_name'];
 	$field10_data = $_POST['field10_data'];
+}
 
 	$document = $_POST['document'];
 
@@ -52,6 +71,8 @@
 
 		// Example of field names from a PDF created in LiveCycle:
 		// $fdf_data_strings= array('form1[0].#subform[0].#area[0].LastName[0]' => $pdf_lastname,  'form1[0].#subform[0].#area[0].FirstName[0]' => $pdf_firstname, 'form1[0].#subform[0].#area[0].EMail[0]' => $pdf_email, );
+
+
 		$fdf_data_strings= array(
 			$field1_name => $field1_data,
 			$field2_name => $field2_data,
@@ -64,7 +85,10 @@
 			$field9_name => $field9_data,
 			$field10_name => $field10_data,
 			);
-		
+
+
+
+
 		// See the documentation of pdftk-php.php for more explanation of these other variables.
 		
 		// Used for radio buttons and check boxes

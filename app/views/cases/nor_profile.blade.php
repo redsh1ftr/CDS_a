@@ -80,6 +80,56 @@
 
 
 <br>
+
+{{ Form::open(array('url' => '//localhost/CDS_a/PDF/pdf/download.php', 'POST')) }}
+
+<?php $ssa_name = "$nor->first_name $nor->middle_name $nor->last_name" ?>
+
+{{$auth->field6_data}}
+
+
+{{ Form::hidden('field1_name', 'firstname') }}
+{{ Form::hidden('field1_data', $ssa_name) }}
+
+
+{{ Form::hidden('field2_name', 'lastname') }}
+{{ Form::hidden('field2_data', $nor->dob) }}
+
+{{ Form::hidden('field3_name', '') }}
+{{ Form::hidden('field3_data', '') }}
+
+{{ Form::hidden('field4_name', '') }}
+{{ Form::hidden('field4_data', '') }}
+
+{{ Form::hidden('field5_name', '') }}
+{{ Form::hidden('field5_data', '') }}
+
+{{ Form::hidden('field6_name', '') }}
+{{ Form::hidden('field6_data', '') }}
+
+{{ Form::hidden('field7_name', '') }}
+{{ Form::hidden('field7_data', '') }}
+
+{{ Form::hidden('field8_name', '') }}
+{{ Form::hidden('field8_data', '') }}
+
+{{ Form::hidden('field9_name', '') }}
+{{ Form::hidden('field9_data', '') }}
+
+{{ Form::hidden('field10_name', '') }}
+{{ Form::hidden('field10_data', '') }}
+
+{{ Form::hidden('field11_name', '') }}
+{{ Form::hidden('field11_data', '') }}
+
+{{ Form::hidden('field12_name', '') }}
+{{ Form::hidden('field12_data', '') }}
+
+{{ Form::hidden ('document', 'example') }}
+{{ Form::submit('Create  Auth!') }}
+{{ Form::close()}}
+
+<br>
 <br>
 
 
