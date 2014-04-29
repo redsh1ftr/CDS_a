@@ -21,15 +21,6 @@ class NorController extends BaseController {
 public function nor_profile($id){
 
 
-<<<<<<< HEAD
-=======
-if (NorMain::find($id)){
-return View::make('cases.nor_profile',  array())
-->with('pagetitle', 'NOR')
-->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
-->with('nor1', NorMain::where('id', '=', $id));}
-{
->>>>>>> a86483bec21418b7c485eb6b777abcc913bc1976
 if (NorModel::where('nor_id', '=', $id)->first()){
 return View::make('cases.nor_profile',  array())
 ->with('pagetitle', 'NOR')
@@ -37,10 +28,6 @@ return View::make('cases.nor_profile',  array())
 ->with('ssa_auth', TestingAuths::where('id', '=', '1')->get())
 ->with('nor1', NorModel::where('nor_id', '=', $id)->get());}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a86483bec21418b7c485eb6b777abcc913bc1976
 return View::make('cases.create_new_nor',  array())
 ->with('pagetitle', 'Create NOR')
 ->with('attorney_case', Case1Attorney::where('id', '=', $id)->get())
@@ -62,10 +49,6 @@ return View::make('cases.nor_profile',  array())
 
 {
 $user_id = Cache::get('username');	
-<<<<<<< HEAD
-
-=======
->>>>>>> a86483bec21418b7c485eb6b777abcc913bc1976
 	NorModel::create(array(
 		'nor_id' => Input::get('nor_id'),
 		'case_id' => Input::get('case_id'),
