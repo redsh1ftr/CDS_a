@@ -1,6 +1,6 @@
 <?php
 
-class CaseController extends BaseController {
+class JobController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -17,40 +17,80 @@ class CaseController extends BaseController {
 	public $restful = true;
 
 
-public function case_list(){
+public function select_deponent(){
 
-return View::make('cases.case_list',  array())
-->with('pagetitle', 'Case List')
-->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+return View::make('jobs.deponent_list',  array())
+->with('pagetitle', 'Select Deponent')
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
 }
 
-public function case_list_sort(){
-$sort = Input::get('sort');
-return View::make('cases.case_list',  array())
-->with('pagetitle', 'Case List')
-->with('case_list1', CaseMain::where('status', '=', $sort)->get());
+public function deponent_selected($id){
+$case_id = Cache::get('case_id');
+$nor_id = Cache::get('nor_id');
+$requester_id = Cache::get('requester');
+return View::make('jobs.job_options',  array())
+->with('pagetitle', 'Job Options')
+->with('jobtype', JobTypeMain::lists('type'))
+->with('jobid', JobTypeMain::get())
+->with('dep_list1', DeponentMain::where('id', '=', $id)->get())
+->with('case', CaseMain::where('id', '=', $case_id)->get())
+->with('nor', NorModel::where('id', '=', $nor_id)->get())
+->with('requester', AttorneyMain::where('id', '=', $requester_id)->get());
 
 }
 
-public function create_new_case(){
-	CaseMain::create(array(
-		'case_number' => Input::get('case_number'),
-		'date_received' => Input::get('date_received'),
-		'discovery_date' => Input::get('discovery_date'),
-		'court_id' => Input::get('court_id'),
-		'judge' => Input::get('judge'),
-		'file_number' => Input::get('file_number'),
-		'claim_number' => Input::get('claim_number'),
-		'caption' => Input::get('caption'),
+public function new_job($id){
+Cache::forget('recieved');
+Cache::forget('rush');
+Cache::forget('requester');
+Cache::forget('nor_id');
+Cache::forget('case_id');
+return View::make('jobs.new_job',  array())
+->with('pagetitle', 'New Job')
+->with('atty', Case1Attorney::where('case_id', '=', $id)->lists('p_number'))
+->with('case1', CaseMain::where('id', '=', $id)->get())
+->with('nors', NorModel::where('case_id', '=', $id)->get())
+->with('case_id', $id);
+}
+
+
+public function requester_selected(){
+Cache::forever('recieved', Input::get('recieved'));
+Cache::forever('rush', Input::get('rush'));
+Cache::forever('requester', Input::get('requester'));
+Cache::forever('nor_id', Input::get('nor'));
+Cache::forever('case_id', Input::get('case_id'));
+return Redirect::route('select_deponent');
+}
+
+public function make_job(){
+JobMain::create(array(
+		'case_id' => Cache::get('case_id'),
+		'deponent_id' => Input::get('deponent_id'),
+		'nor_id' => Cache::get('nor_id'),
+		'requester_id' => Cache::get('requester'),
+		'job_number' => '13-15000',
+		'request_received' => Cache::get('recieved'),
+		'rush' => Cache::get('rush'),
+		'hold' => '',
 		'status' => 'Open',
-		'info' => Input::get('info'),
+		'films' => Input::get('films'),
+		'type' => Input::get('type')->pluck('id')),
+		'need_auth' => Input::get('auth'),
+		'need_info' => Input::get('info'),
+		'served' => '',
+		'records_due' => '',	
+		'info' => '',	
 		'created_user' => Cache::get('user_id'),
 		'updated_user' => Cache::get('user_id'),
 		));
 
-return Redirect::route('case_list');
+return View::make('jobs.deponent_list',  array())
+->with('pagetitle', 'Select Deponent')
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
 
 }
+
 
 public function change_status(){
 $case_status_id = Input::get('case_status_id');
@@ -64,12 +104,6 @@ return View::make('cases.case_list',  array())
 return Redirect::route('case_list');
 }
 
-public function court_selection(){
-return View::make('cases.select_court',  array())
-->with('pagetitle', 'New Case')
-->with('court_list1', CourtMain::orderBy('created_at')->get());
-
-}
 
 public function selected_court($id){
 return View::make('cases.create_new_case',  array())
@@ -89,9 +123,7 @@ return View::make('cases.profile',  array())
 ->with('pagetitle', $case_info->pluck('caption'))
 ->with('court_info1', CourtMain::Where('id', '=', $court_id)->get())
 ->with('plaintiff1', $plaintiff)
-->with('defendant1', $defendant)
-->with('depname', JobMain::where('case_id', '=', $id)->lists('deponent_id'))
-->with('job', JobMain::where('case_id', '=', $id)->get());
+->with('defendant1', $defendant);
 }
 
 public function case_update($id){

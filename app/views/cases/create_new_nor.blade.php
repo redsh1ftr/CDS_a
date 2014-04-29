@@ -6,8 +6,11 @@
 
 
 @foreach($attorney_case as $case)
+<<<<<<< HEAD
 
 Enter more information for {{ $case->person }}:
+=======
+>>>>>>> a86483bec21418b7c485eb6b777abcc913bc1976
 Enter more information for {{ $case->person}}:
 {{ Form::hidden('case_id', $case->case_id)}}
 {{ Form::hidden('nor_id', $nor_id)}}

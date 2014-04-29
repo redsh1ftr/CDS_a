@@ -175,25 +175,29 @@ Defendant's Attorney
 @section('last')
 {{link_to_route('new_case_attorney', 'Add More Plaintiffs, Defendants, or Attorneys', $case_list->id, array('id' => $case_list->id)); }}
 <br><br><br>
+
+
 Case Notes:
 <HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
-{{$case_list->info }}<br><br><br><br>
+{{$case_list->info }}
+
+@foreach($depname as $depnames)
+<?php $deponents = DeponentMain::where('id', '=', $depnames)->lists('name');?>
 
 
+
+@endforeach
 Jobs:
 <HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
-<table>
-<th>13-16551</th><th>{{Str::limit('Ashwin Judagagabajabarbadara MMRD.D.O.', $limit=50, $end='')}}</th><th>(DOC)</th><th>NEED INFO</th><tr>
-<th>13-16552</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(BIL)<th>WAIT-AUTH</th><tr>
-<th>13-16553</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(EMP)</th><th>BAD FAX</th><tr>
-<th>13-16554</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(MED)</th><th>DWNL-PROC</th><tr>
-<th>13-16555</th><th>{{Str::limit('Henry Ford Hospital', $limit=50, $end='')}}</th><th>(RAD)</th><th>FILMS-SCA</th><tr>
-<th>13-16556</th><th>{{Str::limit('St John Hospital', $limit=50, $end='')}}</th><th>(MED)</th><th>DWNL-PD</th><tr>
-<th>13-16557</th><th>{{Str::limit('St John Hospital', $limit=50, $end='')}}</th><th>(BIL)</th><th>RECS IN</th><tr>
-<th>13-16558</th><th>{{Str::limit('St John Hospital', $limit=50, $end='')}}</th><th>(RAD)<th>FEDEX-SE</th><tr>
-<th>13-16559</th><th>{{Str::limit('Hey Transporters', $limit=50, $end='')}}</th><th>(EMP)<th>CLOSED</th><tr>
-<th>13-16560</th><th>{{Str::limit('Internal Revenue Service', $limit=50, $end='')}}</th><th>(TAX)<th>WAIT-PROB</th><tr>
+@foreach($job as $jobs)
 
-</table>
+@foreach($deponents as $dep)
+
+{{ $jobs->job_number}} {{ DeponentMain::where('id', '=', $jobs->deponent_id)->pluck('name') }} {{$jobs->type}} <br>
+
+@endforeach
+
+@endforeach
+
 
 @stop

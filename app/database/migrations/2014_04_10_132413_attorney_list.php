@@ -29,6 +29,8 @@ class AttorneyList extends Migration {
 			$table->string('sec_phone');
 			$table->string('sec_fax');
 			$table->longtext('info');
+			$table->string('preference');
+			$table->string('shipping');
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();

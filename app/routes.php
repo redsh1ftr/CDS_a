@@ -90,7 +90,25 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 //Job Routes
 
-Route::get('/job/new/{id}', array('as' => 'new_job', 'uses' => 'JobController@new_job'));
+Route::get('/job/make/{id}', array('as' => 'new_job', 'uses' => 'JobController@new_job'));
+
+Route::post('/job/new/requester_selected', array('as' => 'requester_selected', 'uses' => 'JobController@requester_selected'));
+
+Route::get('/job/new/deponent', array('as' => 'select_deponent', 'uses' => 'JobController@select_deponent'));
+
+Route::get('/job/deponent_selected/{id}', array('as' => 'deponent_selected', 'uses' => 'JobController@deponent_selected'));
+
+Route::get('/job/new/options', array('as' => 'job_options', 'uses' => 'JobController@job_options'));
+
+Route::post('/job/new/make', array('as' => 'make_job', 'uses' => 'JobController@make_job'));
+
+Route::get('/job/{id}', array('as' => 'job_profile', 'uses' => 'JobController@job_profile'));
+
+Route::post('/job/new/deponent', array('as' => 'select_another_deponent', 'uses' => 'JobController@select_deponent'));
+
+
+
+
 
 //attorney routes
 Route::get('attorney/list/all', array('as' => 'attorney_list', 'uses' => 'AttorneyController@attorney_list'));

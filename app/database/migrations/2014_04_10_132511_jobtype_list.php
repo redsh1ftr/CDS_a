@@ -11,7 +11,13 @@ class JobtypeList extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('jobtype_list', function($table){
+			$table->increments('id');
+			$table->string('type');
+			$table->string('auth_type');
+			$table->timestamps();
+
+		});
 	}
 
 	/**
