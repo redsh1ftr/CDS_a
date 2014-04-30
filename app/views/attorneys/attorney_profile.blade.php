@@ -61,7 +61,7 @@ Closed Cases:
 @foreach($firm_lists as $firm_list)
 
 <h1>
-{{ link_to_route('make_pdf', ($firm_list->name), $firm_list->id, array('id' => $firm_list->id)); }}
+{{ link_to_route('firm_profile', ($firm_list->name), $firm_list->id, array('id' => $firm_list->id)); }}
 
 
 </h1>
