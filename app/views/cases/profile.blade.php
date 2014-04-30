@@ -189,15 +189,21 @@ Case Notes:
 @endforeach
 Jobs:
 <HR WIDTH="60%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+
+<table width=70%>
 @foreach($job as $jobs)
 
 @foreach($deponents as $dep)
 
-{{ $jobs->job_number}} {{ DeponentMain::where('id', '=', $jobs->deponent_id)->pluck('name') }} {{$jobs->type}} <br>
+<td>{{ $jobs->job_number}}</td> 
+<td>{{ DeponentMain::where('id', '=', $jobs->deponent_id)->pluck('name') }}</td>
+<td>{{$jobs->type}}</td> 
+</tr>
+
 
 @endforeach
 
 @endforeach
-
+</table>
 
 @stop

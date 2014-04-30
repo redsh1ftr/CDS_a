@@ -212,7 +212,7 @@
 	</div>
 </div>
 
-<div class="last">@yield('last')</div
+<div class="last">@yield('last')</div>
 
 
 
