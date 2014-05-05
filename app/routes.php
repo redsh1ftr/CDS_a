@@ -102,13 +102,15 @@ Route::get('/job/new/options', array('as' => 'job_options', 'uses' => 'JobContro
 
 Route::post('/job/new/make', array('as' => 'make_job', 'uses' => 'JobController@make_job'));
 
-Route::get('/job/{id}', array('as' => 'job_profile', 'uses' => 'JobController@job_profile'));
+Route::get('/job/show/{id}', array('as' => 'job_profile', 'uses' => 'JobController@job_profile'));
 
 Route::post('/job/new/deponent', array('as' => 'select_another_deponent', 'uses' => 'JobController@select_deponent'));
 
 
+//pricing routes
 
-
+Route::get('/prices/shipping/all', array('as' => 'shpping_price_list', 'uses' => 'PriceController@shipping_price_list'));
+ 
 
 //attorney routes
 Route::get('attorney/list/all', array('as' => 'attorney_list', 'uses' => 'AttorneyController@attorney_list'));

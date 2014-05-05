@@ -1,0 +1,50 @@
+<?php
+
+class ShipMain extends Eloquent {
+
+	protected $fillable = array(
+		'tier1',
+		'tier1_price',
+		'tier2',
+		'tier2_price',
+		 'tier3',
+		'tier3_price',
+		 'tier4',
+		'tier4_price',
+		 'tier5',
+		'tier5_price',
+		 'tier6',
+		'tier6_price',
+		 'tier7',
+		'tier7_price',
+		 'tier8',
+		'tier8_price',
+		 'tier9',
+		'tier9_price',
+		 'tier10',
+		'tier10_price',
+		 'tier11',
+		'tier11_price',
+		 'tier12',
+		'tier12_price',
+		 'tier13',
+		'tier13_price',
+		 'tier14',
+		'tier14_price',
+		 'tier15',
+		'tier15_price',
+		 'tier16',
+		'tier16_price',
+		 'tier17',
+		'tier17_price',
+		 'tier18',
+		'tier18_price',
+		 'tier19',
+		'tier19_price',
+		'tier20',
+		'tier20_price',
+		'requester',
+		 );
+	
+	protected $table = 'ship_prices';
+}
