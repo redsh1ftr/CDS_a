@@ -19,6 +19,8 @@ class AttorneyMain extends Eloquent {
 		'sec_phone',
 		'sec_fax',
 		'info',
+		'shipping',
+		'preference',
 		'created_user',
 		'updated_user',
 		 );

@@ -57,7 +57,11 @@ Deponent:<br>
 <br><br>
 {{Form::checkbox('add_info', '1');}} {{ Form::label('add_info', 'Need Additional Info ') }} <br>
 {{Form::checkbox('auths', '1');}} {{ Form::label('auths', 'Need Auths ') }} <br>
+@foreach($dep_list1 as $dep_list)
+@if($dep_list->films)
 {{Form::checkbox('films', '1');}} {{ Form::label('films', 'Need Films ') }} <br>
+@endif
+@endforeach
 {{Form::checkbox('billing', '1');}} {{ Form::label('billing', 'Need Billing ') }} <br>
 
 

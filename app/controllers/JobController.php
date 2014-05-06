@@ -30,7 +30,7 @@ $deponent_id = JobMain::where('id', '=', $id)->pluck('deponent_id');
 $requester_id = JobMain::where('id', '=', $id)->pluck('requester_id');
 $nor_id = JobMain::where('id', '=', $id)->pluck('nor_id');
 return View::make('jobs.profile',  array())
-->with('pagetitle', 'stuff')
+->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
 ->with('case_list1', CaseMain::where('id', '=', $case_id)->first())
 ->with('deponent_list1', DeponentMain::where('id', '=', $deponent_id)->get())
 ->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->first())

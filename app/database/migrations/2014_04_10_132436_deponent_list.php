@@ -25,7 +25,7 @@ class DeponentList extends Migration {
 			$table->string('fax');
 			$table->string('email');
 			$table->string('fee');
-			$table->string('films');
+			$table->string('films')->nullable();
 			$table->string('copy_service');
 			$table->longtext('info');
 			$table->string('active');

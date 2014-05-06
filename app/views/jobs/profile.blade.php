@@ -1,18 +1,29 @@
 @extends('layouts.profile')
 @section('topbar')
-@stop
 
-
-@section('content_left')
 <h2>
+
 <table width="100%">
 <td>Job: {{$job_list1->job_number}}</td>
 <td>Case: {{link_to_route('case_profile', $case_list1->case_number, $case_list1->id, array('id' => $case_list1->id)); }}</td>
 <td>Status: {{$job_list1->status}}</td>
+<td>Type: {{$job_list1->type}}<br>
 	<tr>
 </table>
 </h2>
 <HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+
+@if($job_list1->rush)
+<h1><div class="centertext">
+Rushhhhhhhhhhhhhhhhhhhhhhhhhh
+</div>
+<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+</h1>
+@endif	
+@stop
+
+
+@section('content_left')
 
 
 
@@ -31,7 +42,33 @@ Phone: {{$dep->phone}}<br>
 @if($dep->email)
 {{HTML::mailto($dep->email)}}<br>
 @endif
+{{$dep->copy_service}}
 @endforeach
+
+
+<br><br><br>
+Name on Record:<br>
+@foreach($nor_list1 as $nor)
+{{$nor->first_name}} {{$nor->middle_name}} {{$nor->last_name}}<br>
+@if($nor->street2){{$nor->street1}}, {{$nor->street2}}
+@else{{$nor->street1}}
+@endif
+<br>
+{{$nor->city}} {{$nor->state}}, {{$nor->zip}}<br><br>
+SSN: {{$nor->ssn}}<br>
+DOB: {{$nor->dob}}<br>
+
+@if($nor->phone)
+Phone: {{$nor->phone}}
+@endif
+
+
+@endforeach
+
+
+
+
+
 <br><br><br>
 Opposing Request:<br>
 

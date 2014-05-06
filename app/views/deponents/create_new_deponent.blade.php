@@ -75,11 +75,8 @@
 <td>
 	{{ Form::text('fee') }}
 <tr>
-
 <td>
-	{{ Form::label('films', 'Has Films') }}
-<td>
-	{{Form::checkbox('films', 'Yes')}}
+{{Form::checkbox('films', '1');}} {{ Form::label('films', 'Need Films ') }}
 <tr>
 
 
