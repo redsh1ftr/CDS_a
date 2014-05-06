@@ -110,7 +110,7 @@ Plaintiff
 Plaintiff's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($plaintiff1 as $plaintiffs)
-<?php $platty = AttorneyMain::where('p_number', '=', $plaintiffs->p_number)->get();?>
+<?php $platty = AttorneyMain::where('id', '=', $plaintiffs->p_number)->get();?>
 
 @foreach($platty as $plattys)
 <?php $atty_middle = Str::limit($plattys->middle_name, $limit=1, $end='.')?>
@@ -149,7 +149,7 @@ Defendant
 Defendant's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($defendant1 as $defendants)
-<?php $defs = AttorneyMain::where('p_number', '=', $defendants->p_number)->get();?>
+<?php $defs = AttorneyMain::where('id', '=', $defendants->p_number)->get();?>
 @foreach($defs as $defs)
 <?php $atty_middle = Str::limit($defs->middle_name, $limit=1, $end='.')?>
 <?php $atty_last = $defs->last_name?>
@@ -195,7 +195,7 @@ Jobs:
 
 @foreach($deponents as $dep)
 
-<td>{{ $jobs->job_number}}</td> 
+<td>{{link_to_route('job_profile', $jobs->job_number, $jobs->id, array('id' => $jobs->id)); }}</td> 
 <td>{{ DeponentMain::where('id', '=', $jobs->deponent_id)->pluck('name') }}</td>
 <td>{{$jobs->type}}</td> 
 </tr>

@@ -21,7 +21,7 @@ public function select_deponent(){
 
 return View::make('jobs.deponent_list',  array())
 ->with('pagetitle', 'Select Deponent')
-->with('case_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
 }
 
 public function job_profile($id){
@@ -36,7 +36,7 @@ return View::make('jobs.profile',  array())
 ->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->first())
 ->with('nor_list1', NorMain::where('id', '=', $nor_id)->get())
 ->with('job_list1', JobMain::where('id', '=', $id)->first())
-->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('p_number', '=', $requester_id)->get());
+->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('p_number', '!=', $requester_id)->lists('p_number'));
 }
 
 public function deponent_selected($id){

@@ -12,24 +12,53 @@
 	<tr>
 </table>
 </h2>
+<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+
+
+
 
 Requesting Attorney:<br>
 <?php $requester_name = "$requester_list1->first_name $requester_list1->last_name";?>
-{{link_to_route('attorney_profile', "$requester_name (P# $requester_list1->p_number)", $requester_list1->id, array('id' => $requester_list1->id)); }}
+{{link_to_route('attorney_profile', "$requester_name (P# $requester_list1->p_number)", $requester_list1->id, array('id' => $requester_list1->id)); }} 
 
 
 @foreach($deponent_list1 as $dep)
-<br>Deponent:<br>
+<br><br>Deponent:<br>
 
 <div class="f1">{{link_to_route('deponent_profile', $dep->name, $dep->id, array('id' => $dep->id)); }}</div>
 Phone: {{$dep->phone}}<br>
+
+@if($dep->email)
 {{HTML::mailto($dep->email)}}<br>
+@endif
 @endforeach
+<br><br><br>
+Opposing Request:<br>
 
+
+<table width = 100%>
 @foreach($other_side1 as $other)
-{{$other->first_name}}
-@endforeach
+<?php $opposing_first = AttorneyMain::where('id', '=', $other)->pluck('first_name');?>
+<?php $opposing_middle = AttorneyMain::where('id', '=', $other)->pluck('middle_name');?>
+<?php $opposing_last = AttorneyMain::where('id', '=', $other)->pluck('last_name');?>
+<?php $opposing_p = AttorneyMain::where('id', '=', $other)->pluck('p_number');?>
+<?php $side = Case1Attorney::where('p_number', '=', $other)->pluck('side');?>
 
+
+@if($side = 'Defendant')<?php $sside = 'Defense';?>
+@endif
+
+
+<td>
+
+{{link_to_route('attorney_profile', "$opposing_first $opposing_middle $opposing_last (P# $opposing_p)", AttorneyMain::where('id', '=', $other)->pluck('id'), array('id' => AttorneyMain::where('id', '=', $other)->pluck('id'))) }} 
+</td><td>
+{{$sside}}<td><tr>
+
+
+
+@endforeach
+</table>
 
 
 
