@@ -128,6 +128,11 @@
 
 		}
 
+		.f1{
+			text-align:left;
+			font-size: 24px;
+		}
+
 		a, a:visited {
 			text-decoration:none;
 		}

@@ -105,11 +105,13 @@ return View::make('cases.update_case',  array())
 
 
 public function add_case_attorney(){
+
+$attorney_id = Input::get('p_number');
 	Case1Attorney::create(array(
 		'case_id' => Input::get('case_id'),
 		'side' => Input::get('side'),
 		'person' => Input::get('person'),
-		'p_number' => Input::get('p_number'),
+		'p_number' => AttorneyMain::where('p_number', '=', $attorney_id)->pluck('id'),
 		'nor' => Input::get('nor'),
 		'created_user' => Cache::get('user_id'),
 		'updated_user' => Cache::get('user_id'),

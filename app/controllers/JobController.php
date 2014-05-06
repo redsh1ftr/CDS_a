@@ -31,11 +31,12 @@ $requester_id = JobMain::where('id', '=', $id)->pluck('requester_id');
 $nor_id = JobMain::where('id', '=', $id)->pluck('nor_id');
 return View::make('jobs.profile',  array())
 ->with('pagetitle', 'stuff')
-->with('case_list1', CaseMain::where('id', '=', $case_id)->get())
+->with('case_list1', CaseMain::where('id', '=', $case_id)->first())
 ->with('deponent_list1', DeponentMain::where('id', '=', $deponent_id)->get())
-->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->get())
+->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->first())
 ->with('nor_list1', NorMain::where('id', '=', $nor_id)->get())
-->with('job_list1', JobMain::where('id', '=', $id)->get());
+->with('job_list1', JobMain::where('id', '=', $id)->first())
+->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('p_number', '=', $requester_id)->get());
 }
 
 public function deponent_selected($id){
