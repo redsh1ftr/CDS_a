@@ -18,13 +18,13 @@ class WorkerController extends BaseController {
 	public $restful = true;
 
 	public function logout() {
-		Cache::forget('user_id');
+		Session::forget('user_id');
 		return View::make('main.hello');
 	}
 
 
 	public function login_home() {
-		Cache::forever('user_id', Input::get('username'));
+		Session::put('user_id', Input::get('username'));
 		return View::make('cases.case_list',  array())
 		->with('pagetitle', 'Case List')
 		->with('case_list1', CaseMain::orderBy('updated_at')->get());

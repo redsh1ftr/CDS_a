@@ -48,7 +48,7 @@ return View::make('cases.nor_profile',  array())
 }
 
 {
-$user_id = Cache::get('username');	
+$user_id = Session::get('username');	
 	NorModel::create(array(
 		'nor_id' => Input::get('nor_id'),
 		'case_id' => Input::get('case_id'),
@@ -66,8 +66,8 @@ $user_id = Cache::get('username');
 		'state' => Input::get('state'),
 		'zip' => Input::get('zip'),
 		'info' => Input::get('info'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return View::make('cases.nor_profile',  array())

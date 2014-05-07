@@ -57,8 +57,8 @@ public function create_new_deponent(){
 		'info' => Input::get('info'),
 		'active' => 'Yes',
 		'info' => Input::get('info'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('deponent_list_all');
@@ -116,8 +116,8 @@ public function add_case_attorney(){
 		'person' => Input::get('person'),
 		'p_number' => Input::get('p_number'),
 		'nor' => Input::get('nor'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('case_list');

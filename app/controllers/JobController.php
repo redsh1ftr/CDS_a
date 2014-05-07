@@ -40,9 +40,9 @@ return View::make('jobs.profile',  array())
 }
 
 public function deponent_selected($id){
-$case_id = Cache::get('case_id');
-$nor_id = Cache::get('nor_id');
-$requester_id = Cache::get('requester');
+$case_id = Session::get('case_id');
+$nor_id = Session::get('nor_id');
+$requester_id = Session::get('requester');
 return View::make('jobs.job_options',  array())
 ->with('pagetitle', 'Job Options')
 ->with('jobtypes', JobTypeMain::lists('type'))
@@ -55,11 +55,11 @@ return View::make('jobs.job_options',  array())
 }
 
 public function new_job($id){
-Cache::forget('recieved');
-Cache::forget('rush');
-Cache::forget('requester');
-Cache::forget('nor_id');
-Cache::forget('case_id');
+Session::forget('recieved');
+Session::forget('rush');
+Session::forget('requester');
+Session::forget('nor_id');
+Session::forget('case_id');
 return View::make('jobs.new_job',  array())
 ->with('pagetitle', 'New Job')
 ->with('atty', Case1Attorney::where('case_id', '=', $id)->where('p_number', '>', '')->lists('p_number'))
@@ -70,23 +70,23 @@ return View::make('jobs.new_job',  array())
 
 
 public function requester_selected(){
-Cache::forever('recieved', Input::get('recieved'));
-Cache::forever('rush', Input::get('rush'));
-Cache::forever('requester', Input::get('requester'));
-Cache::forever('nor_id', Input::get('nor'));
-Cache::forever('case_id', Input::get('case_id'));
+Session::put('recieved', Input::get('recieved'));
+Session::put('rush', Input::get('rush'));
+Session::put('requester', Input::get('requester'));
+Session::put('nor_id', Input::get('nor'));
+Session::put('case_id', Input::get('case_id'));
 return Redirect::route('select_deponent');
 }
 
 public function make_job(){
 JobMain::create(array(
-		'case_id' => Cache::get('case_id'),
+		'case_id' => Session::get('case_id'),
 		'deponent_id' => Input::get('deponent_id'),
-		'nor_id' => Cache::get('nor_id'),
-		'requester_id' => Cache::get('requester'),
+		'nor_id' => Session::get('nor_id'),
+		'requester_id' => Session::get('requester'),
 		'job_number' => '13-15000',
-		'request_received' => Cache::get('recieved'),
-		'rush' => Cache::get('rush'),
+		'request_received' => Session::get('recieved'),
+		'rush' => Session::get('rush'),
 		'hold' => '',
 		'status' => 'Open',
 		'films' => Input::get('films'),
@@ -96,8 +96,8 @@ JobMain::create(array(
 		'served' => '',
 		'records_due' => '',	
 		'info' => '',	
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return View::make('jobs.deponent_list',  array())
@@ -111,7 +111,7 @@ public function change_status(){
 $case_status_id = Input::get('case_status_id');
 $date = new \DateTime;
 if(Input::get('status') != 'Error') {
-DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date, 'updated_user' => Cache::get('user_id')));
+DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date, 'updated_user' => Session::get('user_id')));
 return View::make('cases.case_list',  array())
 ->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
@@ -158,8 +158,8 @@ public function add_case_attorney(){
 		'person' => Input::get('person'),
 		'p_number' => Input::get('p_number'),
 		'nor' => Input::get('nor'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('case_list');

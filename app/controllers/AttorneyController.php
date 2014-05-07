@@ -27,7 +27,7 @@ return View::make('attorneys.firm_list',  array())
 
 
 public function create_new_attorney(){
-$user_id = Cache::get('username');	
+$user_id = Session::get('username');	
 	AttorneyMain::create(array(
 		'firm_id' => Input::get('firm_id'),
 		'p_number' => Input::get('p_number'),
@@ -45,8 +45,8 @@ $user_id = Cache::get('username');
 		'sec_phone' => Input::get('sec_phone'),
 		'sec_fax' => Input::get('sec_fax'),
 		'info' => Input::get('info'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 return Redirect::route('firm_list');
 
@@ -66,8 +66,8 @@ public function create_new_firm(){
 		'manager_phone' => Input::get('manager_phone'),
 		'manager_email' => Input::get('manager_email'),
 		'info' => Input::get('info'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('firm_list');
@@ -85,7 +85,7 @@ return View::make('attorneys.create_new_attorney',  array())
 ->with('pagetitle', 'New Attorney')
 ->with('firm_list1', FirmMain::where('id', '=', $id)->get())
 ->with('firm_id', FirmMain::where('id', '=', $id)->pluck('id'))
-->with('user_id', Cache::get('user_id'));
+->with('user_id', Session::get('user_id'));
 
 }
 

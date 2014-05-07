@@ -1,7 +1,7 @@
 @extends('layouts.create')
 @section('content')
 
-{{Cache::get('nor_id')}}
+{{Session::get('nor_id')}}
 
 
 {{ Form::open(array('route' => 'requester_selected', 'POST')) }}

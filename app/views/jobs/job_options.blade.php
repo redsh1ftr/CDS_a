@@ -17,7 +17,7 @@ Requester: {{ $req->first_name }} {{ $req->middle_name }} {{ $req->last_name }} 
 NOR: {{ $nors->first_name  }} {{$nors->middle_name}} {{ $nors->last_name }} <br>
 @endforeach
 
-@if(Cache::get('rush'))Rush
+@if(Session::get('rush'))Rush
 @endif
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
 

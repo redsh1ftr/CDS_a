@@ -2,7 +2,7 @@
 @section('content')
 
 
-{{ Cache::get('nor') }} {{Cache::get('rush')}} {{Cache::get('requester')}} {{Cache::get('recieved')}}
+{{ Session::get('nor') }} {{Session::get('rush')}} {{Session::get('requester')}} {{Session::get('recieved')}}
 <h2>
 	{{link_to_route('new_deponent', 'New Deponent') }}
 </h2>

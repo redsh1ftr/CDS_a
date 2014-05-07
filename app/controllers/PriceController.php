@@ -44,8 +44,8 @@ public function create_new_case(){
 		'caption' => Input::get('caption'),
 		'status' => 'Open',
 		'info' => Input::get('info'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('case_list');
@@ -56,7 +56,7 @@ public function change_status(){
 $case_status_id = Input::get('case_status_id');
 $date = new \DateTime;
 if(Input::get('status') != 'Error') {
-DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date, 'updated_user' => Cache::get('user_id')));
+DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date, 'updated_user' => Session::get('user_id')));
 return View::make('cases.case_list',  array())
 ->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
@@ -111,8 +111,8 @@ public function add_case_attorney(){
 		'person' => Input::get('person'),
 		'p_number' => Input::get('p_number'),
 		'nor' => Input::get('nor'),
-		'created_user' => Cache::get('user_id'),
-		'updated_user' => Cache::get('user_id'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
 		));
 
 return Redirect::route('case_list');
