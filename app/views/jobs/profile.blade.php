@@ -1,6 +1,10 @@
 @extends('layouts.profile')
 @section('topbar')
 
+
+{{link_to_route('billsheet_profile', "Billsheet", $case_list1->id, array('id' => $case_list1->id)); }}
+<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+
 <h2>
 
 <table width="100%">

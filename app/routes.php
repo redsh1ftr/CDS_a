@@ -23,6 +23,11 @@ Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout
 Route::post('/pdf/make', array('as' => 'make_pdf', 'uses' => 'PdfController@make_pdf'));
 
 
+//billing routes
+
+Route::get('/job/billing/{id}', array('as' => 'billsheet_profile', 'uses' => 'BillingController@billsheet_profile'));
+
+
 //court routes
 
 Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));
@@ -89,6 +94,10 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 
 //Job Routes
+
+Route::get('/job/check-in/records/{id}', array('as' => 'check_in_records', 'uses' => 'JobController@check_in_records'));
+
+Route::get('job/check-in/invoice/{id}', array('as' => 'check_in_invoice', 'uses' => 'JobController@check_in_invoice'));
 
 Route::get('/job/make/{id}', array('as' => 'new_job', 'uses' => 'JobController@new_job'));
 
