@@ -107,16 +107,11 @@ return View::make('jobs.deponent_list',  array())
 }
 
 
-public function change_status(){
-$case_status_id = Input::get('case_status_id');
-$date = new \DateTime;
-if(Input::get('status') != 'Error') {
-DB::table('case_list')->where('id', '=', $case_status_id)->update(array('status' => Input::get('status'), 'updated_at' => $date, 'updated_user' => Session::get('user_id')));
-return View::make('cases.case_list',  array())
+public function check_in_records($id){
+return View::make('billings.check_in_records',  array())
+->with('rec_type1', RecTypeMain::lists('type'))
 ->with('pagetitle', 'Case List')
 ->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
-}
-return Redirect::route('case_list');
 }
 
 

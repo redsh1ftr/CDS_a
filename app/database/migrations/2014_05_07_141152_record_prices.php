@@ -13,21 +13,8 @@ class RecordPrices extends Migration {
 	{
 		Schema::create('record_prices', function($table){
 			$table->increments('id');
-			$table->string('pages');
-			$table->string('pages_price');
-			$table->string('films');
-			$table->string('films_price');
-			$table->string('discs');
-			$table->string('discs_price');
-			$table->string('microfiche');
-			$table->string('microfiche_price');
-			$table->string('colorpages');
-			$table->string('colorpages_price');
-			$table->string('dental_films');
-			$table->string('dental_films_price');
-			$table->string('audio');
-			$table->string('audio_price');
-			$table->string('other');
+			$table->string('type');
+			$table->string('price');
 			$table->timestamps();
 
 		});

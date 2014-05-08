@@ -11,7 +11,9 @@
 |
 */
 
-
+//+++++++++++++++++++++++++++++++++++
+//Primary Routes
+//+++++++++++++++++++++++++++++++++++
 Route::get('/', function() { return View::make('main.hello'); });
 
 Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@login_home'));
@@ -19,17 +21,17 @@ Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@log
 Route::get('/logout', array('as' => 'logout', 'uses' => 'WorkerController@logout'));
 
 //pdf routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::post('/pdf/make', array('as' => 'make_pdf', 'uses' => 'PdfController@make_pdf'));
 
 
 //billing routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::get('/job/billing/{id}', array('as' => 'billsheet_profile', 'uses' => 'BillingController@billsheet_profile'));
 
 
 //court routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));
 
 Route::get('/court/hub', array('as' => 'court_hub', 'uses' => 'CourtController@court_hub'));
@@ -44,7 +46,7 @@ Route::get('/court/{id}', array('as' => 'court_profile', 'uses' => 'CourtControl
 
 
 //deponent routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::get('/deponent/list/all', array('as' => 'deponent_list_all', 'uses' => 'DeponentController@deponent_list_all'));
 
 Route::get('/deponent/new', array('as' => 'new_deponent', 'uses' => 'DeponentController@new_deponent'));
@@ -57,7 +59,7 @@ Route::post('/deponent/new/create', array('as' => 'create_new_deponent', 'uses' 
 
 
 //Nor routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::get('/case/nor/{id}', array('as' => 'nor_profile', 'uses' => 'NorController@nor_profile'));
 
 Route::post('/case/nor/new/', array('as' => 'create_new_nor', 'uses' => 'NorController@create_new_nor'));
@@ -67,7 +69,7 @@ Route::get('/case/nor/former_address', array('as' => 'create_former_address', 'u
 
 
 //case routes
-
+//+++++++++++++++++++++++++++++++++++
 Route::get('/case/list/all', array('as' => 'case_list', 'uses' => 'CaseController@case_list'));
 
 Route::get('case/update/{id}', array('as' => 'case_update', 'uses' => 'CaseController@case_update'));
@@ -95,9 +97,19 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 //Job Routes
 
+//+++++++++++++++++++++++++++++++++++
+//check ins
+//+++++++++++++++++++++++++++++++++++
+
 Route::get('/job/check-in/records/{id}', array('as' => 'check_in_records', 'uses' => 'JobController@check_in_records'));
 
 Route::get('job/check-in/invoice/{id}', array('as' => 'check_in_invoice', 'uses' => 'JobController@check_in_invoice'));
+
+Route::post('/job/check-in/records/add', array('as' => 'add_records', 'uses' => 'JobController@add_records'));
+
+//+++++++++++++++++++++++++++++++++++
+//create
+//+++++++++++++++++++++++++++++++++++
 
 Route::get('/job/make/{id}', array('as' => 'new_job', 'uses' => 'JobController@new_job'));
 
@@ -118,10 +130,13 @@ Route::post('/job/new/deponent', array('as' => 'select_another_deponent', 'uses'
 
 //pricing routes
 
+//+++++++++++++++++++++++++++++++++++
 Route::get('/prices/shipping/all', array('as' => 'shpping_price_list', 'uses' => 'PriceController@shipping_price_list'));
  
 
 //attorney routes
+//+++++++++++++++++++++++++++++++++++
+
 Route::get('attorney/list/all', array('as' => 'attorney_list', 'uses' => 'AttorneyController@attorney_list'));
 
 Route::get('attorney/new/select_firm/{id}', array('as' => 'firm_selection', 'uses' => 'AttorneyController@selected_firm'));
