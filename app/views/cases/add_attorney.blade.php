@@ -11,9 +11,9 @@
 <tr>
 
 <td>
-	{{ Form::label('p_number', 'Attorney P#') }}
+	{{ Form::label('attorney_id', 'Attorney P#') }}
 <td>
-	{{ Form::text('p_number') }}
+	{{ Form::text('attorney_id') }}
 <tr>
 
 

@@ -45,6 +45,7 @@ $user_id = Session::get('username');
 		'sec_phone' => Input::get('sec_phone'),
 		'sec_fax' => Input::get('sec_fax'),
 		'info' => Input::get('info'),
+		'preference' => Input::get('preference'),
 		'created_user' => Session::get('user_id'),
 		'updated_user' => Session::get('user_id'),
 		));

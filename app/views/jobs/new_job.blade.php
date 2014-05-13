@@ -18,9 +18,9 @@ Select Requester:<br>
 
 @foreach($atty as $atty1)
 
-<?php $attyname = AttorneyMain::where('p_number', '=', $atty1)->pluck('last_name');?>
-<?php $attyp = AttorneyMain::where('p_number', '=', $atty1)->pluck('p_number');?>
-<?php $attyid = AttorneyMain::where('p_number', '=', $atty1)->pluck('id');?>
+<?php $attyname = AttorneyMain::where('id', '=', $atty1)->pluck('last_name');?>
+<?php $attyp = AttorneyMain::where('id', '=', $atty1)->pluck('p_number');?>
+<?php $attyid = AttorneyMain::where('id', '=', $atty1)->pluck('id');?>
 
 {{Form::radio('requester', $attyid) }} {{ "$attyname (P$attyp)" }} <br>
 

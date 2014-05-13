@@ -26,6 +26,12 @@ Attorney Info:</th></tr>
 <tr><th>Phone:</th><th>{{ Form::text('atty_phone') }}</th></tr>
 
 <tr><th>Fax:</th><th>{{ Form::text('atty_fax') }}</th></tr>
+<th>Preference: </th><th>
+{{Form::select(
+	'preference', array(
+	'CD' => 'CD',
+	'Paper' => 'Paper')) }}</th></tr>	
+
 
 </table>
 <br>
@@ -49,8 +55,6 @@ Secretary Info:</th><tr>
 
 <tr><th>Additional Notes:</tr>
 </th><th>{{ Form::textarea('info') }}</th></tr>
-
-
   </table>
 
 

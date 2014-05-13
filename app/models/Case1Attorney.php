@@ -6,7 +6,7 @@ class Case1Attorney extends Eloquent {
 		'case_id',
 		'side', 
 		'person', 
-		'p_number',
+		'attorney_id',
 		'created_user',
 		'updated_user',
 		'nor',
