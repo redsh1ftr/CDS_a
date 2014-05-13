@@ -1,5 +1,5 @@
-@extends('layouts.create')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 {{ Form::open(array('route' => 'create_new_deponent', 'POST')) }}
 <TABLE  BORDER="0">
@@ -76,7 +76,8 @@
 	{{ Form::text('fee') }}
 <tr>
 <td>
-{{Form::checkbox('films', '1');}} {{ Form::label('films', 'Need Films ') }}
+	<td>
+{{Form::checkbox('films', '1');}} {{ Form::label('films', 'Films Available') }}
 <tr>
 
 

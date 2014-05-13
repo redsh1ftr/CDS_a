@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 <br><br>
 <h2>
 {{link_to_route('court_list', 'Court List') }}

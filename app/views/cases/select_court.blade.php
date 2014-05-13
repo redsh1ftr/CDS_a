@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 @foreach ($court_list1 as $court_info)
 
 

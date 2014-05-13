@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 <h2>
 	{{link_to_route('create_firm', 'New Firm') }}
 </h2>

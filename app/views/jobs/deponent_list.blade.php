@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 
 {{ Session::get('nor') }} {{Session::get('rush')}} {{Session::get('requester')}} {{Session::get('recieved')}}

@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 @foreach($firm_list1 as $firm_list)
 <h2>
 	{{link_to_route('firm_selection', 'New Attorney', $firm_list->id, array('id' => $firm_list->id)); }}

@@ -1,4 +1,4 @@
-@extends('layouts.report')
+@extends('layouts.profile')
 
 
 @section('toolbar')
@@ -24,7 +24,7 @@ NOR: {{ $nors->first_name  }} {{$nors->middle_name}} {{ $nors->last_name }} <br>
 
 @stop
 
-@section('content')
+@section('content_left')
 
 Deponent:<br>
 @foreach($dep_list1 as $dep_list)

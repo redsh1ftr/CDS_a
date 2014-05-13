@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 {{ Form::open(array('url' => '/case/new/create', 'POST')) }}
 <TABLE  BORDER="0">

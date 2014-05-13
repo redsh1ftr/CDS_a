@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 {{ Form::open(array('route' => 'create_new_attorney', 'POST')) }}
 <TABLE  BORDER="0"> <TH COLSPAN="2">
