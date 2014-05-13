@@ -19,13 +19,13 @@ class JobList extends Migration {
 			$table->string('nor_id');
 			$table->string('job_number');
 			$table->string('request_received');
-			$table->string('rush');
+			$table->string('rush')->nullable();
 			$table->string('hold');
-			$table->string('films');
+			$table->string('films')->nullable();
 			$table->string('status');
 			$table->string('type');
-			$table->string('need_auth');
-			$table->string('need_info');
+			$table->string('need_auth')->nullable();
+			$table->string('need_info')->nullable();
 			$table->string('served');
 			$table->string('records_due');
 			$table->longtext('info');

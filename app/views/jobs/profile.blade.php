@@ -83,18 +83,18 @@ Opposing Request:<br>
 <?php $opposing_middle = AttorneyMain::where('id', '=', $other)->pluck('middle_name');?>
 <?php $opposing_last = AttorneyMain::where('id', '=', $other)->pluck('last_name');?>
 <?php $opposing_p = AttorneyMain::where('id', '=', $other)->pluck('p_number');?>
-<?php $side = Case1Attorney::where('p_number', '=', $other)->pluck('side');?>
+<?php $preference = AttorneyMain::where('id', '=', $other)->pluck('preference');?>
+<?php $side = Case1Attorney::where('attorney_id', '=', $other)->pluck('side');?>
 
 
-@if($side = 'Defendant')<?php $sside = 'Defense';?>
-@endif
+
 
 
 <td>
 
 {{link_to_route('attorney_profile', "$opposing_first $opposing_middle $opposing_last (P# $opposing_p)", AttorneyMain::where('id', '=', $other)->pluck('id'), array('id' => AttorneyMain::where('id', '=', $other)->pluck('id'))) }} 
-</td><td>
-{{$sside}}<td><tr>
+</td><td>{{$preference}}</td>
+<td>{{$side}}</td><tr>
 
 
 

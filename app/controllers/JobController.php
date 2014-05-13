@@ -36,7 +36,7 @@ return View::make('jobs.profile',  array())
 ->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->first())
 ->with('nor_list1', NorMain::where('id', '=', $nor_id)->get())
 ->with('job_list1', JobMain::where('id', '=', $id)->first())
-->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('p_number', '!=', $requester_id)->lists('p_number'));
+->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('attorney_id', '!=', $requester_id)->lists('attorney_id'));
 }
 
 public function deponent_selected($id){
@@ -62,7 +62,7 @@ Session::forget('nor_id');
 Session::forget('case_id');
 return View::make('jobs.new_job',  array())
 ->with('pagetitle', 'New Job')
-->with('atty', Case1Attorney::where('case_id', '=', $id)->where('p_number', '>', '')->lists('p_number'))
+->with('atty', Case1Attorney::where('case_id', '=', $id)->where('attorney_id', '>', '')->lists('attorney_id'))
 ->with('case1', CaseMain::where('id', '=', $id)->get())
 ->with('nors', NorModel::where('case_id', '=', $id)->get())
 ->with('case_id', $id);
@@ -107,13 +107,6 @@ return View::make('jobs.deponent_list',  array())
 }
 
 
-public function check_in_records($id){
-return View::make('billings.check_in_records',  array())
-->with('rec_type1', RecTypeMain::lists('type'))
-->with('pagetitle', 'Case List')
-->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
-}
-
 
 public function selected_court($id){
 return View::make('cases.create_new_case',  array())
@@ -151,7 +144,7 @@ public function add_case_attorney(){
 		'case_id' => Input::get('case_id'),
 		'side' => Input::get('side'),
 		'person' => Input::get('person'),
-		'p_number' => Input::get('p_number'),
+		'attorney_id' => Input::get('attorney_id'),
 		'nor' => Input::get('nor'),
 		'created_user' => Session::get('user_id'),
 		'updated_user' => Session::get('user_id'),

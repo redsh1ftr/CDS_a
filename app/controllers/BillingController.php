@@ -1,6 +1,6 @@
 <?php
 
-class CaseController extends BaseController {
+class BillingController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,6 +15,15 @@ class CaseController extends BaseController {
 	|
 	*/
 	public $restful = true;
+
+public function check_in_records($id){
+return View::make('billings.check_in_records',  array())
+->with('rec_type1', RecTypeMain::lists('type'))
+->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
+->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+}
+
+
 
 
 public function case_list(){
@@ -106,12 +115,12 @@ return View::make('cases.update_case',  array())
 
 public function add_case_attorney(){
 
-$attorney_id = Input::get('attorney_id');
+$attorney_id = Input::get('p_number');
 	Case1Attorney::create(array(
 		'case_id' => Input::get('case_id'),
 		'side' => Input::get('side'),
 		'person' => Input::get('person'),
-		'attorney_id' => AttorneyMain::where('p_number', '=', $attorney_id)->pluck('id'),
+		'p_number' => AttorneyMain::where('p_number', '=', $attorney_id)->pluck('id'),
 		'nor' => Input::get('nor'),
 		'created_user' => Session::get('user_id'),
 		'updated_user' => Session::get('user_id'),

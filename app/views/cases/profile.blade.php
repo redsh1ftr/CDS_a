@@ -110,7 +110,7 @@ Plaintiff
 Plaintiff's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($plaintiff1 as $plaintiffs)
-<?php $platty = AttorneyMain::where('id', '=', $plaintiffs->p_number)->get();?>
+<?php $platty = AttorneyMain::where('id', '=', $plaintiffs->attorney_id)->get();?>
 
 @foreach($platty as $plattys)
 <?php $atty_middle = Str::limit($plattys->middle_name, $limit=1, $end='.')?>
@@ -149,7 +149,7 @@ Defendant
 Defendant's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($defendant1 as $defendants)
-<?php $defs = AttorneyMain::where('id', '=', $defendants->p_number)->get();?>
+<?php $defs = AttorneyMain::where('id', '=', $defendants->attorney_id)->get();?>
 @foreach($defs as $defs)
 <?php $atty_middle = Str::limit($defs->middle_name, $limit=1, $end='.')?>
 <?php $atty_last = $defs->last_name?>
