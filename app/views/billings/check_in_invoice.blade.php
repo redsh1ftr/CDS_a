@@ -4,10 +4,12 @@
 
 <table>
 
-{{ Form::open(array('route' => 'add_records', 'POST')) }}
+{{ Form::open(array('route' => 'add_invoice', 'POST')) }}
 <td>
 {{ Form::label('type', 'Record Type') }}:
 <td>
+
+
 <select name="type">
 @foreach($rec_type1 as $type)
 
