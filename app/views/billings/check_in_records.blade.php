@@ -12,7 +12,7 @@
 <td>
 {{ Form::label('recieved', 'Date Recieved') }}:
 <td>
-<input type="text" id="datepicker" name="test">
+<input type="text" id="datepicker" name="recieved">
 <td>
 </tr>
 <td>

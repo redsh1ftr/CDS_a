@@ -26,7 +26,7 @@ return View::make('billings.check_in_records',  array())
 
 
 public function add_records(){
-$date = Carbon::parse(Input::get('test'));	
+$date = Carbon::parse(Input::get('recieved'));	
 	RecordsMain::create(array(
 		'job_id' => Input::get('job_id'),
 		'user_id' => Session::get('user_id'),
