@@ -103,9 +103,9 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 Route::get('/job/check-in/records/{id}', array('as' => 'check_in_records', 'uses' => 'BillingController@check_in_records'));
 
-Route::get('job/check-in/invoice/{id}', array('as' => 'check_in_invoice', 'uses' => 'JobController@check_in_invoice'));
+Route::get('job/check-in/invoice/{id}', array('as' => 'check_in_invoice', 'uses' => 'BillingController@check_in_invoice'));
 
-Route::post('/job/check-in/records/add', array('as' => 'add_records', 'uses' => 'JobController@add_records'));
+Route::post('/job/check-in/records/add', array('as' => 'add_records', 'uses' => 'BillingController@add_records'));
 
 //+++++++++++++++++++++++++++++++++++
 //create

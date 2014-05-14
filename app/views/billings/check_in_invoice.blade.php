@@ -1,5 +1,5 @@
-@extends('layouts.create')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 
 <table>

@@ -20,10 +20,38 @@ public function check_in_records($id){
 return View::make('billings.check_in_records',  array())
 ->with('rec_type1', RecTypeMain::lists('type'))
 ->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
-->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
+->with('job_list1', JobMain::where('id', '=', $id)->first());
 }
 
 
+public function add_records(){
+$date = Carbon::parse(Input::get('test'));	
+	RecordsMain::create(array(
+		'job_id' => Input::get('job_id'),
+		'user_id' => Session::get('user_id'),
+		'recieved' => $date,
+		'type' => Input::get('type'),
+		'quantity' => Input::get('quantity'),
+		'created_user' => Session::get('user_id'),
+		'updated_user' => Session::get('user_id'),
+		));
+if (Input::get('with_invoice'))	{
+return Redirect::route('check_in_invoice', array('id' => Input::get('job_id')));
+}
+
+{
+return Redirect::route('job_profile', array('id' => Input::get('job_id')));
+}
+}
+
+public function check_in_invoice($id){
+return View::make('billings.check_in_invoice',  array())
+->with('rec_type1', RecTypeMain::lists('type'))
+->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
+->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
+->with('job_list1', JobMain::where('id', '=', $id)->first());
+}
 
 
 public function case_list(){

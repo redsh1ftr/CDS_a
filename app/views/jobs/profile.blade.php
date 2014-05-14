@@ -1,8 +1,14 @@
 @extends('layouts.profile')
 @section('topbar')
 
-
-{{link_to_route('billsheet_profile', "Billsheet", $case_list1->id, array('id' => $case_list1->id)); }}
+<table width=100%>
+<td>
+{{link_to_route('billsheet_profile', "Billsheet", $job_list1->id, array('id' => $job_list1->id)); }}
+<td>
+{{link_to_route('check_in_invoice', "Invoice", $job_list1->id, array('id' => $job_list1->id)); }}
+<td>
+{{link_to_route('check_in_records', "Records", $job_list1->id, array('id' => $job_list1->id)); }}
+</table>
 <HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 
 <h2>
