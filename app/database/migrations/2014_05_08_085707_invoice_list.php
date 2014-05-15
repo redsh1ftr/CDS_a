@@ -16,6 +16,7 @@ class InvoiceList extends Migration {
 			$table->string('job_id');
 			$table->string('user_id');
 			$table->string('billsheet_id');
+			$table->string('received');
 			$table->string('invoice_amount');
 			$table->string('invoice_number');
 			$table->string('void');

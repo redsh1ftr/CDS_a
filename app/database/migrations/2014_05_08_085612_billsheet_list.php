@@ -14,7 +14,7 @@ class BillsheetList extends Migration {
 		Schema::create('billsheet_list', function($table){
 			$table->increments('id');
 			$table->string('job_id');
-			$table->string('ship_date');
+			$table->datetime('ship_date');
 			$table->timestamps();
 
 		});

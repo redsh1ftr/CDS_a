@@ -113,3 +113,25 @@ Opposing Request:<br>
 
 
 @stop
+
+
+@section('content_right')
+Records
+<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+<table width="100%" border="1">
+	<th> Received</th><th>Count</th><th>Type</th><tr>
+@foreach($records_list1 as $records)
+
+<td> 
+{{ Carbon::parse($records->received)->format('D, M d Y') }}
+<td>
+{{$records->quantity}}
+<td>
+{{$records->type }}	
+<tr>	
+
+
+@endforeach 
+</table>
+
+@stop

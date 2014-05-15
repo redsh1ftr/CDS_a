@@ -9,7 +9,7 @@ class RecordsMain extends Eloquent {
 		'quantity',
 		'invoice_id',
 		'billsheet_id',
-		'recieved',
+		'received',
 		'info',
 		'created_user',
 		'updated_user',

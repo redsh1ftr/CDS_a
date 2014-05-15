@@ -5,26 +5,33 @@
 <table>
 
 {{ Form::open(array('route' => 'add_invoice', 'POST')) }}
+
 <td>
-{{ Form::label('type', 'Record Type') }}:
+{{ Form::label('recieved', 'Date Recieved') }}:
 <td>
-
-
-<select name="type">
-@foreach($rec_type1 as $type)
-
-<option value="{{  $type   }}"=>{{ $type }}
-@endforeach
-</select>
+<input type="text" id="datepicker" name="received">
 <tr>
 <td>
-{{ Form::label('quantity', 'Quantity:')  }}
+{{ Form::label('invoice_number', 'Invoice Number:')}}
 <td>
-{{ Form::text('quantity')}}
+{{ Form::text('invoice_number')}}
+<tr>
+<td>
+{{ Form::label('invoice_amount', 'Invoice Amount:')  }}
+<td>
+{{ Form::text('invoice_amount')}}
 </tr>
- <br>
-
 </table>
+<br>
+{{Form::label('info', 'Notes:')}}
+ <br>
+{{ Form::textarea('info') }}
+</table>
+<br><br>
+{{ Form::hidden('job_id', $job_id) }}
+
+{{ Form::submit('Add Invoice')}}
+
 {{ Form::close() }}
 
 @stop
