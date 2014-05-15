@@ -29,7 +29,6 @@ public function add_records(){
 $date = Carbon::parse(Input::get('received'));	
 	RecordsMain::create(array(
 		'job_id' => Input::get('job_id'),
-		'user_id' => Session::get('user_id'),
 		'received' => $date,
 		'type' => Input::get('type'),
 		'quantity' => Input::get('quantity'),
