@@ -16,11 +16,12 @@ class RecordsList extends Migration {
 			$table->string('job_id');
 			$table->string('user_id');
 			$table->string('billsheet_id');
-			$table->string('invoice_id');
 			$table->datetime('received');
 			$table->string('type');
 			$table->string('quantity');
 			$table->string('info');
+			$table->timedate('ship_date')
+			$table->int('shipped')
 			$table->string('created_user')
 			$table->string('updated_user')
 			$table->timestamps();

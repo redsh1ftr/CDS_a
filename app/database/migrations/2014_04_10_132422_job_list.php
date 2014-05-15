@@ -27,7 +27,7 @@ class JobList extends Migration {
 			$table->string('need_auth')->nullable();
 			$table->string('need_info')->nullable();
 			$table->datetime('served');
-			$table->string('records_due');
+			$table->datetime('records_due');
 			$table->longtext('info');
 			$table->string('created_user');
 			$table->string('updated_user');

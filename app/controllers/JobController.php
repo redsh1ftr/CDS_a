@@ -36,7 +36,8 @@ return View::make('jobs.profile',  array())
 ->with('requester_list1', AttorneyMain::where('id', '=', $requester_id)->first())
 ->with('nor_list1', NorMain::where('id', '=', $nor_id)->get())
 ->with('job_list1', JobMain::where('id', '=', $id)->first())
-->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('attorney_id', '!=', $requester_id)->lists('attorney_id'));
+->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('attorney_id', '!=', $requester_id)->lists('attorney_id'))
+->with('records_list1', RecordsMain::where('job_id', '=', $id)->get());
 }
 
 public function deponent_selected($id){

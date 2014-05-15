@@ -37,7 +37,7 @@ $date = Carbon::parse(Input::get('received'));
 		'updated_user' => Session::get('user_id'),
 		));
 if (Input::get('with_invoice'))	{
-return Redirect::route('check_in_invoice', array('id' => Input::get('job_id')));
+return Redirect::route('check_in_invoice', array('id' => Input::get('job_id'), 'record_id' => RecordsMain::orderBy('created_at', 'desc')->first()->pluck('id')));
 }
 
 {
@@ -50,14 +50,41 @@ return View::make('billings.check_in_invoice',  array())
 ->with('rec_type1', RecTypeMain::lists('type'))
 ->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
 ->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
-->with('job_list1', JobMain::where('id', '=', $id)->first());
+->with('job_list1', JobMain::where('id', '=', $id)->first())
+->with('job_id', $id);
 }
 
+
+public function add_invoice(){
+$date = Carbon::parse(Input::get('received'));	
+	InvoiceMain::create(array(
+		'job_id' => Input::get('job_id'),
+		'user_id' => Session::get('user_id'),
+		'received' => $date,
+		'info' => Input::get('info'),
+		'invoice_number' => Input::get('invoice_number'),
+		'invoice_amount' => Input::get('invoice_amount'),
+		));
+{
+return Redirect::route('job_profile', array('id' => Input::get('job_id')));
+}}
+
 public function billsheet_profile($id){
-	$jobnumber = JobMain::where('id', '=', $id)->pluck('job_number');
+$jobnumber = JobMain::where('id', '=', $id)->pluck('job_number');
+$case = JobMain::where('id', '=', $id)->pluck('case_id');
+$court = CaseMain::where('id', '=', $case)->pluck('court_id');
+$nor = JobMain::where('id', '=', $id)->pluck('nor_id');
+$jobtype = JobMain::where('id', '=', $id)->pluck('type');
 return View::make('billings.billsheet_profile',  array())
 ->with('pagetitle',  "$jobnumber Billsheet")
-->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+->with('records_list1', RecordsMain::where('job_id', '=', $id)->where('shipped', '!=')->get())
+->with('job_list1', JobMain::where('id', '=', $id)->get())
+->with('job_attorneys', Case1Attorney::where('case_id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->lists('attorney_id'))
+->with('deponent_list1', DeponentMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('deponent_id'))->get())
+->with('court_list1', CourtMain::where('id', '=', $court)->get())
+->with('nor_list1', NorMain::where('id', '=', $nor)->get())
+->with('case_list1', CaseMain::where('id', '=', $case)->get())
+->with('pages', RecordsMain::where('type', '=', 'Pages')->get());
 }
 
 
