@@ -1,18 +1,14 @@
 @extends('layouts.profile')
 
 
-
 @section('content_left')
-
-{{Session::get('nor_id')}}
-
 <table>
 
 {{ Form::open(array('route' => 'add_records', 'POST')) }}
 <td>
 {{ Form::label('recieved', 'Date Recieved') }}:
 <td>
-<input type="text" id="datepicker" name="recieved">
+<input type="text" id="datepicker" name="received">
 <td>
 </tr>
 <td>

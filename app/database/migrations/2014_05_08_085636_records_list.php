@@ -17,7 +17,7 @@ class RecordsList extends Migration {
 			$table->string('user_id');
 			$table->string('billsheet_id');
 			$table->string('invoice_id');
-			$table->date('recieved');
+			$table->datetime('received');
 			$table->string('type');
 			$table->string('quantity');
 			$table->string('info');

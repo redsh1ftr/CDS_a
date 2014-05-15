@@ -26,11 +26,11 @@ return View::make('billings.check_in_records',  array())
 
 
 public function add_records(){
-$date = Carbon::parse(Input::get('recieved'));	
+$date = Carbon::parse(Input::get('received'));	
 	RecordsMain::create(array(
 		'job_id' => Input::get('job_id'),
 		'user_id' => Session::get('user_id'),
-		'recieved' => $date,
+		'received' => $date,
 		'type' => Input::get('type'),
 		'quantity' => Input::get('quantity'),
 		'created_user' => Session::get('user_id'),
@@ -52,6 +52,18 @@ return View::make('billings.check_in_invoice',  array())
 ->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
 ->with('job_list1', JobMain::where('id', '=', $id)->first());
 }
+
+public function billsheet_profile($id){
+	$jobnumber = JobMain::where('id', '=', $id)->pluck('job_number');
+return View::make('billings.billsheet_profile',  array())
+->with('pagetitle',  "$jobnumber Billsheet")
+->with('case_list1', CaseMain::orderBy('updated_at', 'desc')->get());
+}
+
+
+
+
+
 
 
 public function case_list(){

@@ -70,7 +70,8 @@ return View::make('jobs.new_job',  array())
 
 
 public function requester_selected(){
-Session::put('recieved', Input::get('recieved'));
+$received = Carbon::parse(Input::get('received'));
+Session::put('recieved', $received);
 Session::put('rush', Input::get('rush'));
 Session::put('requester', Input::get('requester'));
 Session::put('nor_id', Input::get('nor'));

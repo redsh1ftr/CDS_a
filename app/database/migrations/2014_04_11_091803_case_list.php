@@ -15,8 +15,8 @@ class CaseList extends Migration {
 			$table->engine = 'MyISAM';
 			$table->increments('id');
 			$table->string('case_number');
-			$table->string('date_received');
-			$table->string('discovery_date');
+			$table->datetime('date_received');
+			$table->datetime('discovery_date');
 			$table->string('court_id');
 			$table->string('judge');
 			$table->string('file_number');
