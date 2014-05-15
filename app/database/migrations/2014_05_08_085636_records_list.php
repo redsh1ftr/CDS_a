@@ -21,8 +21,6 @@ class RecordsList extends Migration {
 			$table->string('type');
 			$table->string('quantity');
 			$table->string('info');
-			$table->string('created_user')
-			$table->string('updated_user')
 			$table->timestamps();
 
 		});
