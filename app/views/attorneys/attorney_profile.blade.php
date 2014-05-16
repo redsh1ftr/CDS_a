@@ -1,5 +1,5 @@
-@extends('layouts.report')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 
 
@@ -56,7 +56,7 @@ Closed Cases:
 
 
 @stop
-@section('right')
+@section('content_right')
 
 @foreach($firm_lists as $firm_list)
 

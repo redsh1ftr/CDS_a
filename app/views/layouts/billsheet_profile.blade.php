@@ -226,7 +226,7 @@
 		<div class="centertext">@yield('defendant')</div>
 	</div>
 </div>
-
+<HR WIDTH="100%" COLOR="#000000" SIZE="3">
 
 <div class="content_middle">
 

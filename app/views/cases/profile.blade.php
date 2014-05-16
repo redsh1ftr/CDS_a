@@ -90,7 +90,7 @@ Status:
 
 
 @section('plaintiff')
-<br><br>
+<br>
 Plaintiff
 <HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
 @foreach($plaintiff1 as $plaintiffs)
@@ -106,7 +106,7 @@ Plaintiff
 
 
 @section('plaintiff_attorney')
-<br><br>
+<br>
 Plaintiff's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($plaintiff1 as $plaintiffs)
@@ -130,7 +130,7 @@ Plaintiff's Attorney
 
 
 @section('defendant')
-<br><br>
+<br>
 Defendant
 <HR WIDTH="100%" ALIGN="right" COLOR="#000000" SIZE="2">
 @foreach($defendant1 as $defendants)
@@ -145,7 +145,7 @@ Defendant
 @stop
 
 @section('defendant_attorney')
-<br><br>
+<br>
 Defendant's Attorney
 <HR WIDTH="100%" ALIGN="left" COLOR="#000000" SIZE="2">
 @foreach($defendant1 as $defendants)

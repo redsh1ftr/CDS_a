@@ -1,8 +1,17 @@
-@extends('layouts.profile')
+@extends('layouts.billsheet_profile')
+
+
 <?php $costsum = 0; ?>
 @foreach($records_list1 as $records)
 <?php $costsum+= $records->quantity * (RecTypeMain::where('type', '=', $records->type)->pluck('price'));?>
 @endforeach
+
+<?php $invoicesum =0;?>
+@foreach($invoice_list1 as $invoices)
+<?php $invoicesum+= $invoices->invoice_amount;?>
+@endforeach
+
+
 
 @section('content_left')
 <table>
@@ -90,21 +99,21 @@ Records Due:
 {{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $requester->id, array('id' => $requester->id)); }}	
 Cost:
 <td>
-${{number_format($costsum + 39.50, $decimals = 2)}}
+${{number_format($costsum + $invoicesum + 39.50, $decimals = 2)}}
 <tr>
 @endforeach
 <tr>
 </table>
+
 @stop
 
 
-@section('last')
 
-<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+@section('middle_content_left')
+
+
+
 <table width="100%">
-
-
-
 @foreach($job_attorneys as $attys)
 <?php $atty_first = AttorneyMain::where('id', '=', $attys)->pluck('first_name');?>
 <?php $atty_middle = AttorneyMain::where('id', '=', $attys)->pluck('middle_name');?>
@@ -114,18 +123,44 @@ ${{number_format($costsum + 39.50, $decimals = 2)}}
 
 
 <td>{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<td>
+@if($attys)
+<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+@endif
 @endforeach
-<tr>
-<?php $sum = 0; ?>
+</table>
+
+<table width="50%" border="1">
+<th>Received</th><th>Record Type</th><th>Count</th><tr>
+
+
+
+
+<h2>Unbilled Records</h2>
 @foreach($records_list1 as $records)
-<?php $sum+= $records->quantity * (RecTypeMain::where('type', '=', $records->type)->pluck('price'));?>
-<td>
-{{ $records->received }}<td>
+
+
+
+<td>{{ Carbon::parse($records->received)->format('D, M d Y') }}<td>
 {{ $records->type }}<td>
-{{ $records->quantity}}<td>
-<tr>
+{{ $records->quantity}}<tr>
 
 @endforeach
+</table>
+@stop
+
+@section('middle_content_right')
+
+<table width="50%" border="1">
+<th>Received</th><th>Invoice Number</th><th>Amount</th><tr>
+@if($invoice_list1)
+<h2>Unbilled Invoices</h2>
+@foreach($invoice_list1 as $invoices)
+
+<td>{{Carbon::parse($invoices->received)->format('D, M d Y')}}
+<td>{{$invoices->invoice_number}}
+<td>{{$invoices->invoice_amount}}<tr>
+@endforeach
+@endif
 </table>
 
 

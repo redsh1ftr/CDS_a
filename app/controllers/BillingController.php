@@ -85,7 +85,8 @@ return View::make('billings.billsheet_profile',  array())
 ->with('nor_list1', NorMain::where('id', '=', $nor)->get())
 ->with('case_list1', CaseMain::where('id', '=', $case)->get())
 ->with('pages', RecordsMain::where('type', '=', 'Pages')->get())
-->with('requester', AttorneyMain::where('id', '=', $requester_id)->first());
+->with('requester', AttorneyMain::where('id', '=', $requester_id)->first())
+->with('invoice_list1', InvoiceMain::where('job_id', '=', $id)->get());
 }
 
 
