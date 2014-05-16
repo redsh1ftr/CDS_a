@@ -1,6 +1,4 @@
 @extends('layouts.billsheet_profile')
-
-
 <?php $costsum = 0; ?>
 @foreach($records_list1 as $records)
 <?php $costsum+= $records->quantity * (RecTypeMain::where('type', '=', $records->type)->pluck('price'));?>
