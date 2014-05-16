@@ -19,7 +19,7 @@ class InvoiceList extends Migration {
 			$table->string('received');
 			$table->string('invoice_amount');
 			$table->string('invoice_number');
-			$table->timedate('paid');
+			$table->datetime('paid');
 			$table->string('payment');
 			$table->string('void');
 			$table->string('info');

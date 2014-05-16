@@ -41,7 +41,7 @@ Notes:<br>
   
 @stop
 
-@section('right')
+@section('content_right')
 
 <h1>
 	Attorneys

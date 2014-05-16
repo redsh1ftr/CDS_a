@@ -73,7 +73,7 @@ Status:
   <th>File Number:</th><th>	{{ $case_list->file_number }}</th></tr>
 <th>Claim Number:</th><th>	{{ $case_list->claim_number }}</th></tr>
 @if($case_list->discovery_date)
-<th>Discovery Date:</th><th> {{ $case_list->discovery_date }}</th><tr>
+<th>Discovery Date:</th><th> {{ Carbon::parse($case_list->discovery_date)->format('D, M d Y') }}</th><tr>
 @endif
 </table>
   @if($case_list->created_at != $case_list->updated_at) <br>Status Changed: {{$case_list->updated_at}} by {{$case_list->updated_user}}<br>

@@ -30,8 +30,6 @@
 {{ Form::hidden('case_id', $case_list->id) }}
 @endforeach  
 
-{{ Form::hidden('user_entered_id', 'Test ID') }}
-
 
  {{ Form::submit ("Add to $case_number") }}
 

@@ -229,7 +229,8 @@
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
 
 <div class="content_middle">
-
+	@yield('contents')
+	<HR WIDTH="100%" COLOR="#000000" SIZE="2">
 <div class="content_left">@yield('middle_content_left')</div>
 <div class="content_right">@yield('middle_content_right')</div>
 </div>

@@ -33,10 +33,12 @@ return View::make('cases.case_list',  array())
 }
 
 public function create_new_case(){
+$date_received = Carbon::parse(Input::get('date_received'));
+$discovery_date = Carbon::parse(Input::get('discovery_date'));
 	CaseMain::create(array(
 		'case_number' => Input::get('case_number'),
-		'date_received' => Input::get('date_received'),
-		'discovery_date' => Input::get('discovery_date'),
+		'date_received' => $date_received,
+		'discovery_date' => $discovery_date,
 		'court_id' => Input::get('court_id'),
 		'judge' => Input::get('judge'),
 		'file_number' => Input::get('file_number'),

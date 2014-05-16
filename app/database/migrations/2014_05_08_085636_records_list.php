@@ -17,10 +17,10 @@ class RecordsList extends Migration {
 			$table->string('billsheet_id');
 			$table->datetime('received');
 			$table->string('type');
-			$table->string('quantity');
+			$table->integer('quantity');
 			$table->string('info');
 			$table->datetime('ship_date')->nullable();
-			$table->int('shipped')->nullable();
+			$table->integer('shipped')->nullable();
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();

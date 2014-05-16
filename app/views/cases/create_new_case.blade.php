@@ -13,14 +13,14 @@
 <td>
 	{{ Form::label('date_received', 'Date Received') }}
 <td>
-	{{ Form::text('date_received') }}
+<input type="text" id="datepicker" name="date_received">
 <tr>
 
 
 <td>
 	{{ Form::label('discovery_date', 'Discovery Date') }}
 <td>
-	{{ Form::text('discovery_date') }}
+<input type="text" id="datepicker2" name="discovery_date">
 <tr>
 
 <td>	

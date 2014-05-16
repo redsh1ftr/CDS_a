@@ -1,5 +1,5 @@
-@extends('layouts.create')
-@section('content')
+@extends('layouts.profile')
+@section('content_left')
 
 
 {{ Form::open(array('route' => 'create_new_nor', 'POST')) }}
@@ -37,7 +37,7 @@ Enter more information for {{ $case->person}}:
 <td>
 	{{ Form::label('dob', 'Date of Birth') }}
 <td>
-	{{ Form::text('dob') }}
+<input type="text" id="datepicker" name="dob">
 <tr>
 
 <td>

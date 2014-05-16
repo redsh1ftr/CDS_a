@@ -13,7 +13,31 @@
 
 
 
+<?php $pagesum =0;?>
+@foreach($pages as $pcount)
+<?php $pagesum+= $pcount->quantity;?>
+@endforeach
+
+
+
+{{-- Page Prices Algo
+
+@if($pagesum <= 20)
+
+
+
+
+
+
+
+
+	--}}
+
+
+
 @section('content_left')
+
+{{$pagesum}}
 <table>
 <td>	
 Court:
@@ -107,27 +131,32 @@ ${{number_format($costsum + $invoicesum + 39.50, $decimals = 2)}}
 
 @stop
 
-
-
-@section('middle_content_left')
-
+@section('contents')
 
 
 <table width="100%">
 @foreach($job_attorneys as $attys)
+
 <?php $atty_first = AttorneyMain::where('id', '=', $attys)->pluck('first_name');?>
 <?php $atty_middle = AttorneyMain::where('id', '=', $attys)->pluck('middle_name');?>
 <?php $atty_last = AttorneyMain::where('id', '=', $attys)->pluck('last_name');?>
 <?php $atty_p = AttorneyMain::where('id', '=', $attys)->pluck('p_number');?>
 <?php $atty_id = AttorneyMain::where('id', '=', $attys)->pluck('id');?>
+<?php $atty_side = Case1Attorney::where('attorney_id', '=', $attys)->pluck('side');?>
 
 
-<td>{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<td>
-@if($attys)
-<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
-@endif
+<td>{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<br>{{$atty_side}}<td>
+
+
 @endforeach
 </table>
+@stop
+
+@section('middle_content_left')
+
+
+
+
 
 <table width="50%" border="1">
 <th>Received</th><th>Record Type</th><th>Count</th><tr>
