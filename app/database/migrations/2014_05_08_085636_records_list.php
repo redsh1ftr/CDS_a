@@ -19,10 +19,10 @@ class RecordsList extends Migration {
 			$table->string('type');
 			$table->string('quantity');
 			$table->string('info');
-			$table->timedate('ship_date')
-			$table->int('shipped')
-			$table->string('created_user')
-			$table->string('updated_user')
+			$table->datetime('ship_date')->nullable();
+			$table->int('shipped')->nullable();
+			$table->string('created_user');
+			$table->string('updated_user');
 			$table->timestamps();
 
 		});

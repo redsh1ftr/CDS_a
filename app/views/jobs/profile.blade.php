@@ -119,7 +119,7 @@ Opposing Request:<br>
 Records
 <HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 <table width="100%" border="1">
-	<th> Received</th><th>Count</th><th>Type</th><tr>
+	<th> Received</th><th>Count</th><th>Type</th><th>Ship Date</th><tr>
 @foreach($records_list1 as $records)
 
 <td> 
@@ -128,6 +128,10 @@ Records
 {{$records->quantity}}
 <td>
 {{$records->type }}	
+@if($records->ship_date)
+<td>
+{{ Carbon::parse($records->ship_date)->format('D, M d Y') }}
+@endif
 <tr>	
 
 

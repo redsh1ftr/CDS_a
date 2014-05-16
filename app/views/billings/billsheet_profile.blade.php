@@ -79,9 +79,18 @@ Records Due:
 {{$job->records_due}}
 <tr>
 <td>
-Requester Cost:
+
+
+<?php $atty_first = $requester->first_name;?>
+<?php $atty_middle = $requester->middle_name;?>
+<?php $atty_last = $requester->last_name;?>
+<?php $atty_p = $requester->p_number;?>
+
+
+{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $requester->id, array('id' => $requester->id)); }}	
+Cost:
 <td>
-{{$costsum + 39.50 + .25}}
+${{number_format($costsum + 39.50, $decimals = 2)}}
 <tr>
 @endforeach
 <tr>
@@ -95,6 +104,18 @@ Requester Cost:
 <table width="100%">
 
 
+
+@foreach($job_attorneys as $attys)
+<?php $atty_first = AttorneyMain::where('id', '=', $attys)->pluck('first_name');?>
+<?php $atty_middle = AttorneyMain::where('id', '=', $attys)->pluck('middle_name');?>
+<?php $atty_last = AttorneyMain::where('id', '=', $attys)->pluck('last_name');?>
+<?php $atty_p = AttorneyMain::where('id', '=', $attys)->pluck('p_number');?>
+<?php $atty_id = AttorneyMain::where('id', '=', $attys)->pluck('id');?>
+
+
+<td>{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<td>
+@endforeach
+<tr>
 <?php $sum = 0; ?>
 @foreach($records_list1 as $records)
 <?php $sum+= $records->quantity * (RecTypeMain::where('type', '=', $records->type)->pluck('price'));?>
@@ -106,9 +127,7 @@ Requester Cost:
 
 @endforeach
 </table>
-@foreach($job_attorneys as $attys)
-{{AttorneyMain::where('id', '=', $attys)->pluck('first_name') }} {{ AttorneyMain::where('id', '=', $attys)->pluck('last_name') }}<br>
-@endforeach
+
 
 <br><br>
 @stop
