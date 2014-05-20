@@ -27,6 +27,7 @@
 {{ Form::text('quantity')}}
 </tr>
 <td><td>{{Form::checkbox('with_invoice', '1');}}  {{ Form::label('with_invoice', 'Invoice Received') }}
+<td><td>{{Form::checkbox('original', '1');}}  {{ Form::label('original', 'Original') }}
 </table>
 <br>
 {{Form::label('info', "Notes:")}}

@@ -17,6 +17,14 @@
 			position: absolute;
 		}
 
+		.paperpage {
+			width: 900px;
+			height: 670px;
+			page-break-after: always;
+			page-break-inside: avoid;
+		}
+
+
 		.welcome {
 			width: 300px;
 			height: 200px;

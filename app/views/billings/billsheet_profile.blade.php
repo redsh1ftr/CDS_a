@@ -1,7 +1,7 @@
 @extends('layouts.billsheet_profile')
 <?php $costsum = 0; ?>
 @foreach($records_list1 as $records)
-<?php $costsum+= $records->quantity * (RecTypeMain::where('type', '=', $records->type)->pluck('price'));?>
+<?php $costsum+= $records->quantity * (RecTypeMain::where('type', '!', 'Pages')->where('type', '=', $records->type)->pluck('price'));?>
 @endforeach
 
 <?php $invoicesum =0;?>
@@ -18,9 +18,6 @@
 
 
 
-{{-- Page Prices Algo
-
-@if($pagesum <= 20)
 
 
 
@@ -29,9 +26,27 @@
 
 
 
-	--}}
 
 
+
+
+@section('topbar')
+@if($pagesum <= 0)
+<?php $pagetotal = 0;?>
+@elseif($pagesum < 10)
+<?php $pagetotal = 10.00;?>
+@elseif($pagesum <= 20)
+<?php $pagetotal = ($defaults->stat_base + ($pagesum * $defaults->stat_120));?>
+@elseif($pagesum <= 50)
+<?php $pagetotal = ($defaults->stat_base + 23.40 + (($pagesum - 20) * $defaults->stat_2150));?>
+@elseif($pagesum < 50)
+<?php $pagetotal = ($defaults->stat_base + 41.1 + (($pagesum - 50) * $default->stat_59));?>
+@endif
+{{$pagetotal}}
+
+{{$defaults->street1}}
+
+@stop
 
 @section('content_left')
 
@@ -121,7 +136,7 @@ Records Due:
 {{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $requester->id, array('id' => $requester->id)); }}	
 Cost:
 <td>
-${{number_format($costsum + $invoicesum + 39.50, $decimals = 2)}}
+${{number_format($pagetotal + $costsum + $invoicesum + $defaults->subp_fee, $decimals = 2)}}
 <tr>
 @endforeach
 <tr>
@@ -189,7 +204,58 @@ ${{number_format($costsum + $invoicesum + 39.50, $decimals = 2)}}
 @endforeach
 @endif
 </table>
+<br><br>
+@stop
+
+
+@section('2middle_content_left')
+
+
+
+
+
+<table width="50%" border="1">
+<th>Received</th><th>Record Type</th><th>Count</th><tr>
+
+
+
+
+<h2>Billed Records</h2>
+@foreach($billed_records1 as $records)
+
+
+
+<td>{{ Carbon::parse($records->received)->format('D, M d Y') }}<td>
+{{ $records->type }}<td>
+{{ $records->quantity}}<tr>
+
+@endforeach
+</table>
+@stop
+
+@section('2middle_content_right')
+
+<table width="50%" border="1">
+<th>Received</th><th>Invoice Number</th><th>Amount</th><tr>
+@if($invoice_list1)
+<h2>Billed Invoices</h2>
+@foreach($billed_invoice1 as $invoices)
+
+<td>{{Carbon::parse($invoices->received)->format('D, M d Y')}}
+<td>{{$invoices->invoice_number}}
+<td>{{$invoices->invoice_amount}}<tr>
+@endforeach
+@endif
+</table>
+@stop
+
+
+
+
+
+@section('last')
 
 
 <br><br>
+
 @stop

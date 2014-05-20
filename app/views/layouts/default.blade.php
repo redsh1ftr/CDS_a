@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Placeholder</title>
+	<title>{{$pagetitle}}</title>
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 

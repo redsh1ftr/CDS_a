@@ -28,6 +28,15 @@
 			color: #100;
 		}
 
+
+		.paperpage {
+			width: 900px;
+			height: 670px;
+			page-break-after: always;
+			page-break-inside: avoid;
+		}
+		
+
 		.topbar{
 			position: relative;
 			width: 100%;
@@ -46,6 +55,8 @@
 			text-align:center;
 			margin-left:0%;
 			width: 100%;
+
+
 		}
 		.content_left {
 			position: relative;	
@@ -233,7 +244,17 @@
 @if($job_attorneys)<HR WIDTH="100%" COLOR="#000000" SIZE="2">@endif
 <div class="content_left">@yield('middle_content_left')</div>
 <div class="content_right">@yield('middle_content_right')</div>
+<br><br><br>
 </div>
+<br><br><br>
+
+@if($billed_invoice1)
+<HR WIDTH="100%" COLOR="#000000" SIZE="2">
+<div class="contents">
+<div class="content_left">@yield('2middle_content_left')</div>
+<div class="content_right">@yield('2middle_content_right')</div>
+</div>
+@endif
 <div class="last">@yield('last')</div>
 
 

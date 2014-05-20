@@ -11,6 +11,7 @@ class RecordsMain extends Eloquent {
 		'billsheet_id',
 		'received',
 		'info',
+		'original',
 		'created_user',
 		'updated_user',
 		 );

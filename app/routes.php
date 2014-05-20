@@ -14,7 +14,8 @@
 //+++++++++++++++++++++++++++++++++++
 //Primary Routes
 //+++++++++++++++++++++++++++++++++++
-Route::get('/', function() { return View::make('main.hello'); });
+Route::get('/', function() { return View::make('main.hello', array())
+	->with('pagetitle', 'CD Services, Inc.'); });
 
 Route::post('/home', array('as' => 'login_home', 'uses' => 'WorkerController@login_home'));
 
@@ -29,6 +30,9 @@ Route::post('/pdf/make', array('as' => 'make_pdf', 'uses' => 'PdfController@make
 //+++++++++++++++++++++++++++++++++++
 Route::get('/job/billing/{id}', array('as' => 'billsheet_profile', 'uses' => 'BillingController@billsheet_profile'));
 
+Route::get('/job/billing/attorney/{billsheet}', array('as' => 'bill_attorney', 'uses' => 'BillingController@bill_attorney'));
+
+Route::get('job/billing/requester/{billsheet}', array('as' => 'bill_requester', 'uses' => 'BillingController@bill_requester'));
 
 //court routes
 //+++++++++++++++++++++++++++++++++++

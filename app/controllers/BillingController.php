@@ -77,7 +77,8 @@ $jobtype = JobMain::where('id', '=', $id)->pluck('type');
 $requester_id = JobMain::where('id', '=', $id)->pluck('requester_id');
 return View::make('billings.billsheet_profile',  array())
 ->with('pagetitle',  "$jobnumber Billsheet")
-->with('records_list1', RecordsMain::where('job_id', '=', $id)->where('shipped', '!=')->get())
+->with('records_list1', RecordsMain::where('job_id', '=', $id)->where('billsheet_id', '')->get())
+->with('billed_records1', RecordsMain::where('job_id', '=', $id)->where('billsheet_id', '>', '')->get())
 ->with('job_list1', JobMain::where('id', '=', $id)->get())
 ->with('job_attorneys', Case1Attorney::where('attorney_id', '!=', $requester_id)->where('case_id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->lists('attorney_id'))
 ->with('deponent_list1', DeponentMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('deponent_id'))->get())
@@ -86,8 +87,11 @@ return View::make('billings.billsheet_profile',  array())
 ->with('case_list1', CaseMain::where('id', '=', $case)->get())
 ->with('pages', RecordsMain::where('job_id', '=', $id)->where('type', '=', 'Pages')->get())
 ->with('requester', AttorneyMain::where('id', '=', $requester_id)->first())
-->with('invoice_list1', InvoiceMain::where('job_id', '=', $id)->get());
+->with('invoice_list1', InvoiceMain::where('job_id', '=', $id)->where('billsheet_id', '')->get())
+->with('billed_invoice1', InvoiceMain::where('job_id', '=', $id)->where('billsheet_id', '>', '')->get())
+->with('defaults', CompanyDefault::first());
 }
+
 
 
 

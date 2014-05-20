@@ -19,7 +19,8 @@ class WorkerController extends BaseController {
 
 	public function logout() {
 		Session::forget('user_id');
-		return View::make('main.hello');
+		return View::make('main.hello', array())
+		->with('pagetitle', 'C D Services, Inc.');
 	}
 
 
