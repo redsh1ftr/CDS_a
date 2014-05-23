@@ -22,3 +22,19 @@
 
 
 @stop
+
+@section('content_right')
+Current Jobs for {{CaseMain::where('id', '=', Session::get('case_id'))->pluck('case_number')}}:
+<HR WIDTH="100%" COLOR="#000000" SIZE="3">
+
+<table width="100%">
+<th>Job Number<th>Deponent<th>Job Type</th><tr>
+@foreach($made_jobs1 as $made)
+
+<td>{{$made->job_number}} 
+<td>{{DeponentMain::where('id', '=', $made->deponent_id)->pluck('name')}}
+<td>{{$made->type}}<tr>
+
+@endforeach
+</table>
+@stop

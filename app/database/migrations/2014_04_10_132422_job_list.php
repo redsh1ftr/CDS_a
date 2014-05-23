@@ -29,6 +29,7 @@ class JobList extends Migration {
 			$table->datetime('served');
 			$table->datetime('records_due');
 			$table->longtext('info');
+			$table->integer('updated')->nullable();
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();

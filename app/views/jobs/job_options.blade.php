@@ -64,6 +64,8 @@ Deponent:<br>
 @endforeach
 {{Form::checkbox('billing', '1');}} {{ Form::label('billing', 'Need Billing ') }} <br>
 
+{{Form::checkbox('updated', '1');}} {{ Form::label('updated', 'Updated Records') }} <br>
+
 
 @foreach($dep_list1 as $dep_list)
 {{Form::hidden('deponent_id', $dep_list->id) }}

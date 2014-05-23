@@ -21,7 +21,8 @@ public function select_deponent(){
 
 return View::make('jobs.deponent_list',  array())
 ->with('pagetitle', 'Select Deponent')
-->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get())
+->with('made_jobs1', JobMain::where('case_id', '=', Session::get('case_id'))->get());
 }
 
 public function job_profile($id){
@@ -97,14 +98,17 @@ JobMain::create(array(
 		'need_info' => Input::get('add_info'),
 		'served' => '',
 		'records_due' => '',	
-		'info' => '',	
+		'info' => '',
+		'updated' => Input::get('updated'),	
 		'created_user' => Session::get('user_id'),
 		'updated_user' => Session::get('user_id'),
+
 		));
 
-return View::make('jobs.deponent_list',  array())
+return Redirect::route('select_deponent',  array())
 ->with('pagetitle', 'Select Deponent')
-->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get());
+->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get())
+->with('made_jobs1', JobMain::where('case_id', '=', Session::get('case_id'))->get());;
 
 }
 
