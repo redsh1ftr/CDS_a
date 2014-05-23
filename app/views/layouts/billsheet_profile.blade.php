@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<title>{{$pagetitle}}</title>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//10.0.1.7:8080/CDS_a/jQlib/jquery-ui.css">
+  <script src="//10.0.1.7:8080/CDS_a/jQlib/jquery-1.10.2.js"></script>
+  <script src="//10.0.1.7:8080/CDS_a/jQlib/jquery-ui.js"></script>
 
   <script>
   $(function() {
