@@ -1,10 +1,16 @@
 <!doctype html>
+<?php $server = Cache::get('server_addr');?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>{{$pagetitle}}</title>
 	<style>
-		@import url(//fonts.googleapis.com/css?family=Lato:700);
+			@font-face {
+			  font-family: 'Lato';
+			  font-style: normal;
+			  font-weight: 700;
+			  src: local('Lato Bold'), local('Lato-Bold'), url(//{{$server}}/CDS_a/Fonts/lato.woff) format('woff');
+			}
 
 		body {
 			margin:0;

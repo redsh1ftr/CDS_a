@@ -1,12 +1,12 @@
 <!doctype html>
+<?php $server = Cache::get('server_addr');?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>{{$pagetitle}}</title>
-
-  <link rel="stylesheet" href="//10.0.1.7:8080/CDS_a/jQlib/jquery-ui.css">
-  <script src="//10.0.1.7:8080/CDS_a/jQlib/jquery-1.10.2.js"></script>
-  <script src="//10.0.1.7:8080/CDS_a/jQlib/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//{{$server}}/CDS_a/jQlib/jquery-ui.css">
+  <script src="//{{$server}}/CDS_a/jQlib/jquery-1.10.2.js"></script>
+  <script src="//{{$server}}/CDS_a/jQlib/jquery-ui.js"></script>
 
   <script>
   $(function() {
@@ -14,7 +14,12 @@
   });
   </script>
 	<style>
-		@import url(//fonts.googleapis.com/css?family=Lato:700);
+		@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(//{{$server}}/CDS_a/Fonts/lato.woff) format('woff');
+}
 
 		body {
 			width: 100%;
@@ -226,6 +231,7 @@
 		
 	<div class="left">
 		<div class="centertext">@yield('plaintiff')</div>
+		{{$server}}
 	</div>
 		<div class="left_middle">
 		<div class="centertext">@yield('plaintiff_attorney')</div>

@@ -42,7 +42,6 @@
 </div>
 @stop
 
-@section('test')
-
-Testing Datas
+@section('last')
+{{Cache::get('server_addr')}}
 @stop

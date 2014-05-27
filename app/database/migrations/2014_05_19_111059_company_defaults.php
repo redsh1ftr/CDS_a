@@ -14,6 +14,7 @@ class CompanyDefaults extends Migration {
 	{
 		Schema::create('company_defaults', function($table){
 			$table->increments('id');
+			$table->string('server_address');
 			$table->string('street1');
 			$table->string('street2');
 			$table->string('city');
