@@ -22,14 +22,6 @@
 
 
 
-
-
-
-
-
-
-
-
 @section('topbar')
 @if($pagesum <= 0)
 <?php $pagetotal = 0;?>
@@ -44,7 +36,6 @@
 @endif
 {{$pagetotal}}
 
-{{$defaults->street1}}
 
 @stop
 
@@ -158,7 +149,7 @@ ${{number_format($pagetotal + $costsum + $invoicesum + $defaults->subp_fee, $dec
 <?php $atty_side = Case1Attorney::where('attorney_id', '=', $attys)->pluck('side');?>
 
 
-<td>{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<br>{{$atty_side}}<td>
+<td>{{link_to_route('bill_attorney', "$atty_first $atty_middle $atty_last (P#$atty_p)", $atty_id, array('id' => $atty_id)); }}<br>{{$atty_side}}<td>
 
 
 @endforeach

@@ -13,16 +13,19 @@ class InvoiceList extends Migration {
 	{
 		Schema::create('invoice_list', function($table){
 			$table->increments('id');
+			$table->string('type');
 			$table->string('job_id');
 			$table->string('user_id');
 			$table->string('billsheet_id');
 			$table->string('received');
 			$table->string('invoice_amount');
 			$table->string('invoice_number');
-			$table->datetime('paid');
+			$table->datetime('paid')->nullable();
 			$table->string('payment');
 			$table->string('void');
 			$table->string('info');
+			$table->string('updated_user');
+			$table->string('created_user');
 			$table->timestamps();
 
 		});

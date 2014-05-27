@@ -34,6 +34,13 @@ Route::get('/job/billing/attorney/{billsheet}', array('as' => 'bill_attorney', '
 
 Route::get('job/billing/requester/{billsheet}', array('as' => 'bill_requester', 'uses' => 'BillingController@bill_requester'));
 
+Route::get('payments/send', array('as' => 'send_payments', 'uses' => 'BillingController@send_payments'));
+
+Route::get('payments/send/{id}', array('as' => 'make_payment', 'uses' => 'BillingController@make_payment'));
+
+Route::post('payments/send/pay', array('as' => 'pay_invoice', 'uses' => 'BillingController@pay_invoice'));
+
+
 //court routes
 //+++++++++++++++++++++++++++++++++++
 Route::get('/court/list', array('as' => 'court_list', 'uses' => 'CourtController@court_list'));

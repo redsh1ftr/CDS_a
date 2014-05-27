@@ -57,6 +57,7 @@ return View::make('billings.check_in_invoice',  array())
 public function add_invoice(){
 $date = Carbon::parse(Input::get('received'));	
 	InvoiceMain::create(array(
+		'type' => Input::get('type'),
 		'job_id' => Input::get('job_id'),
 		'user_id' => Session::get('user_id'),
 		'received' => $date,
@@ -92,11 +93,40 @@ return View::make('billings.billsheet_profile',  array())
 ->with('defaults', CompanyDefault::first());
 }
 
+public function bill_attorney($id){
+return View::make('billings.fillsheet_profile',  array())
+->with('court_list1', CourtMain::where('id', '=', $id)->get())
+->with('pagetitle', 'New Case')
+->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
 
+}
 
+public function send_payments(){
+return View::make('billings.payment_list',  array())
+->with('invoice_list1', InvoiceMain::where('payment', '=', '')->orderBy('job_id', 'desc')->get())
+->with('pagetitle', 'Pay Invoices');
+}
 
+public function make_payment($id){
+$job = InvoiceMain::where('id', '=', $id)->pluck('job_id');
+$jobnumber = JobMain::where('id', '=', $job)->pluck('job_number');
+return View::make('billings.send_payments',  array())
+->with('invoice_list1', InvoiceMain::where('id', '=', $id)->first())
+->with('job_list1', JobMain::where('id', '=', $job)->first())
+->with('pagetitle', "Invoice: $jobnumber");
+}
 
+public function pay_invoice(){
+$inv_id = Input::get('inv_id');
+$date = Carbon::parse(Input::get('sent'));
+DB::table('invoice_list')->where('id', '=', $inv_id)->update(array(
+	'paid' => $date, 
+	'updated_at' => $date, 
+	'payment' => Input::get('payment'), 
+	'updated_user' => Session::get('user_id')));
 
+return Redirect::route('send_payments');
+}
 
 
 public function case_list(){

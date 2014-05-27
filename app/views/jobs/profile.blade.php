@@ -116,8 +116,32 @@ Opposing Request:<br>
 
 
 @section('content_right')
-Records
-<HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
+<h2>Invoices</h2>
+<table width="100%" border="1">
+	<th> Received</th><th>Type</th><th>Number</th><th>Amount</th><th>Payment</th><th>Paid</th><tr>
+@foreach($invoice_list1 as $invoices)
+
+<td> 
+{{ Carbon::parse($invoices->received)->format('D, M d Y') }}
+<td>
+{{$invoices->type}}
+<td>
+{{$invoices->invoice_number}}	
+<td>
+{{$invoices->invoice_amount}}	
+<td>
+{{$invoices->payment }}
+<td>	
+{{ Carbon::parse($invoices->paid)->format('D, M d Y') }}
+
+
+<tr>
+@endforeach
+</table>
+
+
+
+<h2>Records</h2>
 <table width="100%" border="1">
 	<th> Received</th><th>Count</th><th>Type</th><th>Ship Date</th><tr>
 @foreach($records_list1 as $records)

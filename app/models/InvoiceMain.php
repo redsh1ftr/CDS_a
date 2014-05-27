@@ -10,8 +10,11 @@ class InvoiceMain extends Eloquent {
 		'invoice_number',
 		'invoice_amount', 
 		'info',
+		'payment',
+		'paid',
 		'created_user',
 		'updated_user',
+		'type'
 		 );
 	protected $table = 'invoice_list';
 }	

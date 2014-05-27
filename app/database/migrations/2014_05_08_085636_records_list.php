@@ -20,8 +20,7 @@ class RecordsList extends Migration {
 			$table->integer('quantity');
 			$table->string('info');
 			$table->string('original')->nullable();
-			$table->datetime('ship_date');
-			$table->integer('shipped');
+			$table->datetime('ship_date')->nullable();
 			$table->string('created_user');
 			$table->string('updated_user');
 			$table->timestamps();
