@@ -17,12 +17,6 @@
 @endforeach
 
 
-
-
-
-
-
-@section('topbar')
 @if($pagesum <= 0)
 <?php $pagetotal = 0;?>
 @elseif($pagesum < 10)
@@ -31,10 +25,15 @@
 <?php $pagetotal = ($defaults->stat_base + ($pagesum * $defaults->stat_120));?>
 @elseif($pagesum <= 50)
 <?php $pagetotal = ($defaults->stat_base + 23.40 + (($pagesum - 20) * $defaults->stat_2150));?>
-@elseif($pagesum < 50)
-<?php $pagetotal = ($defaults->stat_base + 41.1 + (($pagesum - 50) * $default->stat_59));?>
+@elseif($pagesum > 50)
+<?php $pagetotal = ($defaults->stat_base + 41.1 + (($pagesum - 50) * $defaults->stat_50));?>
+
 @endif
-{{$pagetotal}}
+
+
+
+
+@section('topbar')
 
 
 @stop

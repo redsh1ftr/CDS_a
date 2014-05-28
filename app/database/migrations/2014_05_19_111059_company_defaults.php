@@ -28,8 +28,8 @@ class CompanyDefaults extends Migration {
 			$table->datetime('statutory_update');
 			$table->string('subp_fee');
 			$table->string('stat_base');
-			$table->string('stat_1-20');
-			$table->string('stat_21-50');
+			$table->string('stat_120');
+			$table->string('stat_2150');
 			$table->string('stat_50');
 			$table->string('healthport_cd');
 			$table->string('digital_pages');

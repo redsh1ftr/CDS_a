@@ -16,5 +16,5 @@
    {{ Form::submit ('Log In') }}
 
     {{ Form::close() }}
-   
+
 @stop

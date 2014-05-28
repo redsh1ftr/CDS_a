@@ -38,7 +38,13 @@ Route::get('payments/send', array('as' => 'send_payments', 'uses' => 'BillingCon
 
 Route::get('payments/send/{id}', array('as' => 'make_payment', 'uses' => 'BillingController@make_payment'));
 
+Route::get('payments/check_in_invoice/manual', array('as' => 'check_in_invoice_manual', 'uses' => 'BillingController@check_in_invoice_manual'));
+
+Route::get('payments/check_in_invoice/manual/{id}', array('as' => 'check_in_invoice_manually', 'uses' => 'BillingController@check_in_invoice_manually'));
+
 Route::post('payments/send/pay', array('as' => 'pay_invoice', 'uses' => 'BillingController@pay_invoice'));
+
+Route::post('payments/check_in_voice_manual', array('as' => 'add_invoice_manual', 'uses' => 'BillingController@add_invoice_manual'));
 
 
 //court routes

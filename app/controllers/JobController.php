@@ -82,13 +82,18 @@ Session::put('case_id', Input::get('case_id'));
 return Redirect::route('select_deponent');
 }
 
+
 public function make_job(){
-JobMain::create(array(
+$jobnumerator =	DB::table('company_defaults')->pluck('fax');
+$jobnumer = $jobnumerator + 1;
+$jobdate = Carbon::now()->format('y');
+DB::table('company_defaults')->where('id', '=', 1)->update(array('fax' => $jobnumer));		
+	JobMain::create(array(
 		'case_id' => Session::get('case_id'),
 		'deponent_id' => Input::get('deponent_id'),
 		'nor_id' => Session::get('nor_id'),
 		'requester_id' => Session::get('requester'),
-		'job_number' => '13-15000',
+		'job_number' => "$jobdate-$jobnumer",
 		'request_received' => Session::get('recieved'),
 		'rush' => Session::get('rush'),
 		'hold' => '',

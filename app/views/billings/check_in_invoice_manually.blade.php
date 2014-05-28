@@ -4,7 +4,7 @@
 
 <table>
 
-{{ Form::open(array('route' => 'add_invoice', 'POST')) }}
+{{ Form::open(array('route' => 'add_invoice_manual', 'POST')) }}
 
 
 {{ Form::hidden('job_id', $job_id) }}

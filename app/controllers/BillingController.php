@@ -50,12 +50,30 @@ return View::make('billings.check_in_invoice',  array())
 ->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
 ->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
 ->with('job_list1', JobMain::where('id', '=', $id)->first())
+->with('other_invoices1', InvoiceMain::where('job_id', '=', $id)->get())
 ->with('job_id', $id);
 }
 
 
-public function add_invoice(){
-$date = Carbon::parse(Input::get('received'));	
+public function check_in_invoice_manually($id){
+return View::make('billings.check_in_invoice_manually',  array())
+->with('rec_type1', RecTypeMain::lists('type'))
+->with('pagetitle', JobMain::where('id', '=', $id)->pluck('job_number'))
+->with('case_list1', CaseMain::where('id', '=', JobMain::where('id', '=', $id)->pluck('case_id'))->first())
+->with('job_list1', JobMain::where('id', '=', $id)->first())
+->with('other_invoices1', InvoiceMain::where('job_id', '=', $id)->get())
+->with('job_id', $id);
+}
+
+public function check_in_invoice_manual(){
+return View::make('billings.check_in_invoice_manual',  array())
+->with('pagetitle', 'Receive Invoices')
+->with('jobs', JobMain::orderBy('job_number')->get());
+}
+
+public function add_invoice_manual(){
+$date = Carbon::parse(Input::get('received'));
+$manual = Input::get('manual');
 	InvoiceMain::create(array(
 		'type' => Input::get('type'),
 		'job_id' => Input::get('job_id'),
@@ -65,9 +83,25 @@ $date = Carbon::parse(Input::get('received'));
 		'invoice_number' => Input::get('invoice_number'),
 		'invoice_amount' => Input::get('invoice_amount'),
 		));
-{
+
+return Redirect::route('check_in_invoice_manual');
+}
+
+
+public function add_invoice(){
+$date = Carbon::parse(Input::get('received'));
+$manual = Input::get('manual');
+	InvoiceMain::create(array(
+		'type' => Input::get('type'),
+		'job_id' => Input::get('job_id'),
+		'user_id' => Session::get('user_id'),
+		'received' => $date,
+		'info' => Input::get('info'),
+		'invoice_number' => Input::get('invoice_number'),
+		'invoice_amount' => Input::get('invoice_amount'),
+		));
 return Redirect::route('job_profile', array('id' => Input::get('job_id')));
-}}
+}
 
 public function billsheet_profile($id){
 $jobnumber = JobMain::where('id', '=', $id)->pluck('job_number');

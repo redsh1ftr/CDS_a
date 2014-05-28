@@ -4,34 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{{$pagetitle}}</title>
-
-  <link rel="stylesheet" href="//{{$server}}/CDS_a/jQlib/jquery-ui.css">
-  <script src="//{{$server}}/CDS_a/jQlib/jquery-1.10.2.js"></script>
-  <script src="//{{$server}}//CDS_a/jQlib/jquery-ui.js"></script>
-
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-  </script>
-
   <link rel="stylesheet" href="//{{$server}}/CDS_a/jQlib/jquery-ui.css">
   <script src="//{{$server}}/CDS_a/jQlib/jquery-1.10.2.js"></script>
   <script src="//{{$server}}/CDS_a/jQlib/jquery-ui.js"></script>
 
   <script>
   $(function() {
-    $( "#datepicker2" ).datepicker();
+    $( "#datepicker" ).datepicker();
   });
   </script>
-
 	<style>
 		@font-face {
-		  font-family: 'Lato';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('Lato Bold'), local('Lato-Bold'), url(//{{$server}}/CDS_a/Fonts/lato.woff) format('woff');
-		}
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(//{{$server}}/CDS_a/Fonts/lato.woff) format('woff');
+}
 
 		body {
 			width: 100%;
@@ -41,10 +29,18 @@
 			top:0%;
 			margin-left: 15px;
 			font-family:'Lato', sans-serif;
-
 			text-align:left;
 			color: #100;
 		}
+
+
+		.paperpage {
+			width: 900px;
+			height: 670px;
+			page-break-after: always;
+			page-break-inside: avoid;
+		}
+		
 
 		.topbar{
 			position: relative;
@@ -64,6 +60,8 @@
 			text-align:center;
 			margin-left:0%;
 			width: 100%;
+
+
 		}
 		.content_left {
 			position: relative;	
@@ -212,7 +210,12 @@
 </div>
 
 <div class="toolbar">
-	@yield('topbar')
+
+	<TABLE WIDTH=100%>
+	<th>{{link_to_route('send_payments', 'Send Checks')}}</th>
+	<th>{{link_to_route('check_in_invoice_manual', 'Receive Invoices')}}</th>
+</table>
+	<HR WIDTH="100%" COLOR="#000000" SIZE="3">
 </div>
 
 <div class="content_middle">
@@ -227,33 +230,6 @@
 	</div>
 	
 </div>
-
-
-
-<div class="contents">
-		
-	<div class="left">
-		<div class="centertext">@yield('plaintiff')</div>
-	</div>
-		<div class="left_middle">
-		<div class="centertext">@yield('plaintiff_attorney')</div>
-	</div>
-		<div class="right_middle">
-		<div class="centertext">@yield('defendant_attorney')</div>
-	</div>
-	<div class="right">
-		<div class="centertext">@yield('defendant')</div>
-	</div>
-</div>
-
-
-<div class="content_middle">
-
-<div class="content_left">@yield('middle_content_left')</div>
-<div class="content_right">@yield('middle_content_right')</div>
-</div>
-<div class="last">@yield('last')</div>
-
 
 
 
