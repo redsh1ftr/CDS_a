@@ -45,7 +45,7 @@ class AttorneyList extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('firm_list');
+		Schema::drop('attorney_list');
 	}
 
 }

@@ -52,7 +52,7 @@ class AuthMaker extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('auth_maker');
 	}
 
 }

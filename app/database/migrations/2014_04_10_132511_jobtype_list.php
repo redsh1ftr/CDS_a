@@ -27,7 +27,7 @@ class JobtypeList extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('jobtype_list');
 	}
 
 }
