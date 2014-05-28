@@ -202,6 +202,7 @@
 	<th>{{link_to_route('court_list', 'Court List')}}</th>
 	<th>{{link_to_route('firm_list', 'Firms')}}</th>
 	<th>{{link_to_route('deponent_list_all', 'Deponents')}}</th>
+	<th>{{link_to_route('send_payments', 'Payments')}}</th>
 	<th>{{link_to_route('logout', 'Logout')}}</th><tr>
 </table>
 <HR WIDTH="100%" COLOR="#000000" SIZE="3">
