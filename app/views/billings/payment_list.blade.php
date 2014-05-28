@@ -1,4 +1,6 @@
 @extends('layouts.finance')
+
+
 @section('content_left')
 
 
@@ -16,6 +18,29 @@
 
 
 @endforeach
-<table>
+</table>
+
+@stop
+
+@section('content_right')
+
+<?php $paid_inv = DB::table('invoice_list')->where('payment', '!=', '')->where('paid', '>=', Carbon::today())->orderBy('paid')->get();?>
+
+
+<h2>Checks Paid Today:</h2>
+<table width="100%" border="1">
+<th>Job<th>Received<th>Amount<th>Invoice Number<th>Paid<tr>
+@foreach($paid_inv as $inv)
+
+<td>{{link_to_route('job_profile', JobMain::where('id', '=', $inv->job_id)->pluck('job_number'), $inv->job_id, array('id', 'id' => $inv->job_id))}}
+<td>{{Carbon::parse($inv->received)->format('D, M d Y')}}
+<td>{{$inv->invoice_amount}}
+<td>{{$inv->invoice_number}}
+<td>{{Carbon::parse($inv->paid)->format('D, M d Y')}}<tr>
+
+@endforeach
+
+</table>
+
 
 @stop
