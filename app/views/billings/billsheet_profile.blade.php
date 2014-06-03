@@ -123,10 +123,21 @@ Records Due:
 <?php $atty_p = $requester->p_number;?>
 
 
-{{link_to_route('attorney_profile', "$atty_first $atty_middle $atty_last (P#$atty_p)", $requester->id, array('id' => $requester->id)); }}	
+{{link_to_route('bill_requester', "$atty_first $atty_middle $atty_last (P#$atty_p)", json_encode
+(array(
+'invoices' => $invoicesum, 
+'pages' => $pagesum,
+'id' => $requester->id,
+'job' => $job->id,
+'cost' => $pagetotal,
+'subp' => '39.50',
+'requester' => $requester->id
+)), array('id' => $job->id)); }}
+
+
 Cost:
 <td>
-${{number_format($pagetotal + $costsum + $invoicesum + $defaults->subp_fee, $decimals = 2)}}
+${{number_format($pagetotal + $costsum + $invoicesum + $defaults->subp_fee + $requester->shipping, $decimals = 2)}}
 <tr>
 @endforeach
 <tr>

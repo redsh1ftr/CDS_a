@@ -32,7 +32,7 @@ Route::get('/job/billing/{id}', array('as' => 'billsheet_profile', 'uses' => 'Bi
 
 Route::get('/job/billing/attorney/{billsheet}', array('as' => 'bill_attorney', 'uses' => 'BillingController@bill_attorney'));
 
-Route::get('job/billing/requester/{billsheet}', array('as' => 'bill_requester', 'uses' => 'BillingController@bill_requester'));
+Route::get('job/billing/requester/{id}', array('as' => 'bill_requester', 'uses' => 'BillingController@bill_requester'));
 
 Route::get('payments/send', array('as' => 'send_payments', 'uses' => 'BillingController@send_payments'));
 

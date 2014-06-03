@@ -135,6 +135,19 @@ return View::make('billings.fillsheet_profile',  array())
 
 }
 
+
+public function bill_requester($id){
+$try = json_decode($id);
+return View::make('billings.fillsheet_profile',  array())
+->with('pagetitle', 'Bill Requester')
+->with('cost', $try);
+}
+
+
+
+
+
+
 public function send_payments(){
 return View::make('billings.payment_list',  array())
 ->with('invoice_list1', InvoiceMain::where('payment', '=', '')->orderBy('job_id', 'desc')->get())
