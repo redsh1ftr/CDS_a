@@ -15,9 +15,7 @@
 {{ Form::close() }}
 
 @foreach($dep_list1 as $dep )
-
 {{link_to_route('deponent_selected', $dep->name, $dep->id, array('id' => $dep->id)); }}<br>
-
 @endforeach
 
 

@@ -17,14 +17,6 @@ class JobController extends BaseController {
 	public $restful = true;
 
 
-public function select_deponent(){
-
-return View::make('jobs.deponent_list',  array())
-->with('pagetitle', 'Select Deponent')
-->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get())
-->with('made_jobs1', JobMain::where('case_id', '=', Session::get('case_id'))->get());
-}
-
 public function job_profile($id){
 $case_id = JobMain::where('id', '=', $id)->pluck('case_id');
 $deponent_id = JobMain::where('id', '=', $id)->pluck('deponent_id');
@@ -40,21 +32,6 @@ return View::make('jobs.profile',  array())
 ->with('other_side1', Case1Attorney::where('case_id', '=', $case_id)->where('attorney_id', '!=', $requester_id)->lists('attorney_id'))
 ->with('records_list1', RecordsMain::where('job_id', '=', $id)->get())
 ->with('invoice_list1', InvoiceMain::where('job_id', '=', $id)->get());
-}
-
-public function deponent_selected($id){
-$case_id = Session::get('case_id');
-$nor_id = Session::get('nor_id');
-$requester_id = Session::get('requester');
-return View::make('jobs.job_options',  array())
-->with('pagetitle', 'Job Options')
-->with('jobtypes', JobTypeMain::lists('type'))
-->with('jobid', JobTypeMain::lists('id'))
-->with('dep_list1', DeponentMain::where('id', '=', $id)->get())
-->with('case', CaseMain::where('id', '=', $case_id)->get())
-->with('nor', NorModel::where('id', '=', $nor_id)->get())
-->with('requester', AttorneyMain::where('id', '=', $requester_id)->get());
-
 }
 
 public function new_job($id){
@@ -83,11 +60,36 @@ return Redirect::route('select_deponent');
 }
 
 
+public function select_deponent(){
+return View::make('jobs.deponent_list',  array())
+->with('pagetitle', 'Select Deponent')
+->with('dep_list1', DeponentMain::paginate(300))
+->with('made_jobs1', JobMain::where('case_id', '=', Session::get('case_id'))->get());
+}
+
+
+public function deponent_selected($id){
+$case_id = Session::get('case_id');
+$nor_id = Session::get('nor_id');
+$requester_id = Session::get('requester');
+return View::make('jobs.job_options',  array())
+->with('pagetitle', 'Job Options')
+->with('jobtypes', JobTypeMain::lists('type'))
+->with('jobid', JobTypeMain::lists('id'))
+->with('dep_list1', DeponentMain::where('id', '=', $id)->get())
+->with('case', CaseMain::where('id', '=', $case_id)->get())
+->with('nor', NorModel::where('id', '=', $nor_id)->get())
+->with('requester', AttorneyMain::where('id', '=', $requester_id)->get());
+
+}
+
+
+
 public function make_job(){
-$jobnumerator =	DB::table('company_defaults')->pluck('fax');
+$jobnumerator =	DB::table('company_defaults')->pluck('job_number');
 $jobnumer = $jobnumerator + 1;
 $jobdate = Carbon::now()->format('y');
-DB::table('company_defaults')->where('id', '=', 1)->update(array('fax' => $jobnumer));		
+DB::table('company_defaults')->where('id', '=', 1)->update(array('job_number' => $jobnumer));		
 	JobMain::create(array(
 		'case_id' => Session::get('case_id'),
 		'deponent_id' => Input::get('deponent_id'),
@@ -113,70 +115,7 @@ DB::table('company_defaults')->where('id', '=', 1)->update(array('fax' => $jobnu
 
 return Redirect::route('select_deponent',  array())
 ->with('pagetitle', 'Select Deponent')
-->with('dep_list1', DeponentMain::orderBy('updated_at', 'desc')->get())
 ->with('made_jobs1', JobMain::where('case_id', '=', Session::get('case_id'))->get());;
-
-}
-
-
-
-public function selected_court($id){
-return View::make('cases.create_new_case',  array())
-->with('court_list1', CourtMain::where('id', '=', $id)->get())
-->with('pagetitle', 'New Case')
-->with('court_id', CourtMain::where('id', '=', $id)->pluck('id'));
-
-}
-
-public function case_profile($id){
-$court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
-$case_info = CaseMain::Where('id', '=', $id);
-$plaintiff = Case1Attorney::where('case_id', '=', $id)->where('side', '=', 'Plaintiff')->get();
-$defendant = Case1Attorney::where('case_id', '=', $id)->where('side', '=', 'Defendant')->get();
-return View::make('cases.profile',  array())
-->with('case_list1', $case_info->get())
-->with('pagetitle', $case_info->pluck('caption'))
-->with('court_info1', CourtMain::Where('id', '=', $court_id)->get())
-->with('plaintiff1', $plaintiff)
-->with('defendant1', $defendant);
-}
-
-public function case_update($id){
-$court_id = CaseMain::Where('id', '=', $id)->pluck('court_id');
-$case_info = CaseMain::Where('id', '=', $id);
-return View::make('cases.update_case',  array())
-->with('case_list1', $case_info->get())
-->with('pagetitle', $case_info->pluck('caption'))
-->with('court_info1', CourtMain::Where('id', '=', $court_id)->get());
-}
-
-
-public function add_case_attorney(){
-	Case1Attorney::create(array(
-		'case_id' => Input::get('case_id'),
-		'side' => Input::get('side'),
-		'person' => Input::get('person'),
-		'attorney_id' => Input::get('attorney_id'),
-		'nor' => Input::get('nor'),
-		'created_user' => Session::get('user_id'),
-		'updated_user' => Session::get('user_id'),
-		));
-
-return Redirect::route('case_list');
-
-}
-
-
-public function new_case_attorney($id){
-return View::make('cases.add_attorney',  array())
-->with('pagetitle', 'Add Attorney')
-->with('case_list1', CaseMain::where('id', '=', $id)->get());
-}
-
-public function new_nor_profile($id){
-return View::make('cases.add_attorney',  array())
-->with('pagetitle', 'Add NOR')
-->with('case_list1', CaseMain::where('id', '=', $id)->get());
 }
 
 
