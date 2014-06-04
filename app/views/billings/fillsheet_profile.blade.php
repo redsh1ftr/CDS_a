@@ -13,6 +13,25 @@
 
 
 
+{{-- PAGE PRICING LOGIC --}}
+
+@if($pagesum <= 0)
+<?php $pagetotal = 0;?>
+@elseif($pagesum < 10)
+<?php $pagetotal = 10.00;?>
+@elseif($pagesum <= 20)
+<?php $pagetotal = ($defaults->stat_base + ($pagesum * $defaults->stat_120));?>
+@elseif($pagesum <= 50)
+<?php $pagetotal = ($defaults->stat_base + 23.40 + (($pagesum - 20) * $defaults->stat_2150));?>
+@elseif($pagesum > 50)
+<?php $pagetotal = ($defaults->stat_base + 41.1 + (($pagesum - 50) * $defaults->stat_50));?>
+
+@endif
+
+{{-- END PAGE PRICING LOGIC --}}
+
+
+
 
 <table width="120%" border="1">
 

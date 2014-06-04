@@ -4,7 +4,9 @@
 
 {{ Session::get('nor') }} {{Session::get('rush')}} {{Session::get('requester')}} {{Session::get('recieved')}}
 <h2>
-	{{link_to_route('new_deponent', 'New Deponent') }}
+	<table width="100%">
+	<td>{{link_to_route('new_deponent', 'New Deponent') }} <td>{{link_to_route('case_profile', 'Back to Case', array('id' => Session::get('case_id')))}}
+</table>
 </h2>
 
 

@@ -8,6 +8,8 @@
 {{link_to_route('check_in_invoice', "Invoice", $job_list1->id, array('id' => $job_list1->id, 'manual' => 'j')); }}
 <td>
 {{link_to_route('check_in_records', "Records", $job_list1->id, array('id' => $job_list1->id)); }}
+<td>
+{{link_to_route('status_letter', "Status Letter", $job_list1->id, array('id' => $job_list1->id)); }}
 </table>
 <HR WIDTH="100%" ALIGN="LEFT" COLOR="#000000" SIZE="2">
 

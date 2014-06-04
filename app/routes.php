@@ -14,6 +14,12 @@
 //+++++++++++++++++++++++++++++++++++
 //Primary Routes
 //+++++++++++++++++++++++++++++++++++
+Route::get('/stufftotest', function() {return View::make('forms.status_letter', array())
+->with('pagetitle', 'TEST');});
+
+
+
+
 Route::get('/', function() { return View::make('main.hello', array())
 	->with('pagetitle', 'CD Services, Inc.'); });
 
@@ -113,6 +119,13 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 
 
 //Job Routes
+
+//+++++++++++++++++++++
+//FORMS
+//+++++++++++++++++++++
+
+Route::get('/job/forms/status_letter/{id}', array('as' => 'status_letter', 'uses' => 'FormController@status_letter'));
+
 
 //+++++++++++++++++++++++++++++++++++
 //check ins
