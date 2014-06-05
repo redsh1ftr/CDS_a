@@ -10,8 +10,8 @@
 			height:900px;
 			width:670px;
 			background-color: #FFFFFF;
-			margin-top:-15px;
-			margin-left: 15px;
+			margin:0;
+			margin-left: 5%;
 			font-family:'Lato', sans-serif;
 			text-align:left;
 			color: #100;
@@ -32,7 +32,6 @@
 			
 			text-align:left;
 			margin-left:0%;
-			height:100%;
 			width: 49%;
 
 		}
@@ -42,8 +41,15 @@
 			float:right;
 			text-align:left;
 			margin-left:0%;
-			height:100%;
 			width: 49%;
+		}
+
+		.content {
+			position:relative;
+			margin:left:-50%;
+			float:left;
+			text-align: left;
+			width:100%;
 		}
 
 		.f1{
@@ -66,18 +72,35 @@
 </head>
 
 
-<body>
+
 <img src="//localhost/CDS_a/Images/headertempla1.png"/><br>
 <div class="centertext">
-	STATUS OF RECORD REQUEST
+	<b>STATUS OF RECORD REQUEST</b>
 </div>
 
-<div class="content_left">
-@yield('content_left')
+
+<div class="content">		
+	<div class="content_left">
+		@yield('content_left')
+	</div>
+		<div class="content_right">
+			@yield('content_right')
+		</div>
+
 </div>
+
+<div class='content'>
+	<br><br>
+	@yield('content')
+</div>
+
 <div class="content_right">
-@yield('content_right')
+	@yield('regards')
 </div>
+
+
+
+<body>
 </body>
 
 <div class="tester">
@@ -87,5 +110,7 @@
 <div class="timestamper">
 	@yield('timestamper')
 </div>
+
+
 
 </html>

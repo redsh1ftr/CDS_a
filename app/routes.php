@@ -123,8 +123,13 @@ Route::post('/case/change_status', array('as' => 'change_case_status', 'uses' =>
 //+++++++++++++++++++++
 //FORMS
 //+++++++++++++++++++++
+Route::get('/job/forms/{id}', array('as' => 'select_form', 'uses' => 'FormController@select_form'));
 
 Route::get('/job/forms/status_letter/{id}', array('as' => 'status_letter', 'uses' => 'FormController@status_letter'));
+
+Route::get('/forms/status/make', array('as' => 'make_status_letter', 'uses' => 'FormController@make_status_letterShow'));
+
+Route::post('/forms/status/make', array('as' => 'make_status_letter', 'uses' => 'FormController@make_status_letterDo'));
 
 
 //+++++++++++++++++++++++++++++++++++
