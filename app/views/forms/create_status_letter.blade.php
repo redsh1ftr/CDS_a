@@ -1,7 +1,7 @@
 @extends('layouts.profile')
 @section('content_left')
 
-To use a deponent name type $deponent->name<br>
+To use a deponent name type DEPONENTNAME where you would like it displayed.
 
 {{ Form::open(array('route' => 'make_status_letter', 'POST')) }}
 <table width=100%>

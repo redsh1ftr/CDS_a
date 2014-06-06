@@ -23,10 +23,8 @@ public function status_letter($id){
 $jid = json_decode($id);
 return View::make('forms.status_letter',  array())
 ->with('pagetitle', 'Status Letter')
-->with('job', JobMain::where('id', '=', $jid->jid)->first())
-->with('status', StatusLetter::where('id', '=', $jid->lid)->first())
-->with('sts', DB::table('status_letters')->where('id', '=', $jid->lid)->pluck('verbiage'))
-->with('dep', 'THIS IS A TEST');
+->with('jid', $jid->jid)
+->with('lid', $jid->lid);
 }
 
 public function select_form($id){

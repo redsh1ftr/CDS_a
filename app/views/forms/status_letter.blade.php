@@ -4,12 +4,15 @@
 <b>YOUR RESPONSE IS REQUIRED</b>
 <br><br>
 <div class="f1">
+<?php $job = JobMain::where('id', '=', $jid)->first();?>
 <?php $atty = AttorneyMain::where('id', '=', $job->requester_id)->first();?>
 <?php $firm = FirmMain::where('id', '=', $atty->firm_id)->first();?>
 <?php $case = CaseMain::where('id', '=', $job->case_id)->first();?>
 <?php $nor = NorMain::where('id', '=', $job->nor_id)->first();?>
 <?php $deponent = DeponentMain::where('id', '=', $job->deponent_id)->first();?>
 <?php $dep = DeponentMain::where('id', '=', $job->deponent_id)->pluck('name');?>
+<?php $sts = DB::table('status_letters')->where('id', '=', $lid)->pluck('verbiage');?>
+<?php $status = StatusLetter::where('id', '=', $lid)->first();?>
 
 {{$atty->first_name}} {{$atty->last_name}}<br>
 {{$firm->name}}<br>
@@ -53,9 +56,9 @@ In order to keep you fully apprised of the above-referenced record request, plea
 
 {{$dep}}<br><br>
 
-{{Blade::compileString(DB::statement()->table('status_letters')->where('id', '=', 8)->pluck('verbiage'))}}
 
-{{$sts}}
+
+{{str_replace('DEPONENTNAME', $dep, $sts)}}
 
 
 
@@ -71,4 +74,12 @@ In order to keep you fully apprised of the above-referenced record request, plea
 Kindest regards,<br><br>
 C D Services, Inc.
 </div>
+@stop
+
+@section('jobnumber')
+<div class="rf1">
+CDSJOB#: {{$job->job_number}}<br>
+CDS FILE#: {{$case->case_number}}
+</div>
+
 @stop

@@ -29,7 +29,6 @@
 		.content_left {
 			position: relative;	
 			float:left;
-			
 			text-align:left;
 			margin-left:0%;
 			width: 49%;
@@ -52,6 +51,13 @@
 			width:100%;
 		}
 
+		.casejobnumber {
+			position:absolute;
+			text-align: right;
+			margin-top:95%;
+			margin-left: 77%;
+		}
+
 		.f1{
 			text-align:left;
 			font-size: 12px;
@@ -60,6 +66,11 @@
 		.f2{
 			text-align:left;
 			font-size: 14px;
+		}
+
+		.rf1 {
+			text-align: right;
+			font-size: 10px;
 		}
 
 
@@ -73,7 +84,7 @@
 
 
 
-<img src="//localhost/CDS_a/Images/headertempla1.png"/><br>
+
 <div class="centertext">
 	<b>STATUS OF RECORD REQUEST</b>
 </div>
@@ -111,6 +122,9 @@
 	@yield('timestamper')
 </div>
 
+<div class="casejobnumber">
+@yield('jobnumber')
+</div>
 
 
 </html>

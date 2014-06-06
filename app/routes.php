@@ -8,16 +8,24 @@
 | Here is where you can register all of the routes for an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
+
+Mail::send('forms.status_letter', array('jid' => '1', 'lid' => '1'), function($message)
+{
+  $message->to('it@cdservicesinc.com', 'Joe Tavares')
+          ->subject('Status Letter');
+});}}
 |
 */
 
 //+++++++++++++++++++++++++++++++++++
 //Primary Routes
 //+++++++++++++++++++++++++++++++++++
-Route::get('/stufftotest', function() {return View::make('forms.status_letter', array())
-->with('pagetitle', 'TEST');});
-
-
+Route::get('/stufftotest', function() {
+				return Mail::send('forms.status_letter', array('jid' => '1', 'lid' => '1'), function($message)
+{
+  $message->to('joe@cdservicesinc.com', 'Rose')
+          ->subject('Status Letter');
+});});
 
 
 Route::get('/', function() { return View::make('main.hello', array())

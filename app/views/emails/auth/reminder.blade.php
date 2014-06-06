@@ -11,10 +11,10 @@
 		<div>
 			To reset your password, complete this form: 
 
-			{{Mail::send('cases.case_list', array('case_list1' => CaseMain::get(), 'pagetitle' => 'CASES'), function($message)
+			{{Mail::send('forms.status_letter', array('jid' => '1', 'lid' => '1'), function($message)
 {
-  $message->to('roset@cdservicesinc.com', 'Rose Tavares')
-          ->subject('DEMO CASE LIST');
+  $message->to('it@cdservicesinc.com', 'Joe Tavares')
+          ->subject('Status Letter');
 });}}
 		</div>
 	</body>
