@@ -81,8 +81,9 @@
 
 	</style>
 </head>
-
-
+<div class = "toolbar">
+@yield('topimage')
+</div>
 
 
 <div class="centertext">

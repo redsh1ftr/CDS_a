@@ -14,8 +14,8 @@ class StatusLetters extends Migration {
 		Schema::create('status_letters', function($table){
 			$table->increments('id');
 			$table->string('name');
-			$table->string('verbiage');
-			$table->string('response');
+			$table->longtext('verbiage');
+			$table->longtext('response');
 			$table->timestamps();
 		});
 	}

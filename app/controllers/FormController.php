@@ -31,7 +31,7 @@ public function select_form($id){
 return View::make('forms.select_form',  array())
 ->with('pagetitle', 'Select_Form')
 ->with('job', $id)
-->with('status', StatusLetter::orderBy('name', 'desc')->get());
+->with('status', StatusLetter::where('id', '>', 1)->orderBy('name', 'desc')->get());
 }
 
 public function make_status_letterShow(){

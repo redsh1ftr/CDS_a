@@ -1,5 +1,11 @@
 @extends('layouts.status_letter')
+@section('topimage')
+<img src=//localhost/CDS_a/Images/headertempla1.png><br>
+@stop
+
 @section('content_left')
+
+
 <br>
 <b>YOUR RESPONSE IS REQUIRED</b>
 <br><br>
@@ -54,12 +60,10 @@ FILE/CLAIM: <b>{{$case->claim_number}}</b><br>
 Dear {{$atty->title}} {{$atty->last_name}}, <br><br>
 In order to keep you fully apprised of the above-referenced record request, please note the following:<br><br>
 
-{{$dep}}<br><br>
 
-
-
+<li>
 {{str_replace('DEPONENTNAME', $dep, $sts)}}
-
+</li>
 
 
 <br><br>

@@ -20,8 +20,11 @@ Mail::send('forms.status_letter', array('jid' => '1', 'lid' => '1'), function($m
 //+++++++++++++++++++++++++++++++++++
 //Primary Routes
 //+++++++++++++++++++++++++++++++++++
+
+//TO SEND MAIL:
+
 Route::get('/stufftotest', function() {
-				return Mail::send('forms.status_letter', array('jid' => '1', 'lid' => '1'), function($message)
+				return Mail::send('forms.status_letter', array('jid' => '2', 'lid' => '2'), function($message)
 {
   $message->to('joe@cdservicesinc.com', 'Rose')
           ->subject('Status Letter');
