@@ -16,6 +16,7 @@
   $message->to('it@cdservicesinc.com', 'Joe Tavares')
           ->subject('Status Letter');
 });}}
+
 		</div>
 	</body>
 </html>
